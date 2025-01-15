@@ -1,6 +1,6 @@
 import { vpc } from "./vpc";
 
-if ($app.stage === "production") {
+if ($app.stage === "production" || $app.stage === "staging") {
   const databasePush = new sst.aws.Function("DbMigrate", {
     handler: "packages/db/migrate.ts",
     vpc,
