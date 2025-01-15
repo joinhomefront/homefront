@@ -1,0 +1,5 @@
+{
+  "extends": "@homefront/tsconfig/base.json",
+  "include": ["src", "*.ts", "types/next-auth.d.ts"],
+  "exclude": ["node_modules"]
+}

@@ -1,0 +1,39 @@
+{
+  "extends": [
+    "@homefront/tsconfig/base.json"
+  ],
+  "compilerOptions": {
+    "baseUrl": ".",
+    "jsxImportSource": "nativewind",
+    "paths": {
+      "~/*": [
+        "./src/*"
+      ],
+      "@homefront/app/*": [
+        "../../packages/app/*"
+      ]
+    },
+    "jsx": "react-native",
+    "types": [
+      "nativewind/types"
+    ],
+    "checkJs": false,
+    "moduleSuffixes": [
+      ".ios",
+      ".android",
+      ".native",
+      ""
+    ]
+  },
+  "include": [
+    "src",
+    "*.ts",
+    "*.js",
+    ".expo/types/**/*.ts",
+    "expo-env.d.ts",
+    "nativewind-env.d.ts"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
+}

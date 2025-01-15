@@ -1,0 +1,16 @@
+{
+  "name": "@homefront/infra",
+  "version": "0.0.1",
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {},
+  "devDependencies": {
+    "@tsconfig/node22": "^22",
+    "typescript": "catalog:"
+  },
+  "dependencies": {
+    "sst": "catalog:"
+  }
+}

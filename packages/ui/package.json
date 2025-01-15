@@ -1,0 +1,92 @@
+{
+  "name": "@homefront/ui",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./src/index.ts"
+    },
+    "./*": {
+      "types": "./dist/src/*.d.ts",
+      "default": [
+        "./src/*.ts",
+        "./src/*.tsx"
+      ]
+    },
+    "./colors": {
+      "types": "./dist/src/colors.d.ts",
+      "default": "./src/colors.ts"
+    }
+  },
+  "license": "MIT",
+  "scripts": {
+    "build": "tsc",
+    "clean": "git clean -xdf .cache .turbo dist node_modules",
+    "dev": "tsc",
+    "format": "prettier --check . --ignore-path ../../.gitignore",
+    "lint": "eslint",
+    "typecheck": "tsc --noEmit --emitDeclarationOnly false",
+    "ui-add": "pnpm dlx @react-native-reusables/cli@latest add && prettier src --write --list-different"
+  },
+  "dependencies": {
+    "@react-navigation/native": "catalog:",
+    "@rn-primitives/accordion": "^1.1.0",
+    "@rn-primitives/alert-dialog": "^1.1.0",
+    "@rn-primitives/aspect-ratio": "^1.1.0",
+    "@rn-primitives/avatar": "catalog:",
+    "@rn-primitives/checkbox": "^1.1.0",
+    "@rn-primitives/collapsible": "^1.1.0",
+    "@rn-primitives/context-menu": "^1.1.0",
+    "@rn-primitives/dialog": "^1.1.0",
+    "@rn-primitives/dropdown-menu": "^1.1.0",
+    "@rn-primitives/hover-card": "^1.1.0",
+    "@rn-primitives/label": "^1.1.0",
+    "@rn-primitives/menubar": "^1.1.0",
+    "@rn-primitives/navigation-menu": "^1.1.0",
+    "@rn-primitives/popover": "^1.1.0",
+    "@rn-primitives/portal": "catalog:",
+    "@rn-primitives/progress": "catalog:",
+    "@rn-primitives/radio-group": "^1.1.0",
+    "@rn-primitives/select": "^1.1.0",
+    "@rn-primitives/separator": "^1.1.0",
+    "@rn-primitives/slot": "catalog:",
+    "@rn-primitives/switch": "^1.1.0",
+    "@rn-primitives/table": "^1.1.0",
+    "@rn-primitives/tabs": "^1.1.0",
+    "@rn-primitives/toggle": "^1.1.0",
+    "@rn-primitives/toggle-group": "^1.1.0",
+    "@rn-primitives/tooltip": "catalog:",
+    "@rn-primitives/types": "catalog:",
+    "class-variance-authority": "catalog:",
+    "expo-navigation-bar": "^4.0.2",
+    "lucide-react-native": "catalog:",
+    "moti": "^0.29.0",
+    "nativewind": "catalog:",
+    "react-hook-form": "catalog:",
+    "react-native": "catalog:react-for-expo",
+    "react-native-markdown-display": "^7.0.2",
+    "react-native-otp-entry": "^1.8.2",
+    "react-native-svg": "catalog:",
+    "tailwind-merge": "catalog:"
+  },
+  "devDependencies": {
+    "@homefront/db": "workspace:*",
+    "@homefront/eslint-config": "workspace:*",
+    "@homefront/prettier-config": "workspace:*",
+    "@homefront/tailwind-config": "workspace:*",
+    "@homefront/tsconfig": "workspace:*",
+    "@types/react": "catalog:react-for-expo",
+    "eslint": "catalog:",
+    "prettier": "catalog:",
+    "react": "catalog:react-for-expo",
+    "typescript": "catalog:",
+    "zod": "catalog:"
+  },
+  "peerDependencies": {
+    "react": "catalog:react-for-expo",
+    "zod": "catalog:"
+  },
+  "prettier": "@homefront/prettier-config"
+}

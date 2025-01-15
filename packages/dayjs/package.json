@@ -1,0 +1,28 @@
+{
+  "name": "@homefront/dayjs",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "main": "./index.ts",
+  "types": "./index.ts",
+  "scripts": {
+    "build": "tsc",
+    "clean": "rm -rf .turbo node_modules",
+    "dev": "tsc",
+    "format": "prettier --check . --ignore-path ../../.gitignore --ignore-path ../../.prettierignore",
+    "lint": "eslint .",
+    "typecheck": "tsc --noEmit --emitDeclarationOnly false"
+  },
+  "dependencies": {
+    "dayjs": "catalog:"
+  },
+  "devDependencies": {
+    "@homefront/eslint-config": "workspace:*",
+    "@homefront/prettier-config": "workspace:*",
+    "@homefront/tsconfig": "workspace:*",
+    "eslint": "catalog:",
+    "prettier": "catalog:",
+    "typescript": "catalog:"
+  },
+  "prettier": "@homefront/prettier-config"
+}

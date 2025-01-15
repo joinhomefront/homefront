@@ -1,0 +1,22 @@
+import { promises as fs } from "node:fs";
+import { join } from "node:path";
+import type { Kysely } from "kysely";
+import { sql } from "kysely";
+
+import type { Database } from "../src";
+
+export async function seed(db: Kysely<Database>): Promise<void> {
+  try {
+    // Read SQL file
+    const __dirname = new URL(".", import.meta.url).pathname;
+    const sqlPath = join(__dirname, "./sql/roles_seed.sql");
+    const sqlContent = await fs.readFile(sqlPath, "utf-8");
+
+    await sql.raw(sqlContent).execute(db);
+
+    console.log("Successfully seeded roles_seed");
+  } catch (error) {
+    console.error("Failed to seed roles_seed:", error);
+    throw error;
+  }
+}

@@ -1,0 +1,5 @@
+{
+  "extends": "@homefront/tsconfig/internal-package.json",
+  "include": ["src", "sst-env.d.ts"],
+  "exclude": ["node_modules"]
+}

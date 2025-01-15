@@ -1,0 +1,44 @@
+{
+  "name": "@homefront/api",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./src/index.ts"
+    }
+  },
+  "license": "MIT",
+  "scripts": {
+    "build": "tsc",
+    "clean": "git clean -xdf .cache .turbo dist node_modules",
+    "dev": "tsc",
+    "format": "prettier --check . --ignore-path ../../.gitignore",
+    "lint": "eslint",
+    "typecheck": "tsc --noEmit --emitDeclarationOnly false"
+  },
+  "dependencies": {
+    "@homefront/ai": "workspace:*",
+    "@homefront/auth": "workspace:*",
+    "@homefront/dayjs": "workspace:*",
+    "@homefront/db": "workspace:*",
+    "@homefront/stripe": "workspace:*",
+    "@homefront/validators": "workspace:*",
+    "@trpc/server": "catalog:",
+    "h3-js": "^4.1.0",
+    "lexorank": "^1.0.5",
+    "nanoid": "^5.0.9",
+    "superjson": "catalog:",
+    "zod": "catalog:"
+  },
+  "devDependencies": {
+    "@homefront/eslint-config": "workspace:*",
+    "@homefront/prettier-config": "workspace:*",
+    "@homefront/tsconfig": "workspace:*",
+    "eslint": "catalog:",
+    "prettier": "catalog:",
+    "typescript": "catalog:"
+  },
+  "prettier": "@homefront/prettier-config"
+}

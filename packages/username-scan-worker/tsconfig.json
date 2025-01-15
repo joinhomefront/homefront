@@ -1,0 +1,5 @@
+{
+	"extends": "@homefront/tsconfig/cloudflare-worker.json",
+	"include": ["worker-configuration.d.ts", "src/**/*.ts"],
+	"exclude": ["test"]
+}

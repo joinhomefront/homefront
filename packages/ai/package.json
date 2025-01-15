@@ -1,0 +1,37 @@
+{
+  "name": "@homefront/ai",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "license": "MIT",
+  "scripts": {
+    "build": "tsc",
+    "clean": "git clean -xdf .cache .turbo dist node_modules",
+    "dev": "tsc",
+    "format": "prettier --check . --ignore-path ../../.gitignore",
+    "generate:embeddings:occupations": "pnpm with-env tsx ./src/createOccupationEmbeddings.ts",
+    "generate:embeddings:roles": "pnpm with-env tsx ./src/createRoleEmbeddings.ts",
+    "generate:embeddings:skills": "pnpm with-env tsx ./src/createSkillEmbeddings.ts",
+    "lint": "eslint",
+    "typecheck": "tsc --noEmit --emitDeclarationOnly false",
+    "with-env": "dotenv -e ../../.env.local --"
+  },
+  "dependencies": {
+    "@homefront/db": "workspace:*",
+    "@pinecone-database/pinecone": "^4.0.0"
+  },
+  "devDependencies": {
+    "@homefront/eslint-config": "workspace:*",
+    "@homefront/prettier-config": "workspace:*",
+    "@homefront/tsconfig": "workspace:*",
+    "dotenv-cli": "^7.4.2",
+    "eslint": "catalog:",
+    "prettier": "catalog:",
+    "tsx": "^4.19.2",
+    "typescript": "catalog:"
+  },
+  "prettier": "@homefront/prettier-config"
+}

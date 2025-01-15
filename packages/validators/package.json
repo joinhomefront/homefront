@@ -1,0 +1,36 @@
+{
+  "name": "@homefront/validators",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./src/index.ts"
+    }
+  },
+  "license": "MIT",
+  "scripts": {
+    "build": "tsc",
+    "clean": "git clean -xdf .cache .turbo dist node_modules",
+    "dev": "tsc",
+    "format": "prettier --check . --ignore-path ../../.gitignore",
+    "lint": "eslint",
+    "typecheck": "tsc --noEmit --emitDeclarationOnly false"
+  },
+  "dependencies": {
+    "bip39": "^3.1.0",
+    "zod": "catalog:"
+  },
+  "devDependencies": {
+    "@homefront/db": "workspace:*",
+    "@homefront/eslint-config": "workspace:*",
+    "@homefront/prettier-config": "workspace:*",
+    "@homefront/tsconfig": "workspace:*",
+    "eslint": "catalog:",
+    "oauth4webapi": "^3.1.4",
+    "prettier": "catalog:",
+    "typescript": "catalog:"
+  },
+  "prettier": "@homefront/prettier-config"
+}

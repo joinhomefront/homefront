@@ -1,0 +1,53 @@
+{
+  "name": "@homefront/db",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./src/index.ts"
+    },
+    "./database": {
+      "types": "./dist/database.d.ts",
+      "default": "./src/database.ts"
+    },
+    "./types": {
+      "types": "./dist/types.d.ts",
+      "default": "./src/types/index.ts"
+    },
+    "./utils": {
+      "types": "./dist/utils.d.ts",
+      "default": "./src/utils.ts"
+    }
+  },
+  "license": "MIT",
+  "scripts": {
+    "build": "tsc",
+    "clean": "git clean -xdf .cache .turbo dist node_modules",
+    "dev": "tsc",
+    "format": "prettier --check . --ignore-path ../../.gitignore",
+    "kysely": "pnpm with-env kysely",
+    "lint": "eslint",
+    "typecheck": "tsc --noEmit --emitDeclarationOnly false",
+    "with-env": "dotenv -e ../../.env.local --"
+  },
+  "dependencies": {
+    "@neondatabase/serverless": "^0.10.3",
+    "kysely": "^0.27.4"
+  },
+  "devDependencies": {
+    "@homefront/eslint-config": "workspace:*",
+    "@homefront/prettier-config": "workspace:*",
+    "@homefront/tsconfig": "workspace:*",
+    "@jmondi/oauth2-server": "^4.0.2",
+    "@types/pg": "^8.11.10",
+    "@types/ws": "^8.5.13",
+    "dotenv-cli": "^7.4.2",
+    "eslint": "catalog:",
+    "kysely-ctl": "^0.9.0",
+    "prettier": "catalog:",
+    "typescript": "catalog:"
+  },
+  "prettier": "@homefront/prettier-config"
+}

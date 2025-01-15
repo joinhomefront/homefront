@@ -1,0 +1,59 @@
+name: deploy
+
+on:
+  push-branches:
+    - [main]
+
+concurrency:
+  group: ${{ github.ref }}
+
+permissions:
+  id-token: write
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [20]
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 9
+
+      - name: Install Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version-file: ".nvmrc"
+          cache: "pnpm"
+
+      - name: Install dependencies
+        run: pnpm install
+
+  deploy:
+    needs: [build]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/cache@v2
+        with:
+          path: |
+            .sst
+          key: ${{ runner.os }}-sst
+      - run: "curl -fsSL https://ion.sst.dev/install | bash"
+
+      - name: Configure AWS Credentials (Production)
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: arn:aws:iam::${AWS_ACCOUNT_NUMBER}:role/${APP_NAME}-${APP_STAGE}-github
+          aws-region: us-east-1
+
+      - name: Deploy
+        run: |
+          sst install
+          sst deploy --stage production --verbose

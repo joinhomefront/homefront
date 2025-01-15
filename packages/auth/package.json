@@ -1,0 +1,64 @@
+{
+  "name": "@homefront/auth",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": {
+      "react-server": "./src/index.rsc.ts",
+      "default": "./src/index.ts"
+    },
+    "./backup-codes": "./src/backupCodes.ts",
+    "./blackbox": "./src/blackbox.ts",
+    "./challenges": "./src/challenges.ts",
+    "./config": "./src/config.ts",
+    "./crypto": "./src/crypto.ts",
+    "./env": "./env.ts",
+    "./otp": "./src/otp.ts",
+    "./recovery-phrase": "./src/recoveryPhrase.ts",
+    "./types": "./types/next-auth.d.ts"
+  },
+  "license": "MIT",
+  "scripts": {
+    "clean": "git clean -xdf .cache .turbo dist node_modules",
+    "format": "prettier --check . --ignore-path ../../.gitignore",
+    "lint": "eslint",
+    "test": "pnpm with-env jest",
+    "typecheck": "tsc --noEmit",
+    "with-env": "dotenv -e ../../.env.local --"
+  },
+  "dependencies": {
+    "@auth/core": "0.34.2",
+    "@auth/drizzle-adapter": "1.4.2",
+    "@auth/kysely-adapter": "^1.7.3",
+    "@homefront/db": "workspace:*",
+    "@homefront/oauth": "workspace:*",
+    "@homefront/validators": "workspace:*",
+    "@node-rs/argon2": "catalog:",
+    "@oslojs/encoding": "^1.1.0",
+    "@oslojs/otp": "^1.1.0",
+    "@t3-oss/env-nextjs": "^0.11.1",
+    "bip39": "^3.1.0",
+    "jose": "^5.9.6",
+    "next": "^14.2.15",
+    "next-auth": "5.0.0-beta.20",
+    "oauth4webapi": "^3.1.4",
+    "react": "catalog:react-for-expo",
+    "react-dom": "catalog:react-for-expo",
+    "zod": "catalog:"
+  },
+  "devDependencies": {
+    "@homefront/eslint-config": "workspace:*",
+    "@homefront/prettier-config": "workspace:*",
+    "@homefront/tsconfig": "workspace:*",
+    "@jest/globals": "^29.7.0",
+    "@types/bip39": "^3.0.4",
+    "@types/jest": "^29.5.14",
+    "eslint": "catalog:",
+    "jest": "^29.7.0",
+    "prettier": "catalog:",
+    "ts-jest": "^29.2.5",
+    "typescript": "catalog:"
+  },
+  "prettier": "@homefront/prettier-config"
+}

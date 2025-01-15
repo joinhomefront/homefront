@@ -1,0 +1,13 @@
+{
+  "extends": "@homefront/tsconfig/internal-package.json",
+  "compilerOptions": {
+    "lib": ["ES2022", "dom", "dom.iterable"],
+    "jsx": "preserve",
+    "jsxImportSource": "nativewind",
+    "baseUrl": ".",
+    "rootDir": "./src",
+    "types": ["nativewind/types"]
+  },
+  "include": ["src", "src/types/react-native-markdown-display.d.ts"],
+  "exclude": ["node_modules"]
+}

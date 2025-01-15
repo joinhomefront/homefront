@@ -1,0 +1,44 @@
+{
+  "name": "create-t3-turbo",
+  "private": true,
+  "engines": {
+    "node": ">=20.10.0",
+    "pnpm": "^9.12.0"
+  },
+  "packageManager": "pnpm@9.12.1",
+  "scripts": {
+    "build": "turbo run build",
+    "build:sst": "pnpm build",
+    "clean": "git clean -xdf node_modules",
+    "clean:workspaces": "turbo run clean",
+    "db:push": "turbo -F @homefront/db push",
+    "db:studio": "turbo -F @homefront/db studio",
+    "deploy:development": "sst deploy --stage development",
+    "deploy:production": "sst deploy --stage production",
+    "deploy:staging": "sst deploy --stage staging",
+    "dev": "turbo watch dev --continue",
+    "dev:next": "turbo watch dev -F @homefront/nextjs... --continue",
+    "dev:sst": "sst dev",
+    "format": "turbo run format --continue -- --cache --cache-location .cache/.prettiercache",
+    "format:fix": "turbo run format --continue -- --write --cache --cache-location .cache/.prettiercache",
+    "lint": "turbo run lint --continue -- --cache --cache-location .cache/.eslintcache",
+    "lint:fix": "turbo run lint --continue -- --fix --cache --cache-location .cache/.eslintcache",
+    "lint:ws": "pnpm dlx sherif@latest",
+    "postinstall": "pnpm lint:ws",
+    "typecheck": "turbo run typecheck",
+    "ui-add": "turbo run ui-add"
+  },
+  "devDependencies": {
+    "@homefront/prettier-config": "workspace:*",
+    "@turbo/gen": "^2.1.3",
+    "prettier": "catalog:",
+    "turbo": "^2.1.3",
+    "typescript": "catalog:"
+  },
+  "prettier": "@homefront/prettier-config",
+  "pnpm": {
+    "patchedDependencies": {
+      "@react-native/assets-registry@0.76.2": "patches/@react-native__assets-registry@0.76.2.patch"
+    }
+  }
+}

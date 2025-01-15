@@ -1,0 +1,87 @@
+import type { Config } from "tailwindcss";
+
+export default {
+  darkMode: ["class"],
+  content: ["src/**/*.{ts,tsx}"],
+  theme: {
+    extend: {
+      colors: {
+        border: "hsl(var(--border))",
+        input: "hsl(var(--input))",
+        ring: "hsl(var(--ring))",
+        background: "hsl(var(--background))",
+        foreground: "hsl(var(--foreground))",
+        primary: {
+          DEFAULT: "hsl(var(--primary))",
+          foreground: "hsl(var(--primary-foreground))",
+          background: "hsl(var(--primary-background))",
+          50: "hsl(208, 87%, 97%)",
+          100: "hsl(208, 81%, 94%)",
+          200: "hsl(206, 86%, 86%)",
+          300: "hsl(204, 85%, 74%)",
+          400: "hsl(204, 83%, 60%)",
+          500: "hsl(204, 80%, 48%)",
+          600: "hsl(205, 88%, 39%)",
+          700: "hsl(206, 87%, 32%)",
+          800: "hsl(206, 80%, 27%)",
+          900: "hsl(207, 72%, 21%)",
+          950: "hsl(209, 73%, 16%)",
+        },
+        secondary: {
+          DEFAULT: "hsl(var(--secondary))",
+          foreground: "hsl(var(--secondary-foreground))",
+          background: "hsl(var(--secondary-background))",
+          50: "hsl(0, 71%, 97%)",
+          100: "hsl(357, 73%, 94%)",
+          200: "hsl(357, 78%, 89%)",
+          300: "hsl(357, 74%, 82%)",
+          400: "hsl(357, 72%, 71%)",
+          500: "hsl(357, 67%, 60%)",
+          600: "hsl(358, 57%, 51%)",
+          700: "hsl(357, 58%, 40%)",
+          800: "hsl(358, 56%, 35%)",
+          900: "hsl(358, 50%, 31%)",
+          950: "hsl(357, 59%, 15%)",
+        },
+        destructive: {
+          DEFAULT: "hsl(var(--destructive))",
+          foreground: "hsl(var(--destructive-foreground))",
+          background: "hsl(var(--destructive-background))",
+          50: "hsl(0, 71%, 97%)",
+          100: "hsl(357, 73%, 94%)",
+          200: "hsl(357, 78%, 89%)",
+          300: "hsl(357, 74%, 82%)",
+          400: "hsl(357, 72%, 71%)",
+          500: "hsl(357, 67%, 60%)",
+          600: "hsl(358, 57%, 51%)",
+          700: "hsl(357, 58%, 40%)",
+          800: "hsl(358, 56%, 35%)",
+          900: "hsl(358, 50%, 31%)",
+          950: "hsl(357, 59%, 15%)",
+        },
+        muted: {
+          DEFAULT: "hsl(var(--muted))",
+          foreground: "hsl(var(--muted-foreground))",
+        },
+        accent: {
+          DEFAULT: "hsl(var(--accent))",
+          foreground: "hsl(var(--accent-foreground))",
+        },
+        popover: {
+          DEFAULT: "hsl(var(--popover))",
+          foreground: "hsl(var(--popover-foreground))",
+        },
+        card: {
+          DEFAULT: "hsl(var(--card))",
+          foreground: "hsl(var(--card-foreground))",
+        },
+        logo: {
+          white: "hsl(var(--logo-white))",
+        },
+      },
+      borderColor: {
+        DEFAULT: "hsl(var(--border))",
+      },
+    },
+  },
+} satisfies Config;

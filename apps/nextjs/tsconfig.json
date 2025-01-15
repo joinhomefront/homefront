@@ -1,0 +1,20 @@
+{
+  "extends": "@homefront/tsconfig/base.json",
+  "compilerOptions": {
+    "lib": ["ES2022", "dom", "dom.iterable"],
+    "jsx": "preserve",
+    "jsxImportSource": "nativewind",
+    "baseUrl": ".",
+    "paths": {
+      "~/*": ["./src/*"],
+      "@homefront/app/*": ["../../packages/app/*"]
+    },
+    "types": ["nativewind/types"],
+    "plugins": [{ "name": "next" }],
+    "module": "esnext",
+    "noEmit": true,
+    "isolatedModules": true
+  },
+  "include": [".", ".next/types/**/*.ts"],
+  "exclude": ["node_modules", "sst.config.ts","sst.config.ts"]
+}

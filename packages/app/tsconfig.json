@@ -1,0 +1,15 @@
+{
+  "extends": "@homefront/tsconfig/internal-package.json",
+  "compilerOptions": {
+    "lib": ["ES2022", "dom", "dom.iterable"],
+    "jsx": "preserve",
+    "jsxImportSource": "nativewind",
+    "baseUrl": ".",
+    "paths": {
+      "@homefront/app/*": ["./*"]
+    },
+    "types": ["nativewind/types"]
+  },
+  "include": ["**/*.ts", "**/*.tsx"],
+  "exclude": ["node_modules", "dist"]
+}
