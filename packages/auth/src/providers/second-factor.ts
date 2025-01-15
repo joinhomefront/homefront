@@ -1,6 +1,6 @@
 import type { Provider } from "next-auth/providers";
 
-import { getBaseUrl } from "../utils/base-url";
+import { env } from "../../env";
 
 export default function SecondFactor(): Provider {
   return {
@@ -13,7 +13,7 @@ export default function SecondFactor(): Provider {
       recoveryCode: { type: "text" },
     },
     async authorize(credentials) {
-      const res = await fetch(`${getBaseUrl()}/api/auth/verify`, {
+      const res = await fetch(`${env.NEXT_PUBLIC_BASE_URL}/api/auth/verify`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(credentials),

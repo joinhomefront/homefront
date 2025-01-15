@@ -8,14 +8,13 @@ import {
   View,
 } from "react-native";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { getSession } from "next-auth/react";
+import { signIn } from "next-auth/react";
 import { useForm } from "react-hook-form";
 import { Link } from "solito/link";
 import { useRouter, useSearchParams } from "solito/navigation";
 import { z } from "zod";
 
 import { InviteInfo } from "@homefront/app/features/auth/InviteInfo";
-import { signInWithHomefront } from "@homefront/app/utils/auth";
 import {
   ActivityIndicator,
   Button,
@@ -68,8 +67,7 @@ export function SignIn() {
           return;
         }
 
-        await signInWithHomefront();
-        await getSession();
+        await signIn("homefront", { redirect: false });
 
         if (redirect?.startsWith("/invites/")) {
           replace(redirect);
@@ -98,8 +96,7 @@ export function SignIn() {
       }
 
       // On success, proceed with sign-in flow
-      await signInWithHomefront();
-      await getSession();
+      await signIn("homefront", { redirect: false });
 
       if (redirect?.startsWith("/invites/")) {
         replace(redirect);

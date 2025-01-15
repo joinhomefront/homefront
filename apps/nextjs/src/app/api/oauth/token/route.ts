@@ -31,43 +31,13 @@ export async function POST(req: NextRequest) {
 
     // Adapt the response back to Next.js
     const vanillaResponse = responseToVanilla(oauthResponse);
-
-    // Get content type
-    const contentType = vanillaResponse.headers.get("content-type");
-    let responseData;
-
-    const rawResponse = await vanillaResponse.text();
-
-    if (contentType?.includes("application/json")) {
-      try {
-        responseData = JSON.parse(rawResponse);
-
-        // Validate expected response shape
-        if (typeof responseData !== "object" || responseData === null) {
-          throw new Error("Invalid JSON response structure");
-        }
-      } catch (parseError) {
-        console.error("JSON Parse error:", parseError);
-        // Fall back to raw response
-        responseData = rawResponse;
-      }
-    } else {
-      // Handle as raw response
-      responseData = rawResponse;
-    }
-
-    const response = NextResponse.json(responseData, {
+    const responseBody = await vanillaResponse.text();
+    const response = NextResponse.json(JSON.parse(responseBody), {
       status: vanillaResponse.status,
-      headers: {
-        "Content-Type": contentType || "application/json",
-      },
     });
-
-    // Copy other headers
+    // Add headers from the vanilla response
     vanillaResponse.headers.forEach((value: string, key: string) => {
-      if (key.toLowerCase() !== "content-type") {
-        response.headers.set(key, value);
-      }
+      response.headers.set(key, value);
     });
 
     return response;

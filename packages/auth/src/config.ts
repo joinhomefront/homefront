@@ -12,7 +12,6 @@ import { env } from "../env";
 import { KyselyAdapter } from "./adapters/kysely";
 import homefront from "./providers/homefront";
 import sessionCreator from "./providers/session-creator";
-import { getBaseUrl } from "./utils/base-url";
 
 export const isSecureContext = env.NODE_ENV !== "development";
 
@@ -30,6 +29,7 @@ export const authConfig: NextAuthConfig & AuthConfig = {
   secret: env.AUTH_SECRET,
   providers: [sessionCreator, homefront],
   pages: {
+    newUser: "/signup",
     signIn: "/login",
   },
   callbacks: {
@@ -131,17 +131,20 @@ export const authConfig: NextAuthConfig & AuthConfig = {
 
 const refreshAccessToken = async (token: JWT): Promise<JWT> => {
   try {
-    const response = await fetch(`${getBaseUrl()}/api/oauth/token`, {
-      method: "POST",
-      headers: { "Content-Type": "application/x-www-form-urlencoded" },
-      body: new URLSearchParams({
-        client_id: env.AUTH_HOMEFRONT_CLIENT_ID,
-        client_secret: env.AUTH_HOMEFRONT_CLIENT_SECRET,
-        grant_type: "refresh_token",
-        refresh_token: token.refresh_token ?? "",
-      }),
-      credentials: "include",
-    });
+    const response = await fetch(
+      `${env.NEXT_PUBLIC_BASE_URL}/api/oauth/token`,
+      {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: new URLSearchParams({
+          client_id: env.AUTH_HOMEFRONT_CLIENT_ID,
+          client_secret: env.AUTH_HOMEFRONT_CLIENT_SECRET,
+          grant_type: "refresh_token",
+          refresh_token: token.refresh_token ?? "",
+        }),
+        credentials: "include",
+      },
+    );
 
     if (!response.ok) {
       const error = APIErrorSchema.parse(await response.json());

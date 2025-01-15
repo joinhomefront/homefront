@@ -12,9 +12,9 @@
     "clean": "git clean -xdf .cache .turbo dist node_modules",
     "dev": "tsc",
     "format": "prettier --check . --ignore-path ../../.gitignore",
-    "generate:embeddings:occupations": "pnpm with-env tsx ./src/createOccupationEmbeddings.ts",
-    "generate:embeddings:roles": "pnpm with-env tsx ./src/createRoleEmbeddings.ts",
-    "generate:embeddings:skills": "pnpm with-env tsx ./src/createSkillEmbeddings.ts",
+    "generate:embeddings:occupations": "pnpm tsx ./src/createOccupationEmbeddings.ts",
+    "generate:embeddings:roles": "pnpm tsx ./src/createRoleEmbeddings.ts",
+    "generate:embeddings:skills": "pnpm tsx ./src/createSkillEmbeddings.ts",
     "lint": "eslint",
     "typecheck": "tsc --noEmit --emitDeclarationOnly false",
     "with-env": "dotenv -e ../../.env.local --"

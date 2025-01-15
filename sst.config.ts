@@ -19,7 +19,6 @@ export default $config({
   async run() {
     const { bucket } = await import("./infra/storage");
     await import("./infra/nextjs");
-    await import("./infra/db");
     return {
       buckets: [bucket],
     };

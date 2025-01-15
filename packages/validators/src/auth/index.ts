@@ -4,7 +4,7 @@ import { validateMnemonic } from "bip39";
 import { z } from "zod";
 
 import { usernameSchema } from "../users";
-import { cancelableDebounce, getBaseUrl } from "../utils";
+import { cancelableDebounce } from "../utils";
 
 const debouncedCheckPasswordVulnerability = cancelableDebounce<
   (password: string) => Promise<{ numPwns: number }>
@@ -13,12 +13,15 @@ const debouncedCheckPasswordVulnerability = cancelableDebounce<
     signal: AbortSignal,
     password: string,
   ): Promise<{ numPwns: number }> => {
-    const res = await fetch(`${getBaseUrl()}/api/auth/password-vulnerability`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ password }),
-      signal,
-    });
+    const res = await fetch(
+      `${process.env.NEXT_PUBLIC_BASE_URL}/api/auth/password-vulnerability`,
+      {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ password }),
+        signal,
+      },
+    );
 
     const result = await PasswordVulnerabilityResponseSchema.safeParseAsync(
       await res.json(),

@@ -29,8 +29,11 @@ export const env = createEnv({
     NEXT_RUNTIME: z.string().optional(),
     OTP_ENCRYPTION_KEY: z.string().min(1),
   },
-  client: {},
+  client: {
+    NEXT_PUBLIC_BASE_URL: z.string().url(),
+  },
   experimental__runtimeEnv: {
+    NEXT_PUBLIC_BASE_URL: process.env.NEXT_PUBLIC_BASE_URL,
     NODE_ENV: process.env.NODE_ENV,
   },
   skipValidation:

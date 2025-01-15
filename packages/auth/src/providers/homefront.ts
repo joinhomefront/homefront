@@ -4,8 +4,6 @@ import type { OAuthConfig, OAuthUserConfig } from "next-auth/providers";
 import type { User } from "@homefront/db";
 import { env } from "@homefront/auth/env";
 
-import { getBaseUrl } from "../utils/base-url";
-
 export default function HomefrontProvider<P extends User>(
   _options: OAuthUserConfig<P>,
 ): OAuthConfig<P> {
@@ -16,9 +14,9 @@ export default function HomefrontProvider<P extends User>(
     issuer: "homefront",
     clientId: env.AUTH_HOMEFRONT_CLIENT_ID,
     clientSecret: env.AUTH_HOMEFRONT_CLIENT_SECRET,
-    authorization: `${getBaseUrl()}/api/oauth/authorize`,
-    token: `${getBaseUrl()}/api/oauth/token`,
-    userinfo: `${getBaseUrl()}/api/oauth/userinfo`,
+    authorization: `${env.NEXT_PUBLIC_BASE_URL}/api/oauth/authorize`,
+    token: `${env.NEXT_PUBLIC_BASE_URL}/api/oauth/token`,
+    userinfo: `${env.NEXT_PUBLIC_BASE_URL}/api/oauth/userinfo`,
     checks: ["state", "pkce"],
     profile: async (profile: User) => {
       return Promise.resolve({

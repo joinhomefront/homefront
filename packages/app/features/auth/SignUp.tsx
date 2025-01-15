@@ -5,6 +5,7 @@ import { useState } from "react";
 import { SafeAreaView, ScrollView, View } from "react-native";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { ShieldAlert } from "lucide-react-native";
+import { signIn } from "next-auth/react";
 import { useForm } from "react-hook-form";
 import { Link } from "solito/link";
 import { useRouter, useSearchParams } from "solito/navigation";
@@ -60,7 +61,7 @@ export function SignUp() {
 
       const data = RecoveryPhraseResponseSchema.parse(await res.json());
       if (res.ok && data.recoveryPhrase) {
-        await signInWithHomefront();
+        await signIn("homefront", { redirect: false });
         await setRecoveryPhrase(data.recoveryPhrase);
         replace("/onboarding/recovery-phrase");
       }
