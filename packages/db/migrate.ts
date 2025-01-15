@@ -1,14 +1,19 @@
 import { promises as fs } from "fs";
 import * as path from "path";
+import { neonConfig, Pool } from "@neondatabase/serverless";
 import {
   FileMigrationProvider,
   Kysely,
   Migrator,
   PostgresDialect,
 } from "kysely";
-import { Pool } from "pg";
+import ws from "ws";
 
 import { Database } from "./src";
+
+// We need to provide a constructor for WebSocket connections in Node.js environments
+// See: https://neon.tech/docs/serverless/serverless-driver#pool-and-client-usage-notes
+neonConfig.webSocketConstructor = ws;
 
 export async function migrate() {
   try {
