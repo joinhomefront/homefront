@@ -49,7 +49,7 @@ export function DonationsScreen() {
       subscription.status === "paused",
   );
 
-  if (!subscriptions || !donationHistory?.oneTimeDonations.length) {
+  if (!subscriptions && !donationHistory?.oneTimeDonations.length) {
     return (
       <SafeAreaView className="flex-1">
         <View className="w-full flex-1">
