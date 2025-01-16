@@ -1,4 +1,5 @@
 import { Pinecone } from "@pinecone-database/pinecone";
+
 import type { Role, Skill } from "@homefront/db";
 import { db } from "@homefront/db";
 
@@ -11,11 +12,12 @@ const pc = new Pinecone({
   apiKey,
 });
 
-const index = pc.index("multilingual-e5-large");
+const index = pc.index(process.env.PINECONE_INDEX ?? "multilingual-e5-large");
 const BATCH_SIZE = 96;
 
 async function fetchRoleSkills(roleId: string): Promise<Skill[]> {
-  return await db.selectFrom("roleSkills")
+  return await db
+    .selectFrom("roleSkills")
     .innerJoin("skills", "roleSkills.skillId", "skills.id")
     .selectAll("skills")
     .where("roleSkills.roleId", "=", roleId)
@@ -31,11 +33,15 @@ async function createRoleEmbeddings(roles: Role[]) {
     try {
       const embeddings = await pc.inference.embed(
         model,
-        await Promise.all(batch.map(async (role) => {
-          const skills = await fetchRoleSkills(role.id);
-          const skillsText = skills.map(skill => `${skill.title} ${skill.description}`).join(" ");
-          return `${role.title} ${role.description} ${skillsText}`;
-        })),
+        await Promise.all(
+          batch.map(async (role) => {
+            const skills = await fetchRoleSkills(role.id);
+            const skillsText = skills
+              .map((skill) => `${skill.title} ${skill.description}`)
+              .join(" ");
+            return `${role.title} ${role.description} ${skillsText}`;
+          }),
+        ),
         { inputType: "passage", truncate: "END" },
       );
 

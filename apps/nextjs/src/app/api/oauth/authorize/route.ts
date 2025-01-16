@@ -29,7 +29,7 @@ export async function GET(req: NextRequest) {
     }
 
     const tokenUrl = `${env.NEXT_PUBLIC_BASE_URL}/api/oauth/token`;
-    const clientId = env.AUTH_HOMEFRONT_CLIENT_ID;
+    const clientId = env.AUTH_HOMEFRONT_ID;
     const redirectUri = `${env.NEXT_PUBLIC_BASE_URL}/api/auth/callback/homefront`;
 
     const params = {

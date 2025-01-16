@@ -4,8 +4,8 @@ import { z } from "zod";
 
 // const secrets = {
 //   AUTH_CHALLENGE_ENCRYPTION_KEY: Resource.AuthChallengeEncryptionKey.value,
-//   AUTH_HOMEFRONT_CLIENT_ID: Resource.AuthHomefrontClientId.value,
-//   AUTH_HOMEFRONT_CLIENT_SECRET: Resource.AuthHomefrontClientSecret.value,
+//   AUTH_HOMEFRONT_ID: Resource.AuthHomefrontClientId.value,
+//   AUTH_HOMEFRONT_SECRET: Resource.AuthHomefrontClientSecret.value,
 //   AUTH_SALT: Resource.AuthSalt.value,
 //   AUTH_SECRET: Resource.AuthSecret.value,
 //   OTP_ENCRYPTION_KEY: Resource.OtpEncryptionKey.value,
@@ -20,8 +20,8 @@ export const env = createEnv({
 
   server: {
     AUTH_CHALLENGE_ENCRYPTION_KEY: z.string().min(1),
-    AUTH_HOMEFRONT_CLIENT_ID: z.string().min(1),
-    AUTH_HOMEFRONT_CLIENT_SECRET: z.string().min(1),
+    AUTH_HOMEFRONT_ID: z.string().min(1),
+    AUTH_HOMEFRONT_SECRET: z.string().min(1),
     AUTH_MINI_SESSION_ENCRYPTION_KEY: z.string().min(1),
     AUTH_SALT: z.string().min(1),
     AUTH_SECRET: z.string().min(1),

@@ -1,5 +1,5 @@
-import { Pinecone } from "@pinecone-database/pinecone";
 import { setTimeout } from "node:timers/promises";
+import { Pinecone } from "@pinecone-database/pinecone";
 
 import type { Occupation, Skill } from "@homefront/db";
 import { db } from "@homefront/db";
@@ -13,7 +13,7 @@ const pc = new Pinecone({
   apiKey,
 });
 
-const index = pc.index("multilingual-e5-large");
+const index = pc.index(process.env.PINECONE_INDEX ?? "multilingual-e5-large");
 const BATCH_SIZE = 96;
 const PAUSE_AFTER = 480;
 const PAUSE_DURATION = 60000; // 1 minute in milliseconds

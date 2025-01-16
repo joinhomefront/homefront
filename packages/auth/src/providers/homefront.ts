@@ -12,12 +12,15 @@ export default function HomefrontProvider<P extends User>(
     name: "Homefront",
     type: "oauth",
     issuer: "homefront",
-    clientId: env.AUTH_HOMEFRONT_CLIENT_ID,
-    clientSecret: env.AUTH_HOMEFRONT_CLIENT_SECRET,
+    clientId: env.AUTH_HOMEFRONT_ID,
+    clientSecret: env.AUTH_HOMEFRONT_SECRET,
     authorization: `${env.NEXT_PUBLIC_BASE_URL}/api/oauth/authorize`,
     token: `${env.NEXT_PUBLIC_BASE_URL}/api/oauth/token`,
     userinfo: `${env.NEXT_PUBLIC_BASE_URL}/api/oauth/userinfo`,
     checks: ["state", "pkce"],
+    client: {
+      token_endpoint_auth_method: "client_secret_post",
+    },
     profile: async (profile: User) => {
       return Promise.resolve({
         id: profile.id,

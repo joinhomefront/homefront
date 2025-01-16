@@ -137,8 +137,8 @@ const refreshAccessToken = async (token: JWT): Promise<JWT> => {
         method: "POST",
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
         body: new URLSearchParams({
-          client_id: env.AUTH_HOMEFRONT_CLIENT_ID,
-          client_secret: env.AUTH_HOMEFRONT_CLIENT_SECRET,
+          client_id: env.AUTH_HOMEFRONT_ID,
+          client_secret: env.AUTH_HOMEFRONT_SECRET,
           grant_type: "refresh_token",
           refresh_token: token.refresh_token ?? "",
         }),

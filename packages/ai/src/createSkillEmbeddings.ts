@@ -12,7 +12,7 @@ const pc = new Pinecone({
   apiKey,
 });
 
-const index = pc.index("multilingual-e5-large");
+const index = pc.index(process.env.PINECONE_INDEX ?? "multilingual-e5-large");
 const BATCH_SIZE = 96;
 
 async function createSkillEmbeddings(skills: Skill[]) {

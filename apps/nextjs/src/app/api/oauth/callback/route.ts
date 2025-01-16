@@ -26,8 +26,8 @@ export async function GET(req: NextRequest) {
       );
     }
 
-    const clientId = env.AUTH_HOMEFRONT_CLIENT_ID;
-    const clientSecret = env.AUTH_HOMEFRONT_CLIENT_SECRET;
+    const clientId = env.AUTH_HOMEFRONT_ID;
+    const clientSecret = env.AUTH_HOMEFRONT_SECRET;
     const tokenUrl = `${env.NEXT_PUBLIC_BASE_URL}/api/oauth/token`;
     const redirectUri = `${env.NEXT_PUBLIC_BASE_URL}/api/oauth/callback`;
 

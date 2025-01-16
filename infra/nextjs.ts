@@ -21,6 +21,8 @@ import {
 import { bucket } from "./storage";
 import { vpc } from "./vpc";
 
+const PINECONE_INDEX = "multilingual-e5-large";
+
 const NEXT_PUBLIC_PROTOMAPS_API_KEY =
   $app.stage === "production"
     ? "ee193b83dd403554"
@@ -41,7 +43,7 @@ const NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY =
 
 const NEXT_PUBLIC_STRIPE_BILLING_RETURN_URL =
   $app.stage === "production"
-    ? "https://www.joinhomefront.org/donations"
+    ? "https://joinhomefront.org/donations"
     : $app.stage === "staging"
       ? "https://staging.joinhomefront.org/donations"
       : $app.stage === "development"
@@ -50,7 +52,7 @@ const NEXT_PUBLIC_STRIPE_BILLING_RETURN_URL =
 
 const NEXT_PUBLIC_BASE_URL =
   $app.stage === "production"
-    ? "https://www.joinhomefront.org"
+    ? "https://joinhomefront.org"
     : $app.stage === "staging"
       ? "https://staging.joinhomefront.org"
       : $app.stage === "development"
@@ -119,8 +121,8 @@ export const nextjs = new sst.aws.Nextjs("Web", {
     NEXT_PUBLIC_STRIPE_BILLING_RETURN_URL,
     NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY,
     AUTH_CHALLENGE_ENCRYPTION_KEY: authChallengeEncryptionKey.value,
-    AUTH_HOMEFRONT_CLIENT_ID: authHomefrontClientId.value,
-    AUTH_HOMEFRONT_CLIENT_SECRET: authHomefrontClientSecret.value,
+    AUTH_HOMEFRONT_ID: authHomefrontClientId.value,
+    AUTH_HOMEFRONT_SECRET: authHomefrontClientSecret.value,
     AUTH_MINI_SESSION_ENCRYPTION_KEY: authMiniSessionEncryptionKey.value,
     AUTH_SALT: authSalt.value,
     AUTH_SECRET: authSecret.value,
@@ -129,6 +131,7 @@ export const nextjs = new sst.aws.Nextjs("Web", {
     DATABASE_URL: databaseUrl.value,
     DB_ENCRYPTION_KEY: dbEncryptionKey.value,
     PINECONE_API_KEY: pineconeApiKey.value,
+    PINECONE_INDEX,
     OAUTH_SECRET: oauthSecret.value,
     OAUTH_ENCRYPTION_KEY: oauthEncryptionKey.value,
     OTP_ENCRYPTION_KEY: otpEncryptionKey.value,
