@@ -11,7 +11,6 @@ import { Link } from "solito/link";
 import { useRouter, useSearchParams } from "solito/navigation";
 
 import { InviteInfo } from "@homefront/app/features/auth/InviteInfo";
-import { signInWithHomefront } from "@homefront/app/utils/auth";
 import { setRecoveryPhrase } from "@homefront/app/utils/recovery-phrase-store";
 import {
   ActivityIndicator,
@@ -61,9 +60,11 @@ export function SignUp() {
 
       const data = RecoveryPhraseResponseSchema.parse(await res.json());
       if (res.ok && data.recoveryPhrase) {
-        await signIn("homefront", { redirect: false });
+        await signIn("homefront", {
+          redirect: true,
+          callbackUrl: "/onboarding/recovery-phrase",
+        });
         await setRecoveryPhrase(data.recoveryPhrase);
-        replace("/onboarding/recovery-phrase");
       }
     } catch (error) {
       console.error("Signup failed:", error);

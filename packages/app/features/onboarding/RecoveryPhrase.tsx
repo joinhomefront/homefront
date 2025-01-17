@@ -153,6 +153,7 @@ export function RecoveryPhrase() {
 
   const handleGenerated = (recoveryPhrase: string) => {
     setRecoveryPhrase(recoveryPhrase);
+    return;
   };
 
   const hasRecoveryPhrase = !!recoveryPhrase;
