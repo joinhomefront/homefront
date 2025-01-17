@@ -37,7 +37,7 @@ export const Receipt: React.FC<ReceiptProps> = ({
       <View className="bg-gray-50 p-5">
         <View className="flex-row items-center">
           <Text className="font-mono text-base font-bold text-gray-500">
-            WE ARE IT
+            HOMEFRONT
           </Text>
           <View className="mx-4 w-full flex-1 border-t-2 border-dashed border-gray-300" />
           <Text className="font-mono text-base font-bold text-gray-500">

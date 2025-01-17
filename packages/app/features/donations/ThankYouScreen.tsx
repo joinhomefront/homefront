@@ -128,7 +128,7 @@ function ThankYou() {
           <Text className="max-w-72 self-center text-center text-xs text-gray-500">
             Please note your statement will show{" "}
             <Text className="font-mono text-xs font-bold text-gray-500">
-              WE ARE IT
+              HOMEFRONT
             </Text>{" "}
             on the charge for this transaction.
           </Text>
