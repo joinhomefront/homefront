@@ -27,6 +27,13 @@ export const apiAuthPrefix = "/api/auth";
 export const apiOAuthPrefix = "/api/oauth";
 
 /**
+ * The prefix for onboarding routes.
+ * Routes that start with this prefix are used for onboarding.
+ * @type {string}
+ */
+export const onboardingPrefix = "/onboarding";
+
+/**
  * The default redirect path after login.
  * @type {string}
  */
