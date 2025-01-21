@@ -1,12 +1,36 @@
-# Homefront
+<h1>
+  <a href="https://joinhomefront.org" style="display: flex; align-items: center; gap: 8px;">
+    <img src="https://cdn.joinhomefront.org/icons/homefront-logo.svg" height="30" /> Homefront
+  </a>
+</h1>
 
-> [!NOTE]
->
-> NextAuth setup now works for Expo app!
+Our fight to defend democracy–together.
 
-> [!NOTE]
->
-> OAuth deployments are now working for preview deployments. Read [deployment guide](https://github.com/t3-oss/create-t3-turbo#auth-proxy) and [check out the source](./apps/auth-proxy) to learn more!
+## About
+
+Homefront helps you:
+
+- Find Allies: Organize with trusted people in your community.
+- Get Ready: Prepare to protect yourself, your family, and your community.
+- Work Together: Share your skills and learn from others.
+- Find Resources: Discover and distribute essential learning and resources.
+- Stay Alert: Monitor threats in real time for shared awareness.
+- Fight Back: Take action when the time comes—together.
+
+## Tech Stack
+
+Built using a modern TypeScript monorepo powered by:
+
+- [SST](https://sst.dev) - Infrastructure
+- [Next.js](https://nextjs.org) - Web
+- [Expo](https://expo.dev) - Native
+- [tRPC](https://trpc.io) - Type-safe APIs
+- [Auth.js](https://authjs.dev) - Authentication
+- [Kysely](https://kysely.dev) - Database
+- [Pinecone](https://www.pinecone.io/) - Vector database
+- [Stripe](https://stripe.com) - Payments
+- [TailwindCSS](https://tailwindcss.com) and [NativeWind](https://nativewind.dev) - Styling
+- [React Native Reusables](https://rnr-docs.vercel.app/getting-started/introduction/) - Universal [shadcn/ui](https://ui.shadcn.com/) for React Native
 
 ## Installation
 
@@ -24,11 +48,7 @@ or use Turbo's CLI to init your project (use PNPM as package manager):
 npx create-turbo@latest -e https://github.com/t3-oss/create-t3-turbo
 ```
 
-## About
-
-Ever wondered how to migrate your T3 application into a monorepo? Stop right here! This is the perfect starter repo to get you running with the perfect stack!
-
-It uses [Turborepo](https://turborepo.org) and contains:
+## Project structure
 
 ```text
 .github
@@ -52,14 +72,26 @@ apps
       ├─ Tailwind CSS
       └─ E2E Typesafe API Server & Client
 packages
+  ├─  ai
+  |   └─ AI/ML utilities and embeddings
   ├─ api
   |   └─ tRPC v11 router definition
+  ├─ app
+  |   └─ The majority of the app code, written in React Native
   ├─ auth
   |   └─ Authentication using next-auth.
+  ├─ dayjs
+  |   └─ Date utilities using Day.js
   ├─ db
-  |   └─ Typesafe db calls using Drizzle & Supabase
-  └─ ui
-      └─ Start of a UI package for the webapp using shadcn-ui
+  |   └─ Typesafe db calls using Kysely and Neon
+  ├─ oauth
+  |   └─ OAuth 2 server implementation
+  ├─ stripe
+  |   └─ Stripe payments integration for donations
+  ├─ ui
+  |   └─ UI package using React Native Reusables
+  └─ validators
+      └─ Shared schema validation using zod
 tooling
   ├─ eslint
   |   └─ shared, fine-grained, eslint presets
