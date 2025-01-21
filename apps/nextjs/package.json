@@ -38,6 +38,7 @@
     "@trpc/react-query": "catalog:",
     "@trpc/server": "catalog:",
     "babel-loader": "^9.2.1",
+    "expo-image": "^2.0.4",
     "hibp": "^14.1.2",
     "nativewind": "catalog:",
     "next": "^14.2.15",

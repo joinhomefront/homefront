@@ -4,6 +4,8 @@ import { View } from "react-native";
 
 import { SplashHeader } from "@homefront/app/components/SplashHeader";
 
+import { Footer } from "./Footer.web";
+
 export function SplashLayout({ children }: { children: React.ReactNode }) {
   return (
     <>
@@ -12,9 +14,10 @@ export function SplashLayout({ children }: { children: React.ReactNode }) {
       </View>
 
       <View className="grid pt-[57px]">
-        <div className="block w-full max-w-screen-xl flex-1 overflow-y-auto">
+        <div className="mx-auto block w-full max-w-screen-xl flex-1 overflow-y-auto">
           {children}
         </div>
+        <Footer />
       </View>
     </>
   );

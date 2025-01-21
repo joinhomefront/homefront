@@ -32,7 +32,9 @@ const nextConfig = {
     remotePatterns: [
       {
         protocol: "https",
-        hostname: "cdn.joinhomefront.org",
+        hostname: "*.joinhomefront.org",
+        port: "",
+        search: "",
       },
     ],
   },
@@ -75,6 +77,7 @@ const nextConfig = {
     "expo",
     "expo-clipboard",
     "expo-file-system",
+    "expo-image",
     "expo-location",
     "expo-modules-core",
     "nativewind",
