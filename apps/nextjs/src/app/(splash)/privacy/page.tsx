@@ -1,3 +1,5 @@
+export const dynamic = "force-dynamic";
+
 export default function PrivacyPage() {
   return (
     <div className="mx-auto max-w-prose py-4">

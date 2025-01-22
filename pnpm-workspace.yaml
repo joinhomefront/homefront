@@ -29,6 +29,7 @@ catalog:
   expo-secure-store: ^13.0.2
   lucide-react-native: ^0.456.0
   nativewind: ~4.1.21
+  next: ^14.2.23
   open-next: ^3.1.3
   prettier: ^3.3.3
   react-hook-form: ^7.53.0

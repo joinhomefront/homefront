@@ -41,7 +41,7 @@
     "expo-image": "^2.0.4",
     "hibp": "^14.1.2",
     "nativewind": "catalog:",
-    "next": "^14.2.15",
+    "next": "catalog:",
     "nprogress": "^0.2.0",
     "raf": "^3.4.1",
     "react": "catalog:react-for-expo",

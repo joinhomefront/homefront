@@ -1,3 +1,5 @@
+export const dynamic = "force-dynamic";
+
 export default function TermsPage() {
   return (
     <div className="mx-auto max-w-prose py-4">
