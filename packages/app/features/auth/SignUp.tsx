@@ -39,7 +39,6 @@ export function SignUp() {
   const searchParams = useSearchParams<Params>();
   const redirect = searchParams?.get("redirect");
 
-  const { replace } = useRouter();
   const [isLoading, setIsLoading] = useState(false);
 
   const baseLoginUrl = "/login";
@@ -51,6 +50,7 @@ export function SignUp() {
     setIsLoading(true);
     const { username, password } = values;
     const inviteCode = redirect ? getInviteCodeFromRedirect(redirect) : null;
+
     try {
       const res = await fetch("/api/auth/signup", {
         method: "POST",
@@ -58,16 +58,40 @@ export function SignUp() {
         body: JSON.stringify({ username, password, inviteCode }),
       });
 
-      const data = RecoveryPhraseResponseSchema.parse(await res.json());
-      if (res.ok && data.recoveryPhrase) {
+      const data = await res.json();
+
+      if (!res.ok) {
+        // Handle validation errors
+        if (data.errors) {
+          Object.entries(data.errors).forEach(([field, errors]) => {
+            form.setError(field as any, {
+              type: "server",
+              message: Array.isArray(errors) ? errors[0] : errors,
+            });
+          });
+          return;
+        }
+
+        // Handle other errors
+        form.setError("root", {
+          message: data.error || "Something went wrong",
+        });
+        return;
+      }
+
+      const parsedData = RecoveryPhraseResponseSchema.parse(data);
+      if (parsedData.recoveryPhrase) {
         await signIn("homefront", {
           redirect: true,
           callbackUrl: "/onboarding/recovery-phrase",
         });
-        await setRecoveryPhrase(data.recoveryPhrase);
+        await setRecoveryPhrase(parsedData.recoveryPhrase);
       }
     } catch (error) {
       console.error("Signup failed:", error);
+      form.setError("root", {
+        message: "An unexpected error occurred",
+      });
     } finally {
       setIsLoading(false);
     }

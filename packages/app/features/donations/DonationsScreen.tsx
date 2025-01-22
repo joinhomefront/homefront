@@ -49,7 +49,7 @@ export function DonationsScreen() {
       subscription.status === "paused",
   );
 
-  if (!subscriptions && !donationHistory?.oneTimeDonations.length) {
+  if (!subscriptions?.length && !donationHistory?.oneTimeDonations.length) {
     return (
       <SafeAreaView className="flex-1">
         <View className="w-full flex-1">
@@ -114,7 +114,7 @@ export function DonationsScreen() {
                 </Button>
               </View>
 
-              {subscriptions.length > 0 && (
+              {subscriptions && subscriptions.length > 0 && (
                 <View className="space-y-4">
                   <View className="space-y-2">
                     <Text className="font-header text-lg font-bold uppercase text-primary">
@@ -169,55 +169,56 @@ export function DonationsScreen() {
                 </View>
               )}
 
-              {donationHistory.oneTimeDonations.length > 0 && (
-                <View className="space-y-4">
-                  <View className="space-y-2">
-                    <Text className="font-header text-lg font-bold uppercase text-primary">
-                      One-time Donations
-                    </Text>
-                  </View>
-                  <View className="space-y-2">
-                    {/* Table Header */}
-                    <View className="flex-row justify-between rounded bg-gray-100 p-2">
-                      <Text className="flex-1 text-xs font-bold text-gray-700">
-                        Amount
-                      </Text>
-                      <Text className="flex-1 text-xs font-bold text-gray-700">
-                        Status
-                      </Text>
-                      <Text className="flex-1 text-xs font-bold text-gray-700">
-                        Date
+              {donationHistory &&
+                donationHistory.oneTimeDonations.length > 0 && (
+                  <View className="space-y-4">
+                    <View className="space-y-2">
+                      <Text className="font-header text-lg font-bold uppercase text-primary">
+                        One-time Donations
                       </Text>
                     </View>
-                    {/* Table Rows */}
-                    {donationHistory.oneTimeDonations.map((payment) => (
-                      <View
-                        key={payment.id}
-                        className="flex-row items-center justify-between border-b border-gray-300 p-2 pt-0"
-                      >
-                        {/* Amount */}
-                        <Text className="flex-1 text-sm font-bold text-gray-800">
-                          {payment.amount ? formatAmount(payment.amount) : ""}
+                    <View className="space-y-2">
+                      {/* Table Header */}
+                      <View className="flex-row justify-between rounded bg-gray-100 p-2">
+                        <Text className="flex-1 text-xs font-bold text-gray-700">
+                          Amount
                         </Text>
-
-                        {/* Status */}
-                        <View className="flex-1 items-start">
-                          <Status
-                            status={
-                              payment.status as Stripe.PaymentIntent.Status
-                            }
-                          />
-                        </View>
-
-                        {/* Date */}
-                        <Text className="flex-1 text-sm text-gray-500">
-                          {formatMonthDayMaybeYear(payment.created)}
+                        <Text className="flex-1 text-xs font-bold text-gray-700">
+                          Status
+                        </Text>
+                        <Text className="flex-1 text-xs font-bold text-gray-700">
+                          Date
                         </Text>
                       </View>
-                    ))}
+                      {/* Table Rows */}
+                      {donationHistory.oneTimeDonations.map((payment) => (
+                        <View
+                          key={payment.id}
+                          className="flex-row items-center justify-between border-b border-gray-300 p-2 pt-0"
+                        >
+                          {/* Amount */}
+                          <Text className="flex-1 text-sm font-bold text-gray-800">
+                            {payment.amount ? formatAmount(payment.amount) : ""}
+                          </Text>
+
+                          {/* Status */}
+                          <View className="flex-1 items-start">
+                            <Status
+                              status={
+                                payment.status as Stripe.PaymentIntent.Status
+                              }
+                            />
+                          </View>
+
+                          {/* Date */}
+                          <Text className="flex-1 text-sm text-gray-500">
+                            {formatMonthDayMaybeYear(payment.created)}
+                          </Text>
+                        </View>
+                      ))}
+                    </View>
                   </View>
-                </View>
-              )}
+                )}
             </View>
           </View>
         </ScrollView>

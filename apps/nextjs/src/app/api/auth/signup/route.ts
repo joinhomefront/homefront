@@ -8,15 +8,9 @@ import {
 } from "@homefront/auth/recovery-phrase";
 import dayjs from "@homefront/dayjs";
 import { db, sql } from "@homefront/db";
+import { SignUpRequestSchema } from "@homefront/validators";
 
 import { env } from "~/env";
-
-interface SignupRequest {
-  username: string;
-  email?: string;
-  password: string;
-  inviteCode: string | null;
-}
 
 const hashingOptions: Options = {
   memoryCost: 47104,
@@ -26,16 +20,19 @@ const hashingOptions: Options = {
 };
 
 export async function POST(req: Request) {
-  const { username, password, inviteCode } =
-    (await req.json()) as SignupRequest;
+  const result = await SignUpRequestSchema.safeParseAsync(await req.json());
 
-  // Input validation
-  if (!username || !password) {
+  if (!result.success) {
     return NextResponse.json(
-      { error: "Username and password are required" },
+      {
+        error: "Validation failed",
+        errors: result.error.flatten().fieldErrors,
+      },
       { status: 400 },
     );
   }
+
+  const { username, password, inviteCode } = result.data;
 
   try {
     // Hash the password securely

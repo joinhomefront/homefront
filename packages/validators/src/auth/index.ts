@@ -3,7 +3,8 @@ import type { RefinementCtx } from "zod";
 import { validateMnemonic } from "bip39";
 import { z } from "zod";
 
-import { usernameSchema } from "../users";
+import { InviteCodeSchema } from "../invites";
+import { serverUsernameSchema, usernameSchema } from "../users";
 import { cancelableDebounce } from "../utils";
 
 const debouncedCheckPasswordVulnerability = cancelableDebounce<
@@ -105,6 +106,12 @@ export const SignUpFormSchema = z
     message: "Passwords don't match",
     path: ["confirmPassword"],
   });
+
+export const SignUpRequestSchema = z.object({
+  username: serverUsernameSchema,
+  password: passwordSchema,
+  inviteCode: InviteCodeSchema,
+});
 
 export const TokenResponseSchema = z.object({
   access_token: z.string(),

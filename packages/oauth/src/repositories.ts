@@ -10,11 +10,12 @@ import type {
   OAuthTokenRepository,
   OAuthUser,
   OAuthUserIdentifier,
-  OAuthUserRepository} from "@jmondi/oauth2-server";
+  OAuthUserRepository,
+} from "@jmondi/oauth2-server";
 import {
   DateInterval,
   generateRandomToken,
-  OAuthException
+  OAuthException,
 } from "@jmondi/oauth2-server";
 import { verify } from "@node-rs/argon2";
 
@@ -164,7 +165,9 @@ export const oauthClientRepository: OAuthClientRepository = {
 
 export const oauthScopeRepository: OAuthScopeRepository = {
   async getAllByIdentifiers(scopeNames: string[]): Promise<OAuthScope[]> {
-    return Promise.resolve(scopeNames.map((scopeName) => ({ name: scopeName })));
+    return Promise.resolve(
+      scopeNames.map((scopeName) => ({ name: scopeName })),
+    );
   },
   async finalize(
     scopes: OAuthScope[],
@@ -236,7 +239,7 @@ export const oauthTokenRepository: OAuthTokenRepository = {
   async revoke(token: OAuthToken): Promise<void> {
     token.accessTokenExpiresAt = new Date(0);
     token.refreshTokenExpiresAt = new Date(0);
-    return Promise.resolve()
+    return Promise.resolve();
   },
   async revokeDescendantsOf(_authCodeId: string): Promise<void> {
     await Promise.resolve();

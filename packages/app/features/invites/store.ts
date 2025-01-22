@@ -29,9 +29,14 @@ export const useInviteStore = create<InviteState>()(
       setInvites: (invites) => set({ invites }),
       mergeInvites: (apiInvites) =>
         set((state) => {
+          // Retain only invites that are returned by the API
+          const updatedInvites = state.invites.filter((invite) =>
+            apiInvites.some((apiInvite) => apiInvite.id === invite.id),
+          );
+
           // Merge API invites with local invites
           const mergedInvites = apiInvites.map((apiInvite) => {
-            const localInvite = state.invites.find(
+            const localInvite = updatedInvites.find(
               (invite) => invite.id === apiInvite.id,
             );
 
@@ -40,13 +45,7 @@ export const useInviteStore = create<InviteState>()(
               : apiInvite; // Add new invites from the API
           });
 
-          // Retain any local invites not in the API response
-          const additionalInvites = state.invites.filter(
-            (invite) =>
-              !apiInvites.some((apiInvite) => apiInvite.id === invite.id),
-          );
-
-          return { invites: [...mergedInvites, ...additionalInvites] };
+          return { invites: mergedInvites };
         }),
 
       addInvite: (invite) =>

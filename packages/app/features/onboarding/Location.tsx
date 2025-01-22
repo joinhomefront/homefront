@@ -155,7 +155,6 @@ export function Location() {
           currentStep={CURRENT_STEP}
           form={form}
           continueDisabled={!isValid}
-          hideSkip
           onContinue={handleSaveLocation}
         />
       </ScrollView>

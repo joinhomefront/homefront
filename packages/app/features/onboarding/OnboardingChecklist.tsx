@@ -95,7 +95,7 @@ export function OnboardingChecklist() {
       case OnboardingStep.Avatar:
         return !!user?.image;
       case OnboardingStep.DomainAreas:
-        return !!userDomainAreas?.length;
+        return userDomainAreas?.some((area) => area.hasDomainArea) ?? false;
       case OnboardingStep.Invites:
         return !!userInvites?.length || !!relationships?.length;
       case OnboardingStep.Location:

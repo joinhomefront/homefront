@@ -1,5 +1,7 @@
 import { z } from "zod";
 
+import { db } from "@homefront/db";
+
 import { USERNAME_BLACKLIST } from "./data/blacklist";
 
 export const usernameSchema = z
@@ -21,3 +23,27 @@ export const usernameSchema = z
       message: "This username isn't available. Please try another.",
     },
   );
+
+const checkUsernameAvailability = async (username: string) => {
+  const user = await db
+    .selectFrom("users")
+    .select("id")
+    .where("username", "=", username)
+    .executeTakeFirst();
+
+  return { available: !user };
+};
+
+export const serverUsernameSchema = usernameSchema.superRefine(
+  async (username, ctx) => {
+    const { available } = await checkUsernameAvailability(username);
+    if (!available) {
+      ctx.addIssue({
+        code: z.ZodIssueCode.custom,
+        message: "This username isn't available. Please try another.",
+      });
+      return z.NEVER;
+    }
+    return z.OK;
+  },
+);
