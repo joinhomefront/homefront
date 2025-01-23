@@ -22,6 +22,11 @@ import type {
   RecommendedActions,
   RecoveryPhrases,
   Relationships,
+  Reports,
+  ResourceBookmarks,
+  ResourceDomainAreas,
+  Resources,
+  ResourceVotes,
   RoleDomainAreas,
   RoleOccupations,
   Roles,
@@ -71,6 +76,11 @@ export interface Database {
   recommendedActions: RecommendedActions;
   recoveryPhrases: RecoveryPhrases;
   relationships: Relationships;
+  reports: Reports;
+  resourceBookmarks: ResourceBookmarks;
+  resourceDomainAreas: ResourceDomainAreas;
+  resources: Resources;
+  resourceVotes: ResourceVotes;
   roleDomainAreas: RoleDomainAreas;
   roles: Roles;
   roleOccupations: RoleOccupations;

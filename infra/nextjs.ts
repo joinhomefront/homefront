@@ -18,7 +18,7 @@ import {
   stripeSecretKey,
   stripeWebhookSecret,
 } from "./secrets";
-import { bucket } from "./storage";
+import { bucket, cdn, cdnBucket } from "./storage";
 import { vpc } from "./vpc";
 
 const PINECONE_INDEX = "multilingual-e5-large";
@@ -95,6 +95,8 @@ export const nextjs = new sst.aws.Nextjs("Web", {
   },
   link: [
     bucket,
+    cdnBucket,
+    cdn,
     redis,
 
     // Secrets
@@ -138,13 +140,9 @@ export const nextjs = new sst.aws.Nextjs("Web", {
     STRIPE_HASH_KEY: stripeHashKey.value,
     STRIPE_SECRET_KEY: stripeSecretKey.value,
     STRIPE_WEBHOOK_SECRET: stripeWebhookSecret.value,
+    NEXT_PUBLIC_CDN_DOMAIN: "https://d3t9degcpc8bgc.cloudfront.net",
   },
   vpc,
 });
 
-sst.Linkable.wrap(sst.aws.Nextjs, (nextjs) => ({
-  properties: {
-    ...nextjs,
-    url: nextjs.url,
-  },
-}));
+console.log(cdn.url);

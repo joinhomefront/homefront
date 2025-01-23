@@ -7,6 +7,7 @@ import { invitesRouter } from "./router/invites";
 import { mappingRouter } from "./router/mapping";
 import { occupationsRouter } from "./router/occupations";
 import { relationshipsRouter } from "./router/relationships";
+import { resourcesRouter } from "./router/resources";
 import { rolesRouter } from "./router/roles";
 import { skillsRouter } from "./router/skills";
 import { userLocationsRouter } from "./router/userLocations";
@@ -23,6 +24,7 @@ export const appRouter = createTRPCRouter({
   mapping: mappingRouter,
   occupations: occupationsRouter,
   relationships: relationshipsRouter,
+  resources: resourcesRouter,
   roles: rolesRouter,
   skills: skillsRouter,
   userLocations: userLocationsRouter,

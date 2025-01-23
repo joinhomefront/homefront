@@ -3,7 +3,7 @@
 import type { ViewProps } from "react-native";
 import React, { useEffect } from "react";
 import { Text, View } from "react-native";
-import { Banknote, Home, Settings } from "lucide-react-native";
+import { Banknote, Home, Settings, SquareLibrary } from "lucide-react-native";
 import { Link } from "solito/link";
 import { usePathname } from "solito/navigation";
 
@@ -17,7 +17,7 @@ const Sidebar: React.FC<ViewProps> = () => {
   const menuItems = [
     { name: "Home", icon: Home, path: "/home" },
     // { name: "Actions", icon: ListChecks, path: "/actions" },
-    // { name: "Resources", icon: SquareLibrary, path: "/resources" },
+    { name: "Resources", icon: SquareLibrary, path: "/resources" },
     { name: "Donations", icon: Banknote, path: "/donations" },
     { name: "Settings", icon: Settings, path: "/settings" },
   ];

@@ -58,6 +58,25 @@ export const RELATIONSHIP_STATUSES = [
 ] as const;
 export type RelationshipStatus = (typeof RELATIONSHIP_STATUSES)[number];
 
+export const REPORT_REASONS = [
+  "spam",
+  "misinformation",
+  "disinformation",
+  "inappropriate",
+  "harassment",
+  "hate_speech",
+  "violence",
+  "self_harm",
+  "other",
+] as const;
+export type ReportReason = (typeof REPORT_REASONS)[number];
+
+export const REPORTED_TYPES = ["user", "resource", "action"] as const;
+export type ReportedType = (typeof REPORTED_TYPES)[number];
+
+export const RESOURCE_TYPES = ["link", "text", "image", "video"] as const;
+export type ResourceType = (typeof RESOURCE_TYPES)[number];
+
 export const ROLES_FOR_USER = ["user", "admin", "moderator"] as const;
 export type RoleForUser = (typeof ROLES_FOR_USER)[number];
 

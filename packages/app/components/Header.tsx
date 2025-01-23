@@ -3,15 +3,19 @@
 import type { ViewProps } from "react-native";
 import React from "react";
 import { View } from "react-native";
-import { LogOut, Menu, Settings, X } from "lucide-react-native";
+import {
+  LogOut,
+  Menu,
+  Plus,
+  Settings,
+  SquareLibrary,
+  X,
+} from "lucide-react-native";
 import { signOut } from "next-auth/react";
 import { Link } from "solito/link";
 
 import { UserAvatar } from "@homefront/app/features/avatars/UserAvatar";
-import {
-  SidebarProvider,
-  useSidebar,
-} from "@homefront/app/hooks/useSidebar.web";
+import { useSidebar } from "@homefront/app/hooks/useSidebar.web";
 import { SanitizedUser } from "@homefront/db";
 import {
   Button,
@@ -58,14 +62,30 @@ export const Header: React.FC<{ user?: SanitizedUser } & ViewProps> = ({
           </Link>
         </View>
 
-        <View className="flex-row items-center justify-between">
-          {/* <Button
-            onPress={async () => {
-              await signOut({ callbackUrl: "/login" });
-            }}
-          >
-            <Text>Sign out</Text>
-          </Button> */}
+        <View className="flex-row items-center justify-between gap-2">
+          <DropdownMenu>
+            {user && (
+              <DropdownMenuTrigger asChild>
+                <Button variant="ghost" size="sm" hasIcon>
+                  <Plus size={24} className="text-primary" />
+                  <Text className="text-primary">Add</Text>
+                </Button>
+              </DropdownMenuTrigger>
+            )}
+            <DropdownMenuContent className="native:w-72 w-64">
+              <DropdownMenuGroup>
+                <Link href="/submit/resource">
+                  <DropdownMenuItem>
+                    <View className="flex-row items-center space-x-2">
+                      <SquareLibrary size={24} className="text-primary" />
+                      <Text>Add a resource</Text>
+                    </View>
+                  </DropdownMenuItem>
+                </Link>
+              </DropdownMenuGroup>
+            </DropdownMenuContent>
+          </DropdownMenu>
+
           <DropdownMenu>
             {user && (
               <DropdownMenuTrigger asChild>

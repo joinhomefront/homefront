@@ -21,8 +21,10 @@
   "dependencies": {
     "@homefront/ai": "workspace:*",
     "@homefront/auth": "workspace:*",
+    "@homefront/aws": "workspace:*",
     "@homefront/dayjs": "workspace:*",
     "@homefront/db": "workspace:*",
+    "@homefront/scraper": "workspace:*",
     "@homefront/stripe": "workspace:*",
     "@homefront/validators": "workspace:*",
     "@trpc/server": "catalog:",

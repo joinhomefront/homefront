@@ -20,6 +20,7 @@
   },
   "dependencies": {
     "bip39": "^3.1.0",
+    "tlds": "^1.255.0",
     "zod": "catalog:"
   },
   "devDependencies": {

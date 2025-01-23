@@ -36,6 +36,7 @@
     "@trpc/server": "catalog:",
     "aes-js": "^3.1.2",
     "class-variance-authority": "catalog:",
+    "expo-blur": "^14.0.2",
     "expo-clipboard": "^7.0.0",
     "expo-device": "^7.0.1",
     "expo-location": "^18.0.2",
@@ -65,6 +66,7 @@
   "devDependencies": {
     "@homefront/eslint-config": "workspace:*",
     "@homefront/prettier-config": "workspace:*",
+    "@homefront/scraper": "workspace:*",
     "@homefront/tailwind-config": "workspace:*",
     "@homefront/tsconfig": "workspace:*",
     "@types/aes-js": "^3.1.4",

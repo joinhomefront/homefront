@@ -38,10 +38,10 @@ const buttonVariants = cva(
           "web:hover:border-emerald-600 web:hover:bg-emerald-200 border border-gray-300 bg-background active:bg-emerald-200",
         outline:
           "web:hover:bg-accent web:hover:text-accent-foreground border border-border bg-background active:bg-accent",
-
         ghost:
           "web:hover:bg-accent web:hover:text-accent-foreground active:bg-accent",
         link: "web:underline-offset-4 web:hover:underline web:focus:underline decoration-primary",
+        tab: 'rounded-none border-b-4 border-transparent hover:border-primary/50 data-[state="active"]:border-primary',
       },
       size: {
         default: "native:h-12 native:px-5 native:py-3 h-10 px-4 py-2",
@@ -55,7 +55,18 @@ const buttonVariants = cva(
         false: "",
         true: "flex flex-row items-center space-x-2",
       },
+      active: {
+        false: "",
+        true: "",
+      },
     },
+    compoundVariants: [
+      {
+        variant: "tab",
+        active: true,
+        className: "border-primary",
+      },
+    ],
     defaultVariants: {
       variant: "default",
       size: "default",
@@ -90,6 +101,7 @@ const buttonTextVariants = cva(
           "text-secondary-foreground group-active:text-secondary-foreground",
         ghost: "group-active:text-accent-foreground",
         link: "text-primary group-active:text-primary-background group-active:underline",
+        tab: "text-foreground data-[state=active]:text-primary",
       },
       size: {
         default: "",
@@ -103,35 +115,41 @@ const buttonTextVariants = cva(
         false: "",
         true: "",
       },
+      active: {
+        false: "",
+        true: "",
+      },
     },
     defaultVariants: {
       variant: "default",
       size: "default",
       hasIcon: false,
+      active: false,
     },
   },
 );
 
 type ButtonProps = React.ComponentPropsWithoutRef<typeof Pressable> &
-  VariantProps<typeof buttonVariants>;
+  VariantProps<typeof buttonVariants> & { active?: boolean };
 
 const Button = React.forwardRef<
   React.ElementRef<typeof Pressable>,
   ButtonProps
->(({ className, variant, size, hasIcon, ...props }, ref) => {
+>(({ className, variant, size, hasIcon, active, ...props }, ref) => {
   return (
     <TextClassContext.Provider
       value={buttonTextVariants({
         variant,
         size,
         hasIcon,
+        active,
         className: "web:pointer-events-none",
       })}
     >
       <Pressable
         className={cn(
           props.disabled && "web:pointer-events-none opacity-50",
-          buttonVariants({ variant, size, hasIcon, className }),
+          buttonVariants({ variant, size, hasIcon, active, className }),
         )}
         ref={ref}
         role="button"
