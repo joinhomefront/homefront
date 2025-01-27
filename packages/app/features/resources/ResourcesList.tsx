@@ -8,7 +8,7 @@ import { ActivityIndicator } from "@homefront/ui";
 import { ResourceItem } from "./ResourceItem";
 import { ResourceFilter, ResourceSort } from "./types";
 
-const LIMIT = 1;
+const LIMIT = 20;
 
 export function ResourcesList({ filter }: { filter?: ResourceFilter }) {
   const searchParams = useSearchParams();
