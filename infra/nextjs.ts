@@ -60,6 +60,15 @@ const NEXT_PUBLIC_BASE_URL =
         ? "https://d1a1w7ulyz8ubg.cloudfront.net"
         : "http://localhost:3000";
 
+const NEXT_PUBLIC_CDN_DOMAIN =
+  $app.stage === "production"
+    ? "https://cdn.joinhomefront.org"
+    : $app.stage === "staging"
+      ? "https://staging-cdn.joinhomefront.org"
+      : $app.stage === "development"
+        ? "https://d3t9degcpc8bgc.cloudfront.net"
+        : "https://d3t9degcpc8bgc.cloudfront.net";
+
 function getDomain(): NextjsArgs["domain"] | undefined {
   switch ($app.stage) {
     // case "development":
@@ -124,6 +133,7 @@ export const nextjs = new sst.aws.Nextjs("Web", {
   ],
   environment: {
     NEXT_PUBLIC_BASE_URL,
+    NEXT_PUBLIC_CDN_DOMAIN,
     NEXT_PUBLIC_PROTOMAPS_API_KEY,
     NEXT_PUBLIC_STRIPE_BILLING_RETURN_URL,
     NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY,
@@ -145,7 +155,6 @@ export const nextjs = new sst.aws.Nextjs("Web", {
     STRIPE_HASH_KEY: stripeHashKey.value,
     STRIPE_SECRET_KEY: stripeSecretKey.value,
     STRIPE_WEBHOOK_SECRET: stripeWebhookSecret.value,
-    NEXT_PUBLIC_CDN_DOMAIN: "https://d3t9degcpc8bgc.cloudfront.net",
   },
   vpc,
 });

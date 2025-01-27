@@ -36,11 +36,7 @@ export function RecommendedActionsList() {
     }
   }, [isLoading, recommendedActions, hasAttemptedGeneration]);
 
-  if (
-    isLoading ||
-    generateRecommendedActions.isPending ||
-    !recommendedActions?.length
-  ) {
+  if (isLoading || generateRecommendedActions.isPending) {
     return (
       <View className="flex-1 items-center justify-center p-4">
         <ActivityIndicator />
@@ -57,7 +53,7 @@ export function RecommendedActionsList() {
       )}
       ListEmptyComponent={() => (
         <Text className="py-4 text-left text-gray-500">
-          You don't have any recommended actions yet.
+          You don't have any recommended actions right now.
         </Text>
       )}
       keyExtractor={(recommendedAction) =>
