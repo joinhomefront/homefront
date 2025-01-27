@@ -1,11 +1,10 @@
-import { use, useState } from "react";
+import { useState } from "react";
 import { View, ViewProps } from "react-native";
 import { Edit, Flag, MoreHorizontal } from "lucide-react-native";
 import { Link } from "solito/link";
 
 import { DomainAreaTags } from "@homefront/app/features/domainAreas/DomainAreaTags";
 import { useUser } from "@homefront/app/hooks/useUser";
-import { api } from "@homefront/app/utils/trpc";
 import dayjs from "@homefront/dayjs";
 import { DomainArea, Resource, ResourceVote } from "@homefront/db";
 import {

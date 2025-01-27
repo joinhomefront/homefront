@@ -4,7 +4,6 @@ import { SolitoImage } from "solito/image";
 import { Link } from "solito/link";
 
 import type { DomainArea, Resource, ResourceVote } from "@homefront/db";
-import { DomainAreaTags } from "@homefront/app/features/domainAreas/DomainAreaTags";
 import { Link as ExternalLink, Text } from "@homefront/ui";
 
 import { CDN_DOMAIN } from "./data";

@@ -16,7 +16,6 @@ import {
   DialogTitle,
   Form,
   FormField,
-  FormInput,
   FormTextarea,
   Text,
 } from "@homefront/ui";
@@ -75,7 +74,7 @@ const reportOptions = REPORT_REASONS.map((reason) => ({
 
 const schema = z.object({
   reason: z.enum(REPORT_REASONS),
-  details: z.string().default("").optional(),
+  details: z.string().optional(),
 });
 
 type FormData = z.infer<typeof schema>;
@@ -134,7 +133,8 @@ export function ReportDialog({
     createReport.mutate({
       type,
       id,
-      ...data,
+      reason: data.reason,
+      details: data.details?.trim() ?? null,
     });
   };
 

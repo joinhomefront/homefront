@@ -1,15 +1,5 @@
 import { createEnv } from "@t3-oss/env-nextjs";
-// import { Resource } from "sst";
 import { z } from "zod";
-
-// const secrets = {
-//   AUTH_CHALLENGE_ENCRYPTION_KEY: Resource.AuthChallengeEncryptionKey.value,
-//   AUTH_HOMEFRONT_ID: Resource.AuthHomefrontClientId.value,
-//   AUTH_HOMEFRONT_SECRET: Resource.AuthHomefrontClientSecret.value,
-//   AUTH_SALT: Resource.AuthSalt.value,
-//   AUTH_SECRET: Resource.AuthSecret.value,
-//   OTP_ENCRYPTION_KEY: Resource.OtpEncryptionKey.value,
-// };
 
 export const env = createEnv({
   shared: {

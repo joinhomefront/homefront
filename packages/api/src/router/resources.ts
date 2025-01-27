@@ -18,7 +18,7 @@ import {
   VoteForResourceSchema,
 } from "@homefront/validators";
 
-import { protectedProcedure, publicProcedure } from "../trpc";
+import { protectedProcedure } from "../trpc";
 
 /**
  * Check if the user can modify a resource

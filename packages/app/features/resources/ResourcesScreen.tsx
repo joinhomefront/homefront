@@ -1,9 +1,7 @@
 "use client";
 
-import { useState } from "react";
 import { SafeAreaView, ScrollView, View } from "react-native";
 import { LibrarySquare } from "lucide-react-native";
-import { useRouter, useSearchParams } from "solito/navigation";
 
 import { H2 } from "@homefront/ui";
 

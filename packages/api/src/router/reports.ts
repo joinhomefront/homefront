@@ -11,7 +11,11 @@ export const reportsRouter = {
         type: z.enum(REPORTED_TYPES),
         id: z.string().uuid(),
         reason: z.enum(REPORT_REASONS),
-        details: z.string().optional(),
+        details: z
+          .string()
+          .transform((str) => str.trim())
+          .transform((str) => (str === "" ? null : str))
+          .nullable(),
       }),
     )
     .mutation(async ({ ctx, input }) => {

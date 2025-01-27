@@ -1,9 +1,11 @@
-import { ScrollView } from "react-native";
+import { useMemo } from "react";
+import { ScrollView, View } from "react-native";
 import { FlashList } from "@shopify/flash-list";
+import { Library } from "lucide-react-native";
 import { useSearchParams } from "solito/navigation";
 
 import { api } from "@homefront/app/utils/trpc";
-import { ActivityIndicator } from "@homefront/ui";
+import { ActivityIndicator, Text } from "@homefront/ui";
 
 import { ResourceItem } from "./ResourceItem";
 import { ResourceFilter, ResourceSort } from "./types";
@@ -32,7 +34,10 @@ export function ResourcesList({ filter }: { filter?: ResourceFilter }) {
     },
   );
 
-  const resources = data?.pages.flatMap((page) => page.items) ?? [];
+  const resources = useMemo(() => {
+    const resourceItems = data?.pages.flatMap((page) => page.items) ?? [];
+    return [...new Map(resourceItems.map((item) => [item.id, item])).values()];
+  }, [data?.pages]);
 
   if (isLoading) {
     return (
@@ -59,6 +64,12 @@ export function ResourcesList({ filter }: { filter?: ResourceFilter }) {
       }}
       onEndReachedThreshold={0.5}
       ListFooterComponent={LoadingIndicator}
+      ListEmptyComponent={
+        <View className="my-3 flex-1 items-center justify-center space-y-2 rounded-md border-2 border-dashed border-gray-200 px-3 py-8">
+          <Library size={24} className="text-gray-500" />
+          <Text className="text-sm text-gray-500">No resources found</Text>
+        </View>
+      }
     />
   );
 }

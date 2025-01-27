@@ -1,11 +1,4 @@
-import {
-  FlatList,
-  Pressable,
-  ScrollView,
-  useWindowDimensions,
-  View,
-} from "react-native";
-import { FlashList } from "@shopify/flash-list";
+import { Pressable, ScrollView, useWindowDimensions, View } from "react-native";
 
 import { api } from "@homefront/app/utils/trpc";
 import { DomainArea } from "@homefront/db";
