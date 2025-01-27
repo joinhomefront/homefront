@@ -1,4 +1,4 @@
-import { neonConfig, Pool } from "@neondatabase/serverless";
+import { Pool } from "@neondatabase/serverless";
 import { CamelCasePlugin, Kysely, PostgresDialect } from "kysely";
 
 // import ws from "ws";

@@ -1,6 +1,6 @@
 import { Link } from "solito/link";
 
-import { H1, LogoAlt, Logotype, Text } from "@homefront/ui";
+import { Logotype, Text } from "@homefront/ui";
 
 export function Footer() {
   return (

@@ -1,3 +1,5 @@
+/// <reference path="./.sst/platform/config.d.ts" />
+
 const authChallengeEncryptionKey = new sst.Secret("AuthChallengeEncryptionKey");
 const authHomefrontClientId = new sst.Secret("AuthHomefrontClientId");
 const authHomefrontClientSecret = new sst.Secret("AuthHomefrontClientSecret");

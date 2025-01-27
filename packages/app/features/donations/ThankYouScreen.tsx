@@ -3,11 +3,10 @@
 import { Suspense, useCallback } from "react";
 import { SafeAreaView, ScrollView, View } from "react-native";
 import { skipToken } from "@tanstack/react-query";
-import { ArrowRight, Check, CreditCard } from "lucide-react-native";
+import { ArrowRight, Check } from "lucide-react-native";
 import { useRouter, useSearchParams } from "solito/navigation";
 
 import { api } from "@homefront/app/utils/trpc";
-import { DonationType } from "@homefront/db";
 import { ActivityIndicator, Button, H2, P, Text } from "@homefront/ui";
 
 import { BillingPortalLink } from "./BillingPortalLink";

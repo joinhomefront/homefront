@@ -1,8 +1,6 @@
 import React from "react";
 import { Text, View } from "react-native";
 
-import { cn } from "@homefront/ui";
-
 import { formatAmount } from "./utils";
 
 type ReceiptProps = {

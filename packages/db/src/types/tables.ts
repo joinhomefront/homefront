@@ -21,6 +21,9 @@ import type {
   OccupationDataSource,
   PriorityLevel,
   RelationshipStatus,
+  ReportedType,
+  ReportReason,
+  ResourceType,
   RoleForUser,
   SkillLevel,
   StripeEventStatus,
@@ -359,6 +362,82 @@ export interface Relationships {
 export type Relationship = Selectable<Relationships>;
 export type NewRelationship = Insertable<Relationships>;
 export type RelationshipUpdate = Updateable<Relationships>;
+
+export interface Reports {
+  id: GeneratedAlways<string>;
+  userId: string;
+  reportedId: string;
+  reportedType: ReportedType;
+  reason: ReportReason;
+  reasonDetails: string | null;
+  createdAt: Generated<Date>;
+  updatedAt: Generated<Date>;
+}
+
+export type Report = Selectable<Reports>;
+export type NewReport = Insertable<Reports>;
+export type ReportUpdate = Updateable<Reports>;
+
+export interface Resources {
+  id: GeneratedAlways<string>;
+  type: ResourceType;
+  title: string;
+  description: string | null;
+  body: string | null;
+  url: string | null;
+  urlHash: string | null;
+  canonicalUrl: string | null;
+  image: string | null;
+  metadata: JSONColumnType<Record<string, unknown>> | null;
+  sharedBy: string;
+  hotScore: number;
+  risingScore: number;
+  votes: number;
+  createdAt: Generated<Date>;
+  updatedAt: Generated<Date>;
+}
+
+export type Resource = Selectable<Resources>;
+export type NewResource = Insertable<Resources>;
+export type ResourceUpdate = Updateable<Resources>;
+
+export interface ResourceBookmarks {
+  id: GeneratedAlways<string>;
+  userId: string;
+  resourceId: string;
+  createdAt: Generated<Date>;
+  updatedAt: Generated<Date>;
+}
+
+export type ResourceBookmark = Selectable<ResourceBookmarks>;
+export type NewResourceBookmark = Insertable<ResourceBookmarks>;
+export type ResourceBookmarkUpdate = Updateable<ResourceBookmarks>;
+
+export interface ResourceDomainAreas {
+  id: GeneratedAlways<string>;
+  resourceId: string;
+  domainAreaId: string;
+  createdBy: string;
+  createdAt: Generated<Date>;
+  updatedAt: Generated<Date>;
+}
+
+export type ResourceDomainArea = Selectable<ResourceDomainAreas>;
+export type NewResourceDomainArea = Insertable<ResourceDomainAreas>;
+export type ResourceDomainAreaUpdate = Updateable<ResourceDomainAreas>;
+
+export interface ResourceVotes {
+  id: GeneratedAlways<string>;
+  userId: string;
+  resourceId: string;
+  vote: Vote;
+  createdAt: Generated<Date>;
+  updatedAt: Generated<Date>;
+}
+
+export type ResourceVote = Selectable<ResourceVotes>;
+export type NewResourceVote = Insertable<ResourceVotes>;
+export type ResourceVoteUpdate = Updateable<ResourceVotes>;
 
 export interface RoleOccupations {
   id: GeneratedAlways<string>;

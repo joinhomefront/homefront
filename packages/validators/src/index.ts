@@ -3,5 +3,7 @@ export * from "./api";
 export * from "./auth";
 export * from "./donations";
 export * from "./invites";
+export * from "./resources";
+export * from "./url";
 export * from "./users";
 export * from "./votes";

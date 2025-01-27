@@ -81,11 +81,14 @@ declare module "sst" {
       "type": "sst.aws.Vpc"
     }
     "Web": {
-      "4dabf18193072939515e22adb298388d": string
-      "packageVersion": string
-      "urn": string
+      "type": "sst.aws.Nextjs"
+      "url": string
     }
     "homefront-next-prod": {
+      "name": string
+      "type": "sst.aws.Bucket"
+    }
+    "join-homefront": {
       "name": string
       "type": "sst.aws.Bucket"
     }

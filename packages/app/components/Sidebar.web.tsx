@@ -3,7 +3,16 @@
 import type { ViewProps } from "react-native";
 import React, { useEffect } from "react";
 import { Text, View } from "react-native";
-import { Banknote, Home, Settings } from "lucide-react-native";
+import {
+  ArrowBigDown,
+  ArrowBigUp,
+  Banknote,
+  Bookmark,
+  Home,
+  Library,
+  Settings,
+  SquareLibrary,
+} from "lucide-react-native";
 import { Link } from "solito/link";
 import { usePathname } from "solito/navigation";
 
@@ -16,8 +25,25 @@ const Sidebar: React.FC<ViewProps> = () => {
 
   const menuItems = [
     { name: "Home", icon: Home, path: "/home" },
-    // { name: "Actions", icon: ListChecks, path: "/actions" },
-    // { name: "Resources", icon: SquareLibrary, path: "/resources" },
+    {
+      name: "Resources",
+      icon: SquareLibrary,
+      path: "/resources",
+      subitems: [
+        { name: "All", path: "/resources", icon: Library },
+        { name: "Saved", path: "/resources/saved", icon: Bookmark },
+        {
+          name: "Upvoted",
+          path: "/resources/upvoted",
+          icon: ArrowBigUp,
+        },
+        {
+          name: "Downvoted",
+          path: "/resources/downvoted",
+          icon: ArrowBigDown,
+        },
+      ],
+    },
     { name: "Donations", icon: Banknote, path: "/donations" },
     { name: "Settings", icon: Settings, path: "/settings" },
   ];
@@ -38,30 +64,73 @@ const Sidebar: React.FC<ViewProps> = () => {
       <View className="p-4">
         {menuItems.map((item) => {
           const Icon = item.icon;
-          const isActive = pathname === item.path;
+          const isActive = pathname?.startsWith(item.path);
+          const showSubitems = !!item.subitems && isActive;
+
           return (
-            <Link key={item.name} href={item.path}>
-              <View
-                className={cn(
-                  "flex flex-row items-center space-x-2 rounded-md px-4 py-2 hover:bg-gray-100",
-                  isActive && "hover:bg-primary-100",
-                )}
-              >
-                <Text
-                  className={cn("text-gray-500", isActive && "text-primary")}
-                >
-                  <Icon size={24} />
-                </Text>
-                <Text
+            <View key={item.name}>
+              <Link href={item.path}>
+                <View
                   className={cn(
-                    "text-base text-gray-700",
-                    isActive && "font-bold text-primary",
+                    "flex flex-row items-center space-x-2 rounded-md px-4 py-2 hover:bg-gray-100",
+                    isActive && "hover:bg-primary-100",
                   )}
                 >
-                  {item.name}
-                </Text>
-              </View>
-            </Link>
+                  <Text
+                    className={cn("text-gray-500", isActive && "text-primary")}
+                  >
+                    <Icon size={24} />
+                  </Text>
+                  <Text
+                    className={cn(
+                      "text-base text-gray-700",
+                      isActive && "font-bold text-primary",
+                    )}
+                  >
+                    {item.name}
+                  </Text>
+                </View>
+              </Link>
+
+              {showSubitems && (
+                <View className="ml-8 mt-1">
+                  {item.subitems.map((subitem) => {
+                    const isSubActive = pathname === subitem.path;
+                    const SubIcon = subitem.icon;
+
+                    return (
+                      <Link key={subitem.name} href={subitem.path}>
+                        <View
+                          className={cn(
+                            "flex flex-row items-center space-x-2 rounded-md px-4 py-2 hover:bg-gray-100",
+                            isSubActive && "bg-primary-50 hover:bg-primary-100",
+                          )}
+                        >
+                          {SubIcon && (
+                            <Text
+                              className={cn(
+                                "text-gray-500",
+                                isSubActive && "text-primary",
+                              )}
+                            >
+                              <SubIcon size={20} />
+                            </Text>
+                          )}
+                          <Text
+                            className={cn(
+                              "text-sm text-gray-600",
+                              isSubActive && "font-bold text-primary",
+                            )}
+                          >
+                            {subitem.name}
+                          </Text>
+                        </View>
+                      </Link>
+                    );
+                  })}
+                </View>
+              )}
+            </View>
           );
         })}
       </View>

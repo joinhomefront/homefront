@@ -9,7 +9,7 @@ import { cn } from "@homefront/ui";
 import { TextClassContext } from "./text";
 
 const badgeVariants = cva(
-  "web:inline-flex web:transition-colors web:focus:outline-none web:focus:ring-2 web:focus:ring-ring web:focus:ring-offset-2 items-center rounded-full border border-border px-2.5 py-0.5",
+  "web:inline-flex web:transition-colors web:focus:outline-none web:focus:ring-2 web:focus:ring-ring web:focus:ring-offset-2 items-center rounded-md border border-border px-2.5 py-0.5",
   {
     variants: {
       variant: {
@@ -19,6 +19,7 @@ const badgeVariants = cva(
           "web:hover:opacity-80 border-transparent bg-secondary active:opacity-80",
         destructive:
           "web:hover:opacity-80 border-transparent bg-destructive active:opacity-80",
+        neutral: "border-gray-400 bg-gray-50 ring-gray-500/10",
         outline: "text-foreground",
       },
     },
@@ -34,6 +35,7 @@ const badgeTextVariants = cva("text-xs font-semibold", {
       default: "text-primary-foreground",
       secondary: "text-secondary-foreground",
       destructive: "text-destructive-foreground",
+      neutral: "text-gray-500",
       outline: "text-foreground",
     },
   },

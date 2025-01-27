@@ -36,6 +36,10 @@ const nextConfig = {
         port: "",
         search: "",
       },
+      {
+        protocol: "https",
+        hostname: "d3t9degcpc8bgc.cloudfront.net",
+      },
     ],
   },
 
@@ -75,6 +79,7 @@ const nextConfig = {
     "@rn-primitives/tooltip",
     "@rn-primitives/types",
     "expo",
+    "expo-blur",
     "expo-clipboard",
     "expo-file-system",
     "expo-image",
@@ -148,12 +153,13 @@ const nextConfig = {
         type: "webassembly/async",
       });
 
-      config.externals = config.externals || [];
-      if (Array.isArray(config.externals)) {
-        config.externals.push("@node-rs/argon2");
-      } else {
-        config.externals = ["@node-rs/argon2"];
-      }
+      config.externals = [
+        ...(Array.isArray(config.externals) ? config.externals : []),
+        "@node-rs/argon2",
+        "re2",
+        "keyv",
+        "metascraper-youtube",
+      ];
 
       // Explicitly mark WASM as external
       // config.externals = [

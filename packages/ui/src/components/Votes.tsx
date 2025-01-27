@@ -144,7 +144,7 @@ export function Votes({ votes, onVote, userVote }: VotesProps) {
   return (
     <View
       className={cn(
-        "h-fit w-fit select-none flex-row items-center rounded-full bg-gray-400",
+        "pointer-events-auto h-fit w-fit select-none flex-row items-center rounded-full bg-gray-400",
         vote === 1 && "bg-primary",
         vote === -1 && "bg-destructive",
       )}

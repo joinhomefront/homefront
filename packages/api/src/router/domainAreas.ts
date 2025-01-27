@@ -2,9 +2,19 @@ import type { TRPCRouterRecord } from "@trpc/server";
 import { sql } from "kysely";
 import { z } from "zod";
 
-import { protectedProcedure } from "../trpc";
+import { protectedProcedure, publicProcedure } from "../trpc";
 
 export const domainAreasRouter = {
+  getDomainAreas: publicProcedure.query(async ({ ctx }) => {
+    const domainAreas = await ctx.db
+      .selectFrom("domainAreas")
+      .selectAll()
+      .orderBy("title")
+      .execute();
+
+    return domainAreas;
+  }),
+
   getAllDomainAreas: protectedProcedure.query(async ({ ctx }) => {
     const userId = ctx.session.user.id;
 
