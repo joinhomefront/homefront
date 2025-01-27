@@ -6,12 +6,6 @@ export const bucket = new sst.aws.Bucket("homefront-next-prod", {
 
 export const cdnBucket = new sst.aws.Bucket("join-homefront", {
   access: "public",
-  transform: {
-    bucket(args, opts) {
-      args.bucket = $app.stage === "production" ? "join-homefront" : undefined;
-      opts.import = $app.stage === "production" ? "join-homefront" : undefined;
-    },
-  },
 });
 
 export const cdn = new sst.aws.Cdn("CDN", {
@@ -21,6 +15,18 @@ export const cdn = new sst.aws.Cdn("CDN", {
       domainName: cdnBucket.domain,
     },
   ],
+  domain:
+    $app.stage === "production"
+      ? {
+          name: "cdn.joinhomefront.org",
+          dns: sst.cloudflare.dns(),
+        }
+      : $app.stage === "staging"
+        ? {
+            name: "staging-cdn.joinhomefront.org",
+            dns: sst.cloudflare.dns(),
+          }
+        : undefined,
   defaultCacheBehavior: {
     targetOriginId: cdnBucket.arn,
     allowedMethods: ["GET", "HEAD", "OPTIONS"],

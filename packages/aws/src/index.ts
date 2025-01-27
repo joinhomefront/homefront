@@ -3,15 +3,7 @@ import { Resource } from "sst";
 
 const BUCKET_NAME = Resource["join-homefront"].name;
 
-const opts =
-  Resource.App.stage === "production"
-    ? {
-        region: "us-east-2",
-        endpoint: `https://${BUCKET_NAME}.s3.us-east-2.amazonaws.com`,
-      }
-    : {};
-
-const s3 = new S3Client(opts);
+const s3 = new S3Client({});
 
 const MIME_TO_EXT = {
   "image/jpeg": ".jpg",

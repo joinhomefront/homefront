@@ -37,6 +37,7 @@ const nextConfig = {
         search: "",
       },
       {
+        // local
         protocol: "https",
         hostname: "d3t9degcpc8bgc.cloudfront.net",
       },
