@@ -33,9 +33,6 @@ export function UserActionsList() {
           <Text className="text-left text-gray-500">
             You haven't added have any actions yet.
           </Text>
-          <Text className="text-left text-sm text-gray-500">
-            Choose some recommended actions below.
-          </Text>
         </View>
       )}
       keyExtractor={(userAction) => userAction.id}

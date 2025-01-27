@@ -6,10 +6,14 @@ import { Text, View } from "react-native";
 import {
   ArrowBigDown,
   ArrowBigUp,
+  BadgePlus,
   Banknote,
   Bookmark,
+  Compass,
   Home,
   Library,
+  ListTodo,
+  LucideIcon,
   Settings,
   SquareLibrary,
 } from "lucide-react-native";
@@ -19,12 +23,28 @@ import { usePathname } from "solito/navigation";
 import { useSidebar } from "@homefront/app/hooks/useSidebar.web";
 import { cn } from "@homefront/ui";
 
+interface MenuItem {
+  name: string;
+  icon: LucideIcon;
+  path: string;
+  subitems?: MenuItem[];
+}
+
 const Sidebar: React.FC<ViewProps> = () => {
   const { isOpen, toggleSidebar } = useSidebar();
   const pathname = usePathname();
 
-  const menuItems = [
+  const menuItems: MenuItem[] = [
     { name: "Home", icon: Home, path: "/home" },
+    {
+      name: "Actions",
+      icon: ListTodo,
+      path: "/actions",
+      subitems: [
+        { name: "My Actions", path: "/actions", icon: ListTodo },
+        { name: "Recommended", path: "/actions/recommended", icon: Compass },
+      ],
+    },
     {
       name: "Resources",
       icon: SquareLibrary,
@@ -41,6 +61,11 @@ const Sidebar: React.FC<ViewProps> = () => {
           name: "Downvoted",
           path: "/resources/downvoted",
           icon: ArrowBigDown,
+        },
+        {
+          name: "Shared",
+          path: "/resources/shared",
+          icon: BadgePlus,
         },
       ],
     },
@@ -93,8 +118,8 @@ const Sidebar: React.FC<ViewProps> = () => {
               </Link>
 
               {showSubitems && (
-                <View className="ml-8 mt-1">
-                  {item.subitems.map((subitem) => {
+                <View className="my-1 ml-8">
+                  {item.subitems?.map((subitem) => {
                     const isSubActive = pathname === subitem.path;
                     const SubIcon = subitem.icon;
 

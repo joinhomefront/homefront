@@ -4,6 +4,7 @@ import { SafeAreaView, ScrollView, View } from "react-native";
 import {
   ArrowBigDown,
   ArrowBigUp,
+  BadgePlus,
   BookmarkIcon,
   LibrarySquare,
 } from "lucide-react-native";
@@ -21,6 +22,7 @@ const FILTER_TITLES = {
   saved: "Saved",
   upvoted: "Upvoted",
   downvoted: "Downvoted",
+  shared: "Shared",
 };
 
 export function FilteredResourcesScreen({ filter }: ResourceScreenProps) {
@@ -57,6 +59,9 @@ export function FilteredResourcesScreen({ filter }: ResourceScreenProps) {
                     className="text-destructive"
                     fill="currentColor"
                   />
+                )}
+                {filter === "shared" && (
+                  <BadgePlus size={24} className="text-primary" />
                 )}
                 <Text className="text-sm font-bold">
                   {FILTER_TITLES[filter]}

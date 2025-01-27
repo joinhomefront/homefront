@@ -3,5 +3,5 @@ import { FilteredResourcesScreen } from "@homefront/app/features/resources/Filte
 export const dynamic = "force-dynamic";
 
 export default function SavedResourcesPage() {
-  return <FilteredResourcesScreen filter="upvoted" />;
+  return <FilteredResourcesScreen filter="shared" />;
 }

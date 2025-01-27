@@ -81,6 +81,9 @@ export const actionsRouter = {
           "a.isDueTimeOverridable",
           "a.completedAt",
           "a.createdBy",
+          "a.votes",
+          "a.hotScore",
+          "a.risingScore",
           "a.createdAt",
           "a.updatedAt",
           jsonArrayFrom(
@@ -105,9 +108,6 @@ export const actionsRouter = {
               .where("av.userId", "=", userId)
               .limit(1),
           ).as("userVote"),
-          sql<number>`(SELECT COALESCE(SUM(av.vote)::integer, 0) FROM action_votes av WHERE av.action_id = a.id)`.as(
-            "votes",
-          ),
         ])
         .groupBy(["a.id"])
         .executeTakeFirstOrThrow();
@@ -139,6 +139,9 @@ export const actionsRouter = {
         .values({
           ...input,
           createdBy: ctx.session.user.id,
+          votes: 1,
+          hotScore: 0,
+          risingScore: 0,
         })
         .returningAll()
         .executeTakeFirstOrThrow();
@@ -294,6 +297,9 @@ export const actionsRouter = {
         "a.dueTime",
         "a.isDueTimeOverridable",
         "a.createdBy",
+        "a.votes",
+        "a.hotScore",
+        "a.risingScore",
         "a.createdAt",
         "a.updatedAt",
         jsonArrayFrom(
@@ -323,6 +329,9 @@ export const actionsRouter = {
         isDueTimeOverridable: userAction.isDueTimeOverridable,
         completedAt: userAction.completedAt,
         createdBy: userAction.createdBy,
+        votes: userAction.votes,
+        hotScore: userAction.hotScore,
+        risingScore: userAction.risingScore,
         createdAt: userAction.createdAt,
         updatedAt: userAction.updatedAt,
       };
@@ -517,9 +526,6 @@ export const actionsRouter = {
             .where("av.userId", "=", userId)
             .limit(1),
         ).as("userVote"),
-        sql<number>`(SELECT COALESCE(SUM(av.vote)::integer, 0) FROM action_votes av WHERE av.action_id = a.id)`.as(
-          "votes",
-        ),
       ])
       .distinctOn(["ra.position"])
       .where("ra.userId", "=", userId)
@@ -541,6 +547,9 @@ export const actionsRouter = {
         dueTime: ra.dueTime,
         isDueTimeOverridable: ra.isDueTimeOverridable,
         completedAt: ra.completedAt,
+        votes: ra.votes,
+        hotScore: ra.hotScore,
+        risingScore: ra.risingScore,
         createdBy: ra.createdBy,
         createdAt: ra.createdAt,
         updatedAt: ra.updatedAt,

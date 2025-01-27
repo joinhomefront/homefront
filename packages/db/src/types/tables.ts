@@ -113,6 +113,9 @@ export interface Actions {
   isDueTimeOverridable: boolean | null;
   completedAt: Date | null;
   createdBy: string;
+  votes: number;
+  hotScore: number;
+  risingScore: number;
   createdAt: Generated<Date>;
   updatedAt: Generated<Date>;
 }

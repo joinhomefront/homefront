@@ -276,7 +276,7 @@ export const resourcesRouter = {
         limit: z.number().min(1).max(100).default(20),
         cursor: z.string().base64().optional(),
         sort: z.enum(["hot", "new", "top", "rising"]).optional(),
-        filter: z.enum(["saved", "upvoted", "downvoted"]).optional(),
+        filter: z.enum(["saved", "upvoted", "downvoted", "shared"]).optional(),
       }),
     )
 
@@ -354,6 +354,9 @@ export const resourcesRouter = {
               .innerJoin("resourceVotes as rv", "rv.resourceId", "r.id")
               .where("rv.userId", "=", userId)
               .where("rv.vote", "=", -1);
+            break;
+          case "shared":
+            query = query.where("r.sharedBy", "=", userId);
             break;
         }
       }
