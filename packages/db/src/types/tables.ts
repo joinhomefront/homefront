@@ -385,9 +385,14 @@ export interface Resources {
   description: string | null;
   body: string | null;
   url: string | null;
+  urlHash: string | null;
   canonicalUrl: string | null;
   image: string | null;
+  metadata: JSONColumnType<Record<string, unknown>> | null;
   sharedBy: string;
+  hotScore: number;
+  risingScore: number;
+  votes: number;
   createdAt: Generated<Date>;
   updatedAt: Generated<Date>;
 }

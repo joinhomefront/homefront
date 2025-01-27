@@ -31,6 +31,7 @@
     "h3-js": "^4.1.0",
     "lexorank": "^1.0.5",
     "nanoid": "^5.0.9",
+    "normalize-url": "catalog:",
     "superjson": "catalog:",
     "zod": "catalog:"
   },

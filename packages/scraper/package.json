@@ -32,8 +32,10 @@
     "metascraper-description": "^5.46.5",
     "metascraper-image": "^5.46.5",
     "metascraper-logo": "^5.46.5",
+    "metascraper-logo-favicon": "^5.46.5",
     "metascraper-publisher": "^5.46.5",
     "metascraper-title": "^5.46.5",
-    "metascraper-url": "^5.46.5"
+    "metascraper-url": "^5.46.5",
+    "metascraper-youtube": "^5.46.5"
   }
 }

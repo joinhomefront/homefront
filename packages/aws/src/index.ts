@@ -13,6 +13,14 @@ const opts =
 
 const s3 = new S3Client(opts);
 
+const MIME_TO_EXT = {
+  "image/jpeg": ".jpg",
+  "image/png": ".png",
+  "image/gif": ".gif",
+  "image/webp": ".webp",
+  "image/avif": ".avif",
+} as const;
+
 /**
  * Uploads a remote image to the S3 bucket served by the CDN
  *
@@ -26,15 +34,16 @@ export async function uploadRemoteImageToS3(imageUrl: string, path: string) {
     throw new Error(`Failed to fetch image: ${response.statusText}`);
   }
 
-  const imageBuffer = await response.arrayBuffer();
-  const name = crypto.randomUUID();
-  const key = `${path}/${name}`;
-
   const contentType = response.headers.get("Content-Type");
-  if (!contentType?.startsWith("image")) {
-    throw new Error("Invalid image type");
+  if (!contentType || !(contentType in MIME_TO_EXT)) {
+    throw new Error(`Invalid or unsupported image type: ${contentType}`);
   }
 
+  const extension = MIME_TO_EXT[contentType as keyof typeof MIME_TO_EXT];
+  const name = `${crypto.randomUUID()}${extension}`;
+  const key = `${path}/${name}`;
+
+  const imageBuffer = await response.arrayBuffer();
   const command = new PutObjectCommand({
     Key: key,
     Bucket: BUCKET_NAME,

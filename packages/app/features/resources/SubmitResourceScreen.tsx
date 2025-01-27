@@ -1,7 +1,8 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { SafeAreaView, ScrollView, View } from "react-native";
+import { useRouter, useSearchParams } from "solito/navigation";
 
 import { H3 } from "@homefront/ui";
 
@@ -10,7 +11,25 @@ import { Tabs } from "./Tabs";
 import { Tab } from "./types";
 
 export function SubmitResourceScreen() {
-  const [activeTab, setActiveTab] = useState<Tab["key"]>("link");
+  const { push, replace } = useRouter();
+  const searchParams = useSearchParams();
+  const typeParam = searchParams?.get("type") as Tab["key"] | undefined;
+  const [activeTab, setActiveTab] = useState<Tab["key"]>(typeParam ?? "link");
+
+  useEffect(() => {
+    if (!typeParam) {
+      replace(`?type=link`);
+    }
+  }, [typeParam]);
+
+  const handleTabChange = (tab: Tab["key"]) => {
+    setActiveTab(tab);
+    push(`?type=${tab}`);
+  };
+
+  if (!typeParam) {
+    return null;
+  }
 
   return (
     <SafeAreaView className="flex-1">
@@ -22,7 +41,7 @@ export function SubmitResourceScreen() {
                 Submit a resource
               </H3>
 
-              <Tabs activeTab={activeTab} onChange={setActiveTab} />
+              <Tabs activeTab={activeTab} onChange={handleTabChange} />
 
               {activeTab === "link" && <LinkForm />}
               {/* {activeTab === "text" && <TextForm />}

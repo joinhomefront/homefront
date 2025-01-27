@@ -7,8 +7,18 @@ import { useDebounceValue } from "usehooks-ts";
 import { z } from "zod";
 
 import type { Metadata } from "@homefront/scraper";
+import { DomainAreaSelector } from "@homefront/app/features/domainAreas/DomainAreasSelector";
 import { api } from "@homefront/app/utils/trpc";
-import { Button, Form, FormField, FormInput, Input, Text } from "@homefront/ui";
+import {
+  ActivityIndicator,
+  Button,
+  Form,
+  FormField,
+  FormInput,
+  FormTextarea,
+  Input,
+  Text,
+} from "@homefront/ui";
 import {
   formatUrl,
   isValidTopLevelDomain,
@@ -18,20 +28,25 @@ import {
 
 type FormData = z.infer<typeof LinkResourceSchema>;
 
-export function LinkForm() {
-  const { push } = useRouter();
+interface LinkFormProps {
+  initialValues?: FormData;
+  resourceId?: string;
+}
 
+export function LinkForm({ initialValues, resourceId }: LinkFormProps) {
+  const { push } = useRouter();
   const form = useForm<FormData>({
-    defaultValues: {
-      type: "link",
-    },
+    defaultValues: initialValues ?? { type: "link" },
     resolver: zodResolver(LinkResourceSchema),
     mode: "onChange",
   });
+  const utils = api.useUtils();
 
   const [urlToCheck, setUrlToCheck] = useState<string>("");
   const [debouncedUrl] = useDebounceValue(urlToCheck, 500);
   const [metadata, setMetadata] = useState<Metadata | null>(null);
+  const [error, setError] = useState<string | null>(null);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const getMetadataForUrl = api.resources.getMetadataForUrl.useMutation({
     onSuccess: (data) => {
@@ -40,8 +55,30 @@ export function LinkForm() {
   });
 
   const createResource = api.resources.createResource.useMutation({
-    onSuccess: (data) => {
+    onSuccess: async (data) => {
+      await utils.resources.getResources.invalidate();
       push(`/resources/${data.id}`);
+    },
+    onError: (error) => {
+      setError(error.message);
+    },
+    onSettled: () => {
+      setIsSubmitting(false);
+    },
+  });
+
+  const updateResource = api.resources.updateResource.useMutation({
+    onSuccess: async (data) => {
+      await utils.resources.getResources.invalidate();
+      await utils.resources.getResource.invalidate(data.id);
+
+      push(`/resources/${data.id}`);
+    },
+    onError: (error) => {
+      setError(error.message);
+    },
+    onSettled: () => {
+      setIsSubmitting(false);
     },
   });
 
@@ -59,6 +96,12 @@ export function LinkForm() {
     if (metadata?.title) {
       form.setValue("title", metadata.title, { shouldValidate: true });
     }
+
+    if (metadata?.description) {
+      form.setValue("description", metadata.description, {
+        shouldValidate: true,
+      });
+    }
   }, [metadata, form.setValue]);
 
   const url = form.watch("url");
@@ -69,8 +112,19 @@ export function LinkForm() {
     }
   }, [url]);
 
-  const onSubmit = (data: FormData) => {
-    createResource.mutate(data);
+  const onSubmit = async (data: FormData) => {
+    setError(null);
+    setIsSubmitting(true);
+
+    try {
+      if (resourceId) {
+        await updateResource.mutateAsync({ ...data, id: resourceId });
+      } else {
+        await createResource.mutateAsync(data);
+      }
+    } catch (e) {
+      // Error handling done in mutation callbacks
+    }
   };
 
   return (
@@ -105,12 +159,52 @@ export function LinkForm() {
             control={form.control}
             name="title"
             render={({ field }) => (
-              <FormInput label="Title" placeholder="Title" {...field} />
+              <FormInput {...field} label="Title" placeholder="Title" />
             )}
           />
+          <FormField
+            control={form.control}
+            name="description"
+            render={({ field }) => (
+              <FormTextarea
+                {...field}
+                label="Description"
+                placeholder="Description"
+                multiline
+                numberOfLines={3}
+                value={field.value ?? ""}
+              />
+            )}
+          />
+          <FormField
+            control={form.control}
+            name="domainAreaIds"
+            render={({ field }) => (
+              <DomainAreaSelector
+                label="Topics"
+                selectedIds={field.value ?? []}
+                onChange={(ids) => field.onChange(ids)}
+              />
+            )}
+          />
+
+          {error && (
+            <View className="rounded-md bg-red-50 p-4">
+              <Text className="text-sm text-red-800">{error}</Text>
+            </View>
+          )}
+
           <View className="flex-row justify-end">
-            <Button size="lg" onPress={form.handleSubmit(onSubmit)}>
-              <Text>Submit</Text>
+            <Button
+              size="lg"
+              onPress={form.handleSubmit(onSubmit)}
+              disabled={isSubmitting || !form.formState.isValid}
+            >
+              {isSubmitting ? (
+                <ActivityIndicator size="small" color="white" />
+              ) : (
+                <Text>Submit</Text>
+              )}
             </Button>
           </View>
         </View>

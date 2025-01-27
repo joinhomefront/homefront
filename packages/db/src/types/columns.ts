@@ -60,14 +60,14 @@ export type RelationshipStatus = (typeof RELATIONSHIP_STATUSES)[number];
 
 export const REPORT_REASONS = [
   "spam",
+  "inappropriate",
+  "other",
   "misinformation",
   "disinformation",
-  "inappropriate",
   "harassment",
   "hate_speech",
   "violence",
   "self_harm",
-  "other",
 ] as const;
 export type ReportReason = (typeof REPORT_REASONS)[number];
 

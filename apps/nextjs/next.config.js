@@ -153,13 +153,13 @@ const nextConfig = {
         type: "webassembly/async",
       });
 
-      config.externals = config.externals || [];
-      if (Array.isArray(config.externals)) {
-        config.externals.push("@node-rs/argon2");
-        config.externals.push("re2");
-      } else {
-        config.externals = ["@node-rs/argon2", "re2"];
-      }
+      config.externals = [
+        ...(Array.isArray(config.externals) ? config.externals : []),
+        "@node-rs/argon2",
+        "re2",
+        "keyv",
+        "metascraper-youtube",
+      ];
 
       // Explicitly mark WASM as external
       // config.externals = [

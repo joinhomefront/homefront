@@ -1,4 +1,5 @@
 import { NextjsArgs } from "../.sst/platform/src/components/aws";
+import { resourceScoresCron, resourceVotesCron } from "./cron";
 import { redis } from "./redis";
 import {
   authChallengeEncryptionKey,
@@ -98,6 +99,10 @@ export const nextjs = new sst.aws.Nextjs("Web", {
     cdnBucket,
     cdn,
     redis,
+
+    // Crons
+    resourceScoresCron,
+    resourceVotesCron,
 
     // Secrets
     authMiniSessionEncryptionKey,

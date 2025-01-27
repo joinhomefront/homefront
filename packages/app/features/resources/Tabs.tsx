@@ -1,6 +1,6 @@
 import { View } from "react-native";
 
-import { Button, cn, Text } from "@homefront/ui";
+import { Badge, Button, cn, Text } from "@homefront/ui";
 
 import { TABS } from "./data";
 import { Tab as TabType } from "./types";
@@ -14,19 +14,29 @@ interface TabProps {
 
 const Tab = ({ tab, active, disabled, onPress }: TabProps) => {
   return (
-    <Button
-      variant="tab"
-      active={active}
-      disabled={disabled}
-      onPress={onPress}
-      className={cn("px-4 py-2", active ? "text-primary" : "")}
-    >
-      <Text
-        className={cn(active ? "text-primary" : "text-foreground", "font-bold")}
+    <View className="flex-row items-center">
+      <Button
+        variant="tab"
+        active={active}
+        disabled={disabled}
+        onPress={onPress}
+        className={cn("px-4 py-2", active ? "text-primary" : "")}
       >
-        {tab.title}
-      </Text>
-    </Button>
+        <Text
+          className={cn(
+            active ? "text-primary" : "text-foreground",
+            "font-bold",
+          )}
+        >
+          {tab.title}
+        </Text>
+      </Button>
+      {disabled && (
+        <Badge variant="neutral" className="-mt-1">
+          <Text className="text-xs font-bold">Coming soon</Text>
+        </Badge>
+      )}
+    </View>
   );
 };
 

@@ -23,19 +23,19 @@ const buttonVariants = cva(
 
         // Outline variants
         "outline-neutral":
-          "web:hover:border-border web:hover:bg-gray-200 border border-gray-300 bg-background active:bg-gray-200",
+          "web:hover:border-border web:hover:bg-primary-100 border border-gray-300 bg-background active:bg-gray-200",
         "outline-primary":
-          "web:hover:bg-primary-200 border border-primary bg-background active:bg-primary-200",
+          "web:hover:bg-primary-100 border border-primary bg-background active:bg-primary-200",
         "outline-destructive":
-          "web:hover:bg-destructive-200 border border-destructive bg-background active:bg-destructive-200",
+          "web:hover:bg-destructive-100 border border-destructive bg-background active:bg-destructive-200",
         "outline-success":
-          "web:hover:bg-emerald-200 border border-emerald-600 bg-background active:bg-emerald-200",
+          "web:hover:bg-emerald-100 border border-emerald-600 bg-background active:bg-emerald-200",
         "outline-neutral-primary":
           "web:hover:border-border web:hover:bg-accent border border-gray-300 bg-background active:bg-accent",
         "outline-neutral-destructive":
-          "web:hover:border-destructive web:hover:bg-destructive-200 border border-gray-300 bg-background active:bg-destructive-200",
+          "web:hover:border-destructive web:hover:bg-destructive-100 border border-gray-300 bg-background active:bg-destructive-200",
         "outline-neutral-success":
-          "web:hover:border-emerald-600 web:hover:bg-emerald-200 border border-gray-300 bg-background active:bg-emerald-200",
+          "web:hover:border-emerald-600 web:hover:bg-emerald-100 border border-gray-300 bg-background active:bg-emerald-200",
         outline:
           "web:hover:bg-accent web:hover:text-accent-foreground border border-border bg-background active:bg-accent",
         ghost:
@@ -173,5 +173,26 @@ const ButtonIcon = ({
   );
 };
 
-export { Button, ButtonIcon, buttonTextVariants, buttonVariants };
+const ButtonInnerIcon = ({
+  icon,
+  size = 16,
+  className,
+  ...props
+}: LucideProps & {
+  icon: LucideIcon;
+}) => {
+  const Icon = iconWithClassName(icon);
+  const textClass = React.useContext(TextClassContext);
+
+  return <Icon size={size} {...props} className={cn(textClass, className)} />;
+};
+
+// ...existing code...
+export {
+  Button,
+  ButtonIcon,
+  buttonTextVariants,
+  buttonVariants,
+  ButtonInnerIcon,
+};
 export type { ButtonProps };

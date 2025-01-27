@@ -1,28 +1,64 @@
+import { ScrollView } from "react-native";
 import { FlashList } from "@shopify/flash-list";
+import { useSearchParams } from "solito/navigation";
 
 import { api } from "@homefront/app/utils/trpc";
 import { ActivityIndicator } from "@homefront/ui";
 
 import { ResourceItem } from "./ResourceItem";
+import { ResourceFilter, ResourceSort } from "./types";
 
-export function ResourcesList() {
+const LIMIT = 1;
+
+export function ResourcesList({ filter }: { filter?: ResourceFilter }) {
+  const searchParams = useSearchParams();
+  const sort = (searchParams?.get("sort") as ResourceSort) ?? "hot";
+
   const {
-    data: resources,
+    data,
     isLoading,
     isRefetching,
-  } = api.resources.getResources.useQuery();
+    isFetchingNextPage,
+    hasNextPage,
+    fetchNextPage,
+  } = api.resources.getResources.useInfiniteQuery(
+    {
+      limit: LIMIT,
+      sort,
+      filter,
+    },
+    {
+      getNextPageParam: (lastPage) => lastPage.nextCursor,
+    },
+  );
+
+  const resources = data?.pages.flatMap((page) => page.items) ?? [];
 
   if (isLoading) {
-    return <ActivityIndicator />;
+    return (
+      <ScrollView className="flex-1 items-center justify-center p-4">
+        <ActivityIndicator />
+      </ScrollView>
+    );
   }
+
+  const LoadingIndicator = () =>
+    isFetchingNextPage ? <ActivityIndicator className="py-4" /> : null;
 
   return (
     <FlashList
       data={resources}
-      refreshing={isLoading || isRefetching}
+      refreshing={isFetchingNextPage || isRefetching}
       renderItem={({ item: resource }) => <ResourceItem resource={resource} />}
-      estimatedItemSize={161}
-      keyExtractor={(resource) => resource.id}
+      estimatedItemSize={232}
+      keyExtractor={(resource) => `${sort}-${resource.id}`}
+      onEndReached={() => {
+        if (hasNextPage) {
+          fetchNextPage();
+        }
+      }}
+      onEndReachedThreshold={0.5}
+      ListFooterComponent={LoadingIndicator}
     />
   );
 }

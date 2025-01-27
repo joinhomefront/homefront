@@ -7,9 +7,11 @@ import * as Slot from "@rn-primitives/slot";
 
 import { cn } from "@homefront/ui";
 
-const TextClassContext = React.createContext<string | undefined>(undefined);
+export const TextClassContext = React.createContext<string | undefined>(
+  undefined,
+);
 
-const Text = React.forwardRef<TextRef, SlottableTextProps>(
+export const Text = React.forwardRef<TextRef, SlottableTextProps>(
   ({ className, asChild = false, ...props }, ref) => {
     const textClass = React.useContext(TextClassContext);
     const Component = asChild ? Slot.Text : RNText;
@@ -27,5 +29,3 @@ const Text = React.forwardRef<TextRef, SlottableTextProps>(
   },
 );
 Text.displayName = "Text";
-
-export { Text, TextClassContext };

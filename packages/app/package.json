@@ -48,6 +48,7 @@
     "lucide-react-native": "catalog:",
     "mapbox-gl": "^3.8.0",
     "maplibre-gl": "^4.7.1",
+    "normalize-url": "catalog:",
     "react-hook-form": "catalog:",
     "react-leaflet": "^4.2.1",
     "react-map-gl": "^7.1.7",

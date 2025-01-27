@@ -74,7 +74,7 @@ export const Header: React.FC<{ user?: SanitizedUser } & ViewProps> = ({
             )}
             <DropdownMenuContent className="native:w-72 w-64">
               <DropdownMenuGroup>
-                <Link href="/submit/resource">
+                <Link href="/submit/resource?type=link">
                   <DropdownMenuItem>
                     <View className="flex-row items-center space-x-2">
                       <SquareLibrary size={24} className="text-primary" />

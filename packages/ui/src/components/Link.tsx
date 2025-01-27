@@ -1,5 +1,7 @@
 import { useCallback } from "react";
-import { Linking, Platform, Pressable, View, ViewProps } from "react-native";
+import { Linking, Platform, Pressable } from "react-native";
+
+import { cn } from "../lib/utils";
 
 interface LinkProps {
   href: string;
@@ -8,7 +10,13 @@ interface LinkProps {
   className?: string;
 }
 
-export function Link({ href, children, style = {}, ...props }: LinkProps) {
+export function Link({
+  href,
+  children,
+  className,
+  style = {},
+  ...props
+}: LinkProps) {
   const handlePress = useCallback(async () => {
     if (Platform.OS === "web") {
       // Use the <a> tag for web
@@ -31,6 +39,7 @@ export function Link({ href, children, style = {}, ...props }: LinkProps) {
         target="_blank"
         rel="noopener noreferrer"
         style={{ textDecoration: "none", ...style }}
+        className={cn("pointer-events-auto cursor-pointer", className)}
         {...props}
       >
         {children}
@@ -39,7 +48,11 @@ export function Link({ href, children, style = {}, ...props }: LinkProps) {
   }
 
   return (
-    <Pressable onPress={handlePress} {...props}>
+    <Pressable
+      onPress={handlePress}
+      className={cn("pointer-events-auto cursor-pointer", className)}
+      {...props}
+    >
       {children}
     </Pressable>
   );
