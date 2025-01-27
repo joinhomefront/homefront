@@ -22,8 +22,6 @@ import type {
 import type { KyselyAdapterUser, SanitizedUser } from "../types";
 import { env } from "../../env";
 
-const SALT = "authjs.session-token";
-
 export const format = {
   from<T>(object?: Record<string, unknown>): T {
     const newObject: Record<string, unknown> = {};
@@ -90,7 +88,7 @@ function mapToAdapterSession(session: Session): AdapterSession {
 async function decodeSessionToken(sessionToken: string): Promise<JWT | null> {
   return decode<JWT>({
     token: sessionToken,
-    salt: SALT,
+    salt: env.AUTH_SALT,
     secret: env.AUTH_SECRET,
   });
 }

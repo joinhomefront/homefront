@@ -60,6 +60,12 @@ export function SignIn() {
           password,
         });
 
+        if ("error" in response) {
+          form.setError("root", { message: response.error });
+          setIsLoading(false);
+          return;
+        }
+
         const otpError = RequestSignUtil.handleNeedOtp(response);
         if (otpError) {
           setIsTotpRequired(true);
@@ -87,12 +93,17 @@ export function SignIn() {
 
   async function handleSecondFactor(values: z.infer<typeof formSchema>) {
     setIsLoading(true);
-    const { totp, miniSession } = values;
 
     try {
-      const verifiedUser = await RequestSignUtil.submitOtp(totp, miniSession);
-      if ("success" in verifiedUser && verifiedUser.success !== true) {
-        throw new Error("2FA verification failed");
+      const { totp, miniSession } = values;
+      const response = await RequestSignUtil.submitOtp(totp, miniSession);
+
+      if (!response.success || response.error) {
+        form.setError("totp", {
+          message: response.error ?? "Invalid authentication code",
+        });
+        setIsLoading(false);
+        return;
       }
 
       // On success, proceed with sign-in flow

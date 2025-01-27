@@ -51,7 +51,7 @@ export async function POST(req: Request) {
       );
     }
 
-    if (user.twoFactorEnabled) {
+    if (!!user.twoFactorEnabled) {
       // Generate server key pair
       const serverKeys = await generateECDHKeyPair();
       // Derive shared secret from client public key

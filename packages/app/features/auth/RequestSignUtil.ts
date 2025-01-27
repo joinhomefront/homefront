@@ -1,6 +1,11 @@
 import { getBaseUrl } from "@homefront/app/utils/base-url";
 
-import { NeedOtpError, SessionCredentials, SessionResponse } from "./types";
+import {
+  FullSessionResponse,
+  NeedOtpError,
+  SessionCredentials,
+  SessionResponse,
+} from "./types";
 
 interface StorageUtility {
   get(key: string): string | null;
@@ -507,7 +512,15 @@ export class RequestSignUtil {
       body: JSON.stringify(payload),
     });
 
-    return response.json();
+    const data = await response.json();
+
+    if (!response.ok) {
+      return {
+        error: data.error ?? "An unexpected error occurred",
+      };
+    }
+
+    return data;
   }
 
   static handleNeedOtp(response: SessionResponse): NeedOtpError | null {
@@ -521,7 +534,7 @@ export class RequestSignUtil {
     otp: string,
     miniSession: string,
     additionalHeaders: Record<string, string> = {},
-  ): Promise<SessionResponse> {
+  ): Promise<FullSessionResponse> {
     const url = `${getBaseUrl()}/api/sessions/full`;
     const method = "POST";
     const publicKey = await RequestSignUtil.getPublicKey();

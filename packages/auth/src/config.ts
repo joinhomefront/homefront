@@ -41,7 +41,7 @@ export const authConfig: NextAuthConfig & AuthConfig = {
 
       if (account && account.provider === "session-creator") {
         const session = await adapter.createSession({
-          expires: new Date(Date.now() + 60 * 1000),
+          expires: new Date(Date.now() + 60 * 10 * 1000),
           sessionToken: crypto.randomUUID(),
           userId: user.id ?? "",
         });
@@ -95,32 +95,6 @@ export const authConfig: NextAuthConfig & AuthConfig = {
     },
     session: ({ session }) => {
       return session;
-    },
-  },
-  cookies: {
-    state: {
-      name: "authjs.state",
-      options: {
-        httpOnly: true,
-        sameSite: isSecureContext ? "strict" : false,
-        secure: isSecureContext,
-      },
-    },
-    sessionToken: {
-      name: "authjs.session-token",
-      options: {
-        httpOnly: true,
-        sameSite: isSecureContext ? "strict" : false,
-        secure: isSecureContext,
-      },
-    },
-  },
-  jwt: {
-    async encode({ token, salt, secret }) {
-      return encode({ token, salt, secret });
-    },
-    async decode({ token, salt, secret }) {
-      return decode({ token, salt, secret });
     },
   },
   session: {

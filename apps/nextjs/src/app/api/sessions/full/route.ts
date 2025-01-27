@@ -19,7 +19,7 @@ import { env } from "~/env";
 
 // Helper function to produce error responses
 function errorResponse(message: string, status: number = 400) {
-  return NextResponse.json({ error: message }, { status });
+  return NextResponse.json({ success: false, error: message }, { status });
 }
 
 export async function POST(req: Request) {
