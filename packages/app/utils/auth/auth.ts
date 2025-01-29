@@ -1,6 +1,5 @@
 import { z } from "zod";
 
-import type { LoginRequest } from "@homefront/auth";
 import { getBaseUrl } from "@homefront/app/utils/base-url";
 import { deleteToken, setToken } from "@homefront/app/utils/session-store";
 
@@ -17,7 +16,7 @@ export const signIn = async (
 ) => {
   const signInUrl = `${getBaseUrl()}/api/auth/login`;
 
-  const request: LoginRequest = { username, password, totp, recoveryCode };
+  const request = { username, password, totp, recoveryCode };
 
   const response = await fetch(signInUrl, {
     method: "POST",
