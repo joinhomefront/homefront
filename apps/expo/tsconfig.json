@@ -1,29 +1,16 @@
 {
-  "extends": [
-    "@homefront/tsconfig/base.json"
-  ],
+  "extends": ["expo/tsconfig.base", "@homefront/tsconfig/base.json"],
   "compilerOptions": {
     "baseUrl": ".",
-    "jsxImportSource": "nativewind",
     "paths": {
-      "~/*": [
-        "./src/*"
-      ],
-      "@homefront/app/*": [
-        "../../packages/app/*"
-      ]
+      "@homefront/app/*": ["../../packages/app/*"],
+      "@homefront/ui/*": ["../../packages/ui/*"]
     },
     "jsx": "react-native",
-    "types": [
-      "nativewind/types"
-    ],
-    "checkJs": false,
-    "moduleSuffixes": [
-      ".ios",
-      ".android",
-      ".native",
-      ""
-    ]
+    "jsxImportSource": "nativewind",
+    "types": ["nativewind/types"],
+    "checkJs": false
+    // "moduleSuffixes": [".ios", ".android", ".native", ""]
   },
   "include": [
     "src",
@@ -33,7 +20,5 @@
     "expo-env.d.ts",
     "nativewind-env.d.ts"
   ],
-  "exclude": [
-    "node_modules"
-  ]
+  "exclude": ["node_modules"]
 }

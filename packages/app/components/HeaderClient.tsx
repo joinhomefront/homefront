@@ -10,7 +10,7 @@ import {
   SidebarProvider,
   useSidebar,
 } from "@homefront/app/hooks/useSidebar.web";
-import { SanitizedUser } from "@homefront/db";
+import type { SanitizedUser } from "@homefront/db";
 import {
   Button,
   DropdownMenu,

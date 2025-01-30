@@ -85,7 +85,9 @@ export async function validateBlackBox(
 ): Promise<boolean> {
   try {
     const parsed = decodeBase64(blackbox);
-    const { data, signature } = JSON.parse(new TextDecoder().decode(parsed));
+    const { data, signature } = JSON.parse(
+      new TextDecoder().decode(parsed),
+    ) as BlackBox;
 
     if (
       data.fingerprint !== fingerprint ||

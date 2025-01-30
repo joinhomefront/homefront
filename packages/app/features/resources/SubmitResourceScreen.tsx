@@ -8,7 +8,7 @@ import { H3 } from "@homefront/ui";
 
 import { LinkForm } from "./LinkForm";
 import { Tabs } from "./Tabs";
-import { Tab } from "./types";
+import type { Tab } from "./types";
 
 export function SubmitResourceScreen() {
   const { push, replace } = useRouter();

@@ -1,7 +1,7 @@
 {
   "extends": "@homefront/tsconfig/internal-package.json",
   "compilerOptions": {
-    "lib": ["ES2022", "dom", "dom.iterable"],
+    "allowSyntheticDefaultImports": true,
     "jsx": "preserve",
     "jsxImportSource": "nativewind",
     "baseUrl": ".",
@@ -10,6 +10,6 @@
     },
     "types": ["nativewind/types"]
   },
-  "include": ["**/*.ts", "**/*.tsx"],
+  "include": ["**/*.ts", "**/*.tsx", "../api/src", "../ui/src"],
   "exclude": ["node_modules", "dist"]
 }

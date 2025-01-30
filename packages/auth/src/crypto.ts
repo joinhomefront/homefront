@@ -33,7 +33,7 @@ export async function deriveSharedSecret(
 
 export async function deriveAESKey(
   sharedSecret: ArrayBuffer,
-  length: number = 256,
+  length = 256,
 ): Promise<CryptoKey> {
   const salt = crypto.getRandomValues(new Uint8Array(16));
   const keyMaterial = await crypto.subtle.importKey(
@@ -61,7 +61,7 @@ export async function deriveAESKey(
 export const encryptData = async (
   data: string,
   encryptionKeyBase64: string,
-  isBase64: boolean = false, // Add a flag to indicate if the input is Base64
+  isBase64 = false, // Add a flag to indicate if the input is Base64
 ): Promise<string> => {
   const iv = crypto.getRandomValues(new Uint8Array(12));
   const encryptionKey = decodeBase64(encryptionKeyBase64);
@@ -234,7 +234,7 @@ interface SignatureFields {
 
 function parseSignatureInput(input: string): SignatureFields | null {
   // Extract sig1 value: sig1=("@method" "@path" ...);created=123;nonce="abc"
-  const match = input.match(/sig1=\((.*?)\);created=(\d+);nonce="([^"]+)"/);
+  const match = /sig1=\((.*?)\);created=(\d+);nonce="([^"]+)"/.exec(input);
   if (!match) return null;
 
   const [, headers, created, nonce] = match;

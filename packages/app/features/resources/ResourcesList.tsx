@@ -7,14 +7,14 @@ import { useSearchParams } from "solito/navigation";
 import { api } from "@homefront/app/utils/trpc";
 import { ActivityIndicator, Text } from "@homefront/ui";
 
+import type { ResourceFilter, ResourceSort } from "./types";
 import { ResourceItem } from "./ResourceItem";
-import { ResourceFilter, ResourceSort } from "./types";
 
 const LIMIT = 20;
 
 export function ResourcesList({ filter }: { filter?: ResourceFilter }) {
   const searchParams = useSearchParams();
-  const sort = (searchParams?.get("sort") as ResourceSort) ?? "hot";
+  const sort = searchParams?.get("sort") as ResourceSort;
 
   const {
     data,
@@ -57,9 +57,9 @@ export function ResourcesList({ filter }: { filter?: ResourceFilter }) {
       renderItem={({ item: resource }) => <ResourceItem resource={resource} />}
       estimatedItemSize={232}
       keyExtractor={(resource) => `${sort}-${resource.id}`}
-      onEndReached={() => {
+      onEndReached={async () => {
         if (hasNextPage) {
-          fetchNextPage();
+          await fetchNextPage();
         }
       }}
       onEndReachedThreshold={0.5}

@@ -6,8 +6,7 @@ import * as React from "react";
 import * as TogglePrimitive from "@rn-primitives/toggle";
 import { cva } from "class-variance-authority";
 
-import { cn } from "@homefront/ui";
-
+import { cn } from "../lib/utils";
 import { TextClassContext } from "./text";
 
 const toggleVariants = cva(

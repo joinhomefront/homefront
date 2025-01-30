@@ -1,7 +1,7 @@
-import { Button, View } from "react-native";
-import { Banknote, Pencil } from "lucide-react-native";
+import { View } from "react-native";
+import { Banknote } from "lucide-react-native";
 
-import { DonationType } from "@homefront/db";
+import type { DonationType } from "@homefront/db";
 import { Text } from "@homefront/ui";
 
 function getPaymentTypeLabel(type: string) {

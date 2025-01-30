@@ -3,8 +3,7 @@
 import * as React from "react";
 import * as TablePrimitive from "@rn-primitives/table";
 
-import { cn } from "@homefront/ui";
-
+import { cn } from "../lib/utils";
 import { TextClassContext } from "./text";
 
 const Table = React.forwardRef<

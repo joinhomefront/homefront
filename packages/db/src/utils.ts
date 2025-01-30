@@ -1,4 +1,5 @@
-import { RawBuilder, sql } from "kysely";
+import type { RawBuilder } from "kysely";
+import { sql } from "kysely";
 
 if (!process.env.DB_ENCRYPTION_KEY) {
   throw new Error("DB_ENCRYPTION_KEY is required");

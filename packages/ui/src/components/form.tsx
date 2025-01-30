@@ -14,10 +14,9 @@ import { Platform, View } from "react-native";
 import { OtpInput } from "react-native-otp-entry";
 import { Controller, FormProvider, useFormContext } from "react-hook-form";
 
-import { cn } from "@homefront/ui";
-
 import type { Option } from "./select";
 import colors from "../colors";
+import { cn } from "../lib/utils";
 import { Checkbox } from "./checkbox";
 import { Input } from "./input";
 import { Label } from "./label";

@@ -6,7 +6,7 @@ import { Text, View } from "react-native";
 import { useTheme } from "@react-navigation/native";
 import { cva } from "class-variance-authority";
 
-import { cn } from "@homefront/ui";
+import { cn } from "../lib/utils";
 
 const alertVariants = cva(
   "relative w-full rounded-lg border border-border bg-background p-4 shadow shadow-foreground/10",

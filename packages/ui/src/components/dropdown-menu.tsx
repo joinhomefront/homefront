@@ -8,12 +8,11 @@ import { Platform, StyleSheet, Text, View } from "react-native";
 import * as DropdownMenuPrimitive from "@rn-primitives/dropdown-menu";
 import { cva } from "class-variance-authority";
 
-import { cn } from "@homefront/ui";
-
 import { Check } from "../lib/icons/Check";
 import { ChevronDown } from "../lib/icons/ChevronDown";
 import { ChevronRight } from "../lib/icons/ChevronRight";
 import { ChevronUp } from "../lib/icons/ChevronUp";
+import { cn } from "../lib/utils";
 import { TextClassContext } from "./text";
 
 const DropdownMenu = DropdownMenuPrimitive.Root;

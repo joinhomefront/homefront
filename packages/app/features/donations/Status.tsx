@@ -1,6 +1,7 @@
 import { Text, View } from "react-native";
-import { cva, VariantProps } from "class-variance-authority";
-import Stripe from "stripe";
+import type { VariantProps } from "class-variance-authority";
+import { cva } from "class-variance-authority";
+import type Stripe from "stripe";
 
 import { cn } from "@homefront/ui"; // Assuming you have a utility like `cn` for class merging
 

@@ -1,5 +1,6 @@
 "use client";
 
+import type { LucideIcon } from "lucide-react-native";
 import type { ViewProps } from "react-native";
 import React, { useEffect } from "react";
 import { Text, View } from "react-native";
@@ -13,7 +14,6 @@ import {
   Home,
   Library,
   ListTodo,
-  LucideIcon,
   Settings,
   SquareLibrary,
 } from "lucide-react-native";
@@ -131,16 +131,14 @@ const Sidebar: React.FC<ViewProps> = () => {
                             isSubActive && "bg-primary-50 hover:bg-primary-100",
                           )}
                         >
-                          {SubIcon && (
-                            <Text
-                              className={cn(
-                                "text-gray-500",
-                                isSubActive && "text-primary",
-                              )}
-                            >
-                              <SubIcon size={20} />
-                            </Text>
-                          )}
+                          <Text
+                            className={cn(
+                              "text-gray-500",
+                              isSubActive && "text-primary",
+                            )}
+                          >
+                            <SubIcon size={20} />
+                          </Text>
                           <Text
                             className={cn(
                               "text-sm text-gray-600",

@@ -8,7 +8,7 @@
     "build:opennext": "OPEN_NEXT_DEBUG=true pnpx @opennextjs/aws@latest build",
     "build:sst": "pnpm next build && pnpm build:opennext",
     "clean": "git clean -xdf .cache .next .turbo node_modules",
-    "dev": "pnpm next dev",
+    "dev": "pnpm with-env next dev",
     "dev:next": "pnpm with-env turbo dev",
     "format": "prettier --check . --ignore-path ../../.gitignore",
     "lint": "eslint",

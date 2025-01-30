@@ -15,6 +15,7 @@ const debouncedCheckPasswordVulnerability = cancelableDebounce<
     password: string,
   ): Promise<{ numPwns: number }> => {
     const res = await fetch(
+      // eslint-disable-next-line turbo/no-undeclared-env-vars
       `${process.env.NEXT_PUBLIC_BASE_URL}/api/auth/password-vulnerability`,
       {
         method: "POST",

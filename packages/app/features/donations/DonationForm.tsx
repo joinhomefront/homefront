@@ -6,9 +6,9 @@ import { loadStripe } from "@stripe/stripe-js";
 import { LockKeyhole } from "lucide-react-native";
 import { useForm } from "react-hook-form";
 
+import type { DonationType } from "@homefront/db";
 import type { DonationFormData } from "@homefront/validators";
 import { api } from "@homefront/app/utils/trpc";
-import { DonationType } from "@homefront/db";
 import { ActivityIndicator, Text } from "@homefront/ui";
 import { DonationFormSchema } from "@homefront/validators";
 
@@ -21,7 +21,7 @@ export enum DonationStep {
   PAYMENT = "payment",
 }
 const stripePromise = loadStripe(
-  process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY!,
+  process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY ?? "",
 );
 
 export function DonationForm() {
@@ -49,7 +49,7 @@ export function DonationForm() {
 
   const { mutateAsync: initiateDonation } =
     api.donations.initiateDonation.useMutation({
-      onSuccess: ({ customerSession, paymentIntent, clientSecret }) => {
+      onSuccess: ({ customerSession, clientSecret }) => {
         setClientSecret(clientSecret);
         setCustomerSessionClientSecret(customerSession.client_secret);
         setStep(DonationStep.PAYMENT);
@@ -61,7 +61,7 @@ export function DonationForm() {
   const createCustomer = api.donations.createCustomer.useMutation({});
 
   const findOrCreateCustomer = async () => {
-    if (customer && customer.stripeCustomerId) {
+    if (customer?.stripeCustomerId) {
       return Promise.resolve(customer);
     }
 

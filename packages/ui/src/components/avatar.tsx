@@ -3,7 +3,7 @@
 import * as React from "react";
 import * as AvatarPrimitive from "@rn-primitives/avatar";
 
-import { cn } from "@homefront/ui";
+import { cn } from "../lib/utils";
 
 const Avatar = React.forwardRef<
   AvatarPrimitive.RootRef,

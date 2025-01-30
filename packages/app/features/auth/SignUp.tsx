@@ -8,7 +8,7 @@ import { ShieldAlert } from "lucide-react-native";
 import { signIn } from "next-auth/react";
 import { useForm } from "react-hook-form";
 import { Link } from "solito/link";
-import { useRouter, useSearchParams } from "solito/navigation";
+import { useSearchParams } from "solito/navigation";
 
 import { InviteInfo } from "@homefront/app/features/auth/InviteInfo";
 import { setRecoveryPhrase } from "@homefront/app/utils/recovery-phrase-store";

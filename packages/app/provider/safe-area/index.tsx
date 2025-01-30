@@ -1,9 +1,9 @@
-import { SafeAreaProvider as RNSafeAreaProvider } from 'react-native-safe-area-context'
+import { SafeAreaProvider as RNSafeAreaProvider } from "react-native-safe-area-context";
 
 export const SafeAreaProvider = ({
   children,
 }: {
-  children: React.ReactNode
+  children: React.ReactNode;
 }) => {
-  return <RNSafeAreaProvider>{children}</RNSafeAreaProvider>
-}
+  return <RNSafeAreaProvider>{children}</RNSafeAreaProvider>;
+};

@@ -94,7 +94,7 @@ function ThankYou() {
     typeof paymentDetails.invoice.subscription !== "string"
   ) {
     const subscription = paymentDetails.invoice.subscription;
-    const interval = subscription.items?.data[0]?.price?.recurring?.interval;
+    const interval = subscription.items.data[0]?.price?.recurring?.interval;
     if (interval) {
       frequency = getRecurringText(interval, amount);
     }

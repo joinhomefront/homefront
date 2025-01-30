@@ -8,7 +8,6 @@ import {
   createCustomer,
   createDonation,
   createPrice,
-  getCustomerForUserId,
   getPaymentIntent,
   getPaymentIntents,
 } from "@homefront/stripe";
@@ -173,13 +172,10 @@ export const donationsRouter = {
         clientSecret: z.string(),
       }),
     )
-    .query(async ({ ctx, input }) => {
+    .query(async ({ input }) => {
       const paymentIntent = await getPaymentIntent(input.paymentIntentId);
 
-      if (
-        !paymentIntent ||
-        paymentIntent.client_secret !== input.clientSecret
-      ) {
+      if (paymentIntent.client_secret !== input.clientSecret) {
         throw new Error("Invalid payment intent");
       }
 

@@ -3,15 +3,10 @@ import { sql } from "kysely";
 import normalizeUrl from "normalize-url";
 import { z } from "zod";
 
-import { Session } from "@homefront/auth/types";
+import type { Session } from "@homefront/auth/types";
+import type { DomainArea, Resource, ResourceVote } from "@homefront/db";
 import { uploadRemoteImageToS3 } from "@homefront/aws";
-import {
-  DomainArea,
-  jsonArrayFrom,
-  jsonObjectFrom,
-  Resource,
-  ResourceVote,
-} from "@homefront/db";
+import { jsonArrayFrom, jsonObjectFrom } from "@homefront/db";
 import { getMetadata } from "@homefront/scraper";
 import {
   LinkResourceSchema,
@@ -362,18 +357,18 @@ export const resourcesRouter = {
       }
 
       if (encodedCursor) {
-        const cursor: ResourceCursor = JSON.parse(
+        const cursor = JSON.parse(
           Buffer.from(encodedCursor, "base64").toString(),
-        );
+        ) as ResourceCursor;
 
         if (!filter) {
           switch (sort) {
             case "hot":
               query = query.where((eb) =>
                 eb.or([
-                  eb("r.hotScore", "<", cursor.hotScore!),
+                  eb("r.hotScore", "<", cursor.hotScore ?? 0),
                   eb.and([
-                    eb("r.hotScore", "=", cursor.hotScore!),
+                    eb("r.hotScore", "=", cursor.hotScore ?? 0),
                     eb("r.id", "<", cursor.id),
                   ]),
                 ]),
@@ -382,9 +377,9 @@ export const resourcesRouter = {
             case "top":
               query = query.where((eb) =>
                 eb.or([
-                  eb("r.votes", "<", cursor.votes!),
+                  eb("r.votes", "<", cursor.votes ?? 0),
                   eb.and([
-                    eb("r.votes", "=", cursor.votes!),
+                    eb("r.votes", "=", cursor.votes ?? 0),
                     eb("r.id", "<", cursor.id),
                   ]),
                 ]),
@@ -393,9 +388,9 @@ export const resourcesRouter = {
             case "rising":
               query = query.where((eb) =>
                 eb.or([
-                  eb("r.risingScore", "<", cursor.risingScore!),
+                  eb("r.risingScore", "<", cursor.risingScore ?? 0),
                   eb.and([
-                    eb("r.risingScore", "=", cursor.risingScore!),
+                    eb("r.risingScore", "=", cursor.risingScore ?? 0),
                     eb("r.id", "<", cursor.id),
                   ]),
                 ]),
@@ -441,7 +436,8 @@ export const resourcesRouter = {
 
       let nextCursor: string | undefined;
       if (hasNextPage && slicedItems.length > 0) {
-        const last = slicedItems[slicedItems.length - 1]!;
+        const last = slicedItems[slicedItems.length - 1];
+        if (!last) return { items: slicedItems };
         const cursorData: ResourceCursor = {
           id: last.id,
           date: last.createdAt.toISOString(),

@@ -16,7 +16,7 @@ import { Link } from "solito/link";
 
 import { UserAvatar } from "@homefront/app/features/avatars/UserAvatar";
 import { useSidebar } from "@homefront/app/hooks/useSidebar.web";
-import { SanitizedUser } from "@homefront/db";
+import type { SanitizedUser } from "@homefront/db";
 import {
   Button,
   cn,

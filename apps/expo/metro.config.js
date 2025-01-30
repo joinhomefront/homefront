@@ -8,7 +8,7 @@ const path = require("path");
 const config = withTurborepoManagedCache(
   withMonorepoPaths(
     withNativeWind(getDefaultConfig(__dirname), {
-      input: "./src/styles.css",
+      input: "./src/globals.css",
       configPath: "./tailwind.config.ts",
     }),
   ),
@@ -17,6 +17,12 @@ const config = withTurborepoManagedCache(
 // XXX: Resolve our exports in workspace packages
 // https://github.com/expo/expo/issues/26926
 config.resolver.unstable_enablePackageExports = true;
+
+config.resolver.unstable_conditionNames = [
+  "browser",
+  "require",
+  "react-native",
+];
 
 module.exports = config;
 
@@ -54,7 +60,7 @@ function withMonorepoPaths(config) {
  */
 function withTurborepoManagedCache(config) {
   config.cacheStores = [
-    new FileStore({ root: path.join(__dirname, ".cache/metro") }),
+    new FileStore({ root: path.join(__dirname, "node_modules/.cache/metro") }),
   ];
   return config;
 }

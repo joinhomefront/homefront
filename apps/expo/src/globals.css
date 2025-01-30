@@ -1,0 +1,89 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: 0 0% 100%;
+  --foreground: 240 10% 3.9%;
+  --card: 0 0% 100%;
+  --card-foreground: 240 10% 3.9%;
+  --popover: 0 0% 100%;
+  --popover-foreground: 240 10% 3.9%;
+
+  /* Primary colors (prussian-blue) */
+  --primary: 205 88% 39%; /* prussian-blue 600 */
+  --primary-foreground: 208 87% 97%; /* prussian-blue 50 */
+  --primary-background: 207 72% 21%; /* prussian-blue 900 */
+
+  /* Secondary colors (stiletto) */
+  --secondary: 358 57% 51%; /* stiletto 600 */
+  --secondary-foreground: 0 71% 97%; /* stiletto 50 */
+
+  /* Muted colors */
+  --muted: 206 86% 86%; /* prussian-blue 200 */
+  --muted-foreground: 205 88% 39%; /* prussian-blue 600 */
+
+  /* Accent colors */
+  --accent: 206 86% 86%; /* prussian-blue 200 */
+  --accent-foreground: 205 88% 39%; /* prussian-blue 600 */
+
+  /* Destructive colors (stiletto) */
+  --destructive: 358 57% 51%; /* stiletto 600 */
+  --destructive-foreground: 0 71% 97%; /* stiletto 50 */
+  --destructive-background: 358 50% 31%; /* stiletto 900 */
+
+  /* Border and input colors */
+  --border: 204 80% 48%; /* prussian-blue 500 */
+  --input: 204 80% 48%; /* prussian-blue 500 */
+
+  /* Ring color */
+  --ring: 204 83% 60%; /* prussian-blue 400 */
+  --radius: 0.5rem;
+
+  /* Logo white color */
+  --logo-white: 34 79% 93%; /* peach-cream 100 */
+
+  --dvh-unit: 1vh;
+  --viewport-height: calc(calc(var(--dvh-unit) * 100));
+  --header-height: 57px;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: 240 10% 3.9%;
+    --foreground: 0 0% 98%;
+    --card: 240 10% 3.9%;
+    --card-foreground: 0 0% 98%;
+    --popover: 240 10% 3.9%;
+    --popover-foreground: 0 0% 98%;
+
+    /* Primary colors (prussian-blue) */
+    --primary: 205 88% 39%; /* prussian-blue 600 */
+    --primary-foreground: 208 87% 97%; /* prussian-blue 50 */
+    --primary-background: 207 72% 21%; /* prussian-blue 900 */
+
+    /* Secondary colors (stiletto) */
+    --secondary: 358 57% 51%; /* stiletto 600 */
+    --secondary-foreground: 0 71% 97%; /* stiletto 50 */
+
+    /* Muted colors */
+    --muted: 206 80% 27%; /* prussian-blue 800 */
+    --muted-foreground: 206 86% 86%; /* prussian-blue 200 */
+
+    /* Accent colors */
+    --accent: 206 80% 27%; /* prussian-blue 800 */
+    --accent-foreground: 206 86% 86%; /* prussian-blue 200 */
+
+    /* Destructive colors (stiletto) */
+    --destructive: 357 58% 40%; /* stiletto 700 */
+    --destructive-foreground: 0 71% 97%; /* stiletto 50 */
+    --destructive-background: 357 58% 40%; /* stiletto 700 */
+
+    /* Border and input colors */
+    --border: 206 80% 27%; /* prussian-blue 800 */
+    --input: 206 80% 27%; /* prussian-blue 800 */
+
+    /* Ring color */
+    --ring: 204 83% 60%; /* prussian-blue 400 */
+  }
+}

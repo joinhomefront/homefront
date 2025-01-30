@@ -1,11 +1,14 @@
 /// <reference types="./types.d.ts" />
 
 import * as path from "node:path";
+import { fileURLToPath } from "url";
 import { includeIgnoreFile } from "@eslint/compat";
 import eslint from "@eslint/js";
 import importPlugin from "eslint-plugin-import";
 import turboPlugin from "eslint-plugin-turbo";
 import tseslint from "typescript-eslint";
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 /**
  * All packages that leverage t3-env should use this rule
@@ -39,8 +42,8 @@ export const restrictEnvAccess = tseslint.config(
 
 export default tseslint.config(
   // Ignore files not tracked by VCS and any config files
-  includeIgnoreFile(path.join(import.meta.dirname, "../../.gitignore")),
-  { ignores: ["**/*.config.*"] },
+  includeIgnoreFile(path.join(__dirname, "../../.gitignore")),
+  { ignores: ["**/*.config.*", "**/sst-env.d.ts"] },
   {
     files: ["**/*.js", "**/*.ts", "**/*.tsx"],
     plugins: {

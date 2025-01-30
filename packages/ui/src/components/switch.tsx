@@ -11,9 +11,8 @@ import Animated, {
 import * as SwitchPrimitives from "@rn-primitives/switch";
 import { CheckIcon } from "lucide-react-native";
 
-import { cn } from "@homefront/ui";
-
 import { useColorScheme } from "../lib/useColorScheme";
+import { cn } from "../lib/utils";
 
 const SwitchWeb = React.forwardRef<
   SwitchPrimitives.RootRef,

@@ -5,8 +5,7 @@ import type { LucideIcon } from "lucide-react-native";
 import * as React from "react";
 import * as ToggleGroupPrimitive from "@rn-primitives/toggle-group";
 
-import { cn } from "@homefront/ui";
-
+import { cn } from "../lib/utils";
 import { TextClassContext } from "./text";
 import { toggleTextVariants, toggleVariants } from "./toggle";
 

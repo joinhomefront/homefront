@@ -17,16 +17,16 @@ import {
   Text,
 } from "@homefront/ui";
 
+import type { ResourceSort } from "./types";
 import { RESOURCE_SORTS } from "./data";
 import { ResourceSortsIcon } from "./ResourceSortsIcon";
-import { ResourceSort } from "./types";
 
 export function ResourceSorts() {
   const pathname = usePathname();
   const searchParams = useSearchParams();
   const [isOpen, setIsOpen] = useState(false);
   const [currentSort, setCurrentSort] = useState<ResourceSort>(
-    (searchParams?.get("sort") as ResourceSort) ?? "hot",
+    searchParams?.get("sort") as ResourceSort,
   );
   const activeLabel = RESOURCE_SORTS.find((s) => s.key === currentSort)?.label;
 

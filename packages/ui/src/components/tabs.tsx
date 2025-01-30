@@ -3,8 +3,7 @@
 import * as React from "react";
 import * as TabsPrimitive from "@rn-primitives/tabs";
 
-import { cn } from "@homefront/ui";
-
+import { cn } from "../lib/utils";
 import { TextClassContext } from "./text";
 
 const Tabs = TabsPrimitive.Root;

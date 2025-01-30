@@ -12,7 +12,7 @@ import {
 import { H2, Text } from "@homefront/ui";
 
 import { ResourcesList } from "./ResourcesList";
-import { ResourceFilter } from "./types";
+import type { ResourceFilter } from "./types";
 
 interface ResourceScreenProps {
   filter: ResourceFilter;

@@ -1,33 +1,35 @@
 import "@bacons/text-decoder/install";
 
+import { StrictMode } from "react";
 import { Stack } from "expo-router";
 import { StatusBar } from "expo-status-bar";
-import { Provider } from "@homefront/app/provider";
+import { NavigationContainer } from "@react-navigation/native";
 import { useColorScheme } from "nativewind";
 
-import "../styles.css";
+import { Provider } from "@homefront/app/provider";
+import colors from "@homefront/ui/colors";
 
-// This is the main layout of the app
-// It wraps your pages with the providers they need
-export default function RootLayout() {
+import "../globals.css";
+
+export default function Layout() {
   const { colorScheme } = useColorScheme();
   return (
-    <Provider>
-      {/*
-          The Stack component displays the current page.
-          It also allows you to configure your screens 
-        */}
-      <Stack
-        screenOptions={{
-          headerStyle: {
-            backgroundColor: "#f472b6",
-          },
-          contentStyle: {
-            backgroundColor: colorScheme === "dark" ? "#09090B" : "#FFFFFF",
-          },
-        }}
-      />
-      <StatusBar />
-    </Provider>
+    <StrictMode>
+      <NavigationContainer>
+        <Provider>
+          <Stack
+            screenOptions={{
+              headerStyle: {
+                backgroundColor: colors.primary[500],
+              },
+              contentStyle: {
+                backgroundColor: colorScheme === "dark" ? "#09090B" : "#FFFFFF",
+              },
+            }}
+          />
+          <StatusBar />
+        </Provider>
+      </NavigationContainer>
+    </StrictMode>
   );
 }

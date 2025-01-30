@@ -198,10 +198,12 @@ export function ReportDialog({
             <View className="space-y-4">
               <View>
                 <Text className="font-medium">
-                  {reportOptionsMap[selectedReason!].label}
+                  {selectedReason ? reportOptionsMap[selectedReason].label : ""}
                 </Text>
                 <Text className="text-sm text-gray-500">
-                  {reportOptionsMap[selectedReason!].description}
+                  {selectedReason
+                    ? reportOptionsMap[selectedReason].description
+                    : ""}
                 </Text>
               </View>
 

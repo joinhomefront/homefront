@@ -2,7 +2,6 @@ import type { AuthConfig } from "@auth/core/types";
 import type { NextAuthConfig } from "next-auth";
 import type { JWT } from "next-auth/jwt";
 import { skipCSRFCheck } from "@auth/core";
-import { decode, encode } from "next-auth/jwt";
 
 import { db } from "@homefront/db";
 import { APIErrorSchema, TokenResponseSchema } from "@homefront/validators";

@@ -5,7 +5,7 @@ import * as React from "react";
 import { Text as RNText } from "react-native";
 import * as Slot from "@rn-primitives/slot";
 
-import { cn } from "@homefront/ui";
+import { cn } from "../lib/utils";
 
 export const TextClassContext = React.createContext<string | undefined>(
   undefined,

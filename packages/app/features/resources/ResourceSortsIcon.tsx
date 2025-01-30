@@ -2,7 +2,7 @@ import { Award, Egg, Flame, TrendingUp } from "lucide-react-native";
 
 import { ButtonInnerIcon } from "@homefront/ui";
 
-import { ResourceSort } from "./types";
+import type { ResourceSort } from "./types";
 
 interface ResourceSortsIconProps {
   sort: ResourceSort;

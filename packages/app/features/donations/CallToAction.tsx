@@ -1,9 +1,9 @@
 import { View } from "react-native";
-import { ArrowRight, HandHelping, HeartHandshake } from "lucide-react-native";
+import { ArrowRight, HeartHandshake } from "lucide-react-native";
 import { Link } from "solito/link";
 
 import { api } from "@homefront/app/utils/trpc";
-import { ActivityIndicator, Button, H3, P, Text } from "@homefront/ui";
+import { ActivityIndicator, Button, H3, Text } from "@homefront/ui";
 
 export function CallToAction() {
   const { data: isCustomer, isLoading } =

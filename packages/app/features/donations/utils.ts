@@ -1,5 +1,5 @@
 import dayjs from "@homefront/dayjs";
-import { DonationType, StripeProduct } from "@homefront/db";
+import type { DonationType, StripeProduct } from "@homefront/db";
 
 import { MONTHLY_AMOUNTS, ONE_TIME_AMOUNTS, YEARLY_AMOUNTS } from "./data";
 

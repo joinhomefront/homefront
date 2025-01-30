@@ -3,7 +3,7 @@
 import * as React from "react";
 import * as LabelPrimitive from "@rn-primitives/label";
 
-import { cn } from "@homefront/ui";
+import { cn } from "../lib/utils";
 
 const Label = React.forwardRef<
   LabelPrimitive.TextRef,

@@ -5,8 +5,7 @@ import { Platform, StyleSheet } from "react-native";
 import Animated, { FadeIn } from "react-native-reanimated";
 import * as HoverCardPrimitive from "@rn-primitives/hover-card";
 
-import { cn } from "@homefront/ui";
-
+import { cn } from "../lib/utils";
 import { TextClassContext } from "./text";
 
 const HoverCard = HoverCardPrimitive.Root;

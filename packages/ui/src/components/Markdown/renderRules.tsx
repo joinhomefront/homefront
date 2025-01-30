@@ -1,37 +1,40 @@
+import type { CSSProperties } from "react";
+import type { ImageStyle } from "react-native";
 import type { RenderRules } from "react-native-markdown-display";
 import { Platform, TouchableWithoutFeedback, View } from "react-native";
 import { hasParents, openUrl } from "react-native-markdown-display";
 import { SolitoImage } from "solito/image";
 
+import { Card } from "../../components/card";
+import { Separator } from "../../components/separator";
 import {
-  BlockQuote,
-  Card,
-  H1,
-  H2,
-  H3,
-  H4,
-  Separator,
   Table,
   TableBody,
   TableCell,
   TableHeader,
   TableRow,
-  Text,
-  TextClassContext,
-} from "@homefront/ui";
+} from "../../components/table";
+import { Text, TextClassContext } from "../../components/text";
+import { BlockQuote, H1, H2, H3, H4 } from "../../components/typography";
 
 interface ImageProps {
   src: string;
   alt?: string;
-  style?: any;
+  style?: CSSProperties | ImageStyle;
 }
 
 const Image = Platform.select({
   web: ({ src, alt, style }: ImageProps) => (
-    <img src={src} alt={alt} style={style} />
+    <img src={src} alt={alt} style={style as CSSProperties} />
   ),
   default: ({ src, alt, style }: ImageProps) => (
-    <SolitoImage style={style} src={src} alt={alt ?? ""} fill unoptimized />
+    <SolitoImage
+      style={style as ImageStyle}
+      src={src}
+      alt={alt ?? ""}
+      fill
+      unoptimized
+    />
   ),
 });
 
@@ -295,7 +298,13 @@ const rules = {
         ? src
         : `${defaultImageHandler}${src}`;
 
-    return <Image src={uri} alt={alt} style={styles._VIEW_SAFE_image} />;
+    return (
+      <Image
+        src={uri}
+        alt={alt as string | undefined}
+        style={styles._VIEW_SAFE_image}
+      />
+    );
   },
 
   // Paragraphs & Text

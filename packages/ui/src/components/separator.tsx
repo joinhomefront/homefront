@@ -3,7 +3,7 @@
 import * as React from "react";
 import * as SeparatorPrimitive from "@rn-primitives/separator";
 
-import { cn } from "@homefront/ui";
+import { cn } from "../lib/utils";
 
 const Separator = React.forwardRef<
   SeparatorPrimitive.RootRef,

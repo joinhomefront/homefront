@@ -3,7 +3,7 @@ import { View } from "react-native";
 import { Badge, Button, cn, Text } from "@homefront/ui";
 
 import { TABS } from "./data";
-import { Tab as TabType } from "./types";
+import type { Tab as TabType } from "./types";
 
 interface TabProps {
   tab: TabType;

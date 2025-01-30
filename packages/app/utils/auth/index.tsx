@@ -53,7 +53,7 @@ export const useSignOut = () => {
     setIsSigningOut(true);
     await defaultSignOut()
       .then(async () => {
-        getSession();
+        await getSession();
         resetStores();
         RequestSignUtil.deleteKeyFromLocalStorage();
         await utils.invalidate();

@@ -4,7 +4,7 @@ import { useState } from "react";
 import { SafeAreaView, ScrollView, View } from "react-native";
 import { ArrowRight, CreditCard } from "lucide-react-native";
 import { Link } from "solito/link";
-import Stripe from "stripe";
+import type Stripe from "stripe";
 
 import { api } from "@homefront/app/utils/trpc";
 import { ActivityIndicator, Button, H3, Text } from "@homefront/ui";
@@ -205,7 +205,7 @@ export function DonationsScreen() {
                           <View className="flex-1 items-start">
                             <Status
                               status={
-                                payment.status as Stripe.PaymentIntent.Status
+                                payment.status
                               }
                             />
                           </View>
