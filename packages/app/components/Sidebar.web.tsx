@@ -1,5 +1,6 @@
 "use client";
 
+import type { LucideIcon } from "lucide-react-native";
 import type { ViewProps } from "react-native";
 import React, { useEffect } from "react";
 import { Text, View } from "react-native";
@@ -13,7 +14,6 @@ import {
   Home,
   Library,
   ListTodo,
-  LucideIcon,
   Settings,
   SquareLibrary,
 } from "lucide-react-native";
@@ -97,7 +97,7 @@ const Sidebar: React.FC<ViewProps> = () => {
               <Link href={item.path}>
                 <View
                   className={cn(
-                    "flex flex-row items-center space-x-2 rounded-md px-4 py-2 hover:bg-gray-100",
+                    "flex flex-row items-center gap-x-2 rounded-md px-4 py-2 hover:bg-gray-100",
                     isActive && "hover:bg-primary-100",
                   )}
                 >
@@ -127,20 +127,18 @@ const Sidebar: React.FC<ViewProps> = () => {
                       <Link key={subitem.name} href={subitem.path}>
                         <View
                           className={cn(
-                            "flex flex-row items-center space-x-2 rounded-md px-4 py-2 hover:bg-gray-100",
+                            "flex flex-row items-center gap-x-2 rounded-md px-4 py-2 hover:bg-gray-100",
                             isSubActive && "bg-primary-50 hover:bg-primary-100",
                           )}
                         >
-                          {SubIcon && (
-                            <Text
-                              className={cn(
-                                "text-gray-500",
-                                isSubActive && "text-primary",
-                              )}
-                            >
-                              <SubIcon size={20} />
-                            </Text>
-                          )}
+                          <Text
+                            className={cn(
+                              "text-gray-500",
+                              isSubActive && "text-primary",
+                            )}
+                          >
+                            <SubIcon size={20} />
+                          </Text>
                           <Text
                             className={cn(
                               "text-sm text-gray-600",

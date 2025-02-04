@@ -13,7 +13,7 @@ import { ActivityIndicator, Button, cn, Text } from "@homefront/ui";
 
 import { CDN_DOMAIN } from "./data";
 
-const pickerVariants = cva("w-full space-y-4", {
+const pickerVariants = cva("w-full gap-y-4", {
   variants: {
     variant: {
       default: "",
@@ -236,7 +236,7 @@ export function AvatarPicker({
               />
             )}
           </View>
-          <View className="w-full flex-row items-center justify-between space-x-4">
+          <View className="w-full flex-row items-center justify-between gap-x-4">
             <Button size="sm" variant="outline" onPress={onCancel}>
               <Text>Cancel</Text>
             </Button>

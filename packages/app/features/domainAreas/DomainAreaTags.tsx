@@ -1,11 +1,13 @@
 import { useId } from "react";
-import { View, ViewProps } from "react-native";
+import type { ViewProps } from "react-native";
+import { View } from "react-native";
 
 import type { DomainArea } from "@homefront/db";
+import type {
+  DomainAreaProps} from "@homefront/ui";
 import {
   cn,
   DomainArea as DomainAreaIcon,
-  DomainAreaProps,
   Text,
 } from "@homefront/ui";
 

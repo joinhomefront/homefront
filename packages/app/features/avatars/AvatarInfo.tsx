@@ -22,8 +22,8 @@ export const AvatarInfo = () => {
     isRefetching,
   } = api.avatars.getRandomAvatar.useQuery();
 
-  const handleRefetch = () => {
-    refetch();
+  const handleRefetch = async () => {
+    await refetch();
   };
 
   const pronoun = NOT_PEOPLE.includes(avatar?.displayName ?? "")
@@ -66,7 +66,7 @@ export const AvatarInfo = () => {
                 <Text className="text-xs text-gray-600">
                   Get inspired by {pronoun}:
                 </Text>
-                <Text className="font-header text-xl font-bold uppercase text-gray-800">
+                <Text className="font-header-bold text-xl font-bold uppercase text-gray-800">
                   {avatar.displayName}
                 </Text>
               </View>
@@ -81,6 +81,7 @@ export const AvatarInfo = () => {
                   <View className="flex-row items-center gap-x-2">
                     <View className="mt-[2px] h-4">
                       <SolitoImage
+                        // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-require-imports
                         src={require("./wikipedia.svg")}
                         height={16}
                         width={16}

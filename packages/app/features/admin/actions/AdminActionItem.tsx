@@ -59,8 +59,8 @@ export function AdminActionItem({ action }: AdminActionItemProps) {
         >
           {action.description}
         </Text>
-        <View className="flex-row items-center space-x-4 pt-2">
-          <View className="flex-row items-center space-x-2">
+        <View className="flex-row items-center gap-x-4 pt-2">
+          <View className="flex-row items-center gap-x-2">
             <ActionTypeIcon type={action.type} className="text-gray-500" />
             <Text className="text-sm text-gray-500">
               {getLabelForActionType(action.type)}
@@ -68,7 +68,7 @@ export function AdminActionItem({ action }: AdminActionItemProps) {
           </View>
           <ActionDomainAreasList domainAreas={action.domainAreas} />
         </View>
-        <View className="flex-row items-center space-x-2 pt-4">
+        <View className="flex-row items-center gap-x-2 pt-4">
           <Text className="text-sm text-gray-500">
             Created by @{action.creatorUsername}
           </Text>
@@ -101,7 +101,7 @@ export function AdminActionItem({ action }: AdminActionItemProps) {
         )}
       </View>
       <Link href={`/admin/actions/${action.id}`}>
-        <View className="flex-row items-center space-x-2">
+        <View className="flex-row items-center gap-x-2">
           <Edit2 size={20} className="text-gray-500" />
         </View>
       </Link>

@@ -91,7 +91,7 @@ export function InvitesScreen() {
   if (!invite) {
     return (
       <SafeAreaView className="w-full flex-1" style={{ flex: 1 }}>
-        <View className="flex-1 items-center justify-center space-y-4 p-4">
+        <View className="flex-1 items-center justify-center gap-y-4 p-4">
           <Text className="text-center text-lg">
             This invite link is invalid.
           </Text>
@@ -112,7 +112,7 @@ export function InvitesScreen() {
   if (isExpired || isUsed) {
     return (
       <SafeAreaView className="w-full flex-1" style={{ flex: 1 }}>
-        <View className="flex-1 items-center justify-center space-y-4 p-4">
+        <View className="flex-1 items-center justify-center gap-y-4 p-4">
           <Text className="text-center text-lg">
             {isExpired
               ? "This invite has expired."
@@ -132,7 +132,7 @@ export function InvitesScreen() {
   if (user.id === invite.userId) {
     return (
       <SafeAreaView className="w-full flex-1" style={{ flex: 1 }}>
-        <View className="flex-1 items-center justify-center space-y-4 p-4">
+        <View className="flex-1 items-center justify-center gap-y-4 p-4">
           <Text className="text-center text-lg">
             This is your invite. You cannot accept your own invite.
           </Text>
@@ -158,11 +158,11 @@ export function InvitesScreen() {
       >
         <View className="mx-auto h-auto w-full max-w-screen-sm flex-1 items-center justify-center p-4">
           <View className="mb-6 items-center rounded-md border border-primary bg-primary-foreground p-4">
-            <View className="flex-row items-center justify-center space-x-2">
+            <View className="flex-row items-center justify-center gap-x-2">
               <UserAvatar
                 user={{ username: invite.username, image: invite.image }}
               />
-              <View className="flex-1 flex-row flex-wrap items-center justify-start space-x-1">
+              <View className="flex-1 flex-row flex-wrap items-center justify-start gap-x-1">
                 <Text className="flex-wrap text-left text-sm text-primary">
                   <Text className="text-sm font-bold text-primary">
                     @{invite.username}
@@ -172,7 +172,7 @@ export function InvitesScreen() {
               </View>
             </View>
           </View>
-          <View className="space-y-4">
+          <View className="gap-y-4">
             <Text className="text-center text-gray-600">
               Accept this invite to connect with @{invite.username}
             </Text>

@@ -71,7 +71,7 @@ function ThankYou() {
     return (
       <SafeAreaView className="flex-1">
         <ScrollView className="flex-1">
-          <View className="mx-auto w-full max-w-md space-y-4 p-4">
+          <View className="mx-auto w-full max-w-md gap-y-4 p-4">
             <H2>Payment Failed</H2>
             <P>Your payment was not successful. Please try again.</P>
             <Button onPress={handleGoHome}>
@@ -94,7 +94,7 @@ function ThankYou() {
     typeof paymentDetails.invoice.subscription !== "string"
   ) {
     const subscription = paymentDetails.invoice.subscription;
-    const interval = subscription.items?.data[0]?.price?.recurring?.interval;
+    const interval = subscription.items.data[0]?.price?.recurring?.interval;
     if (interval) {
       frequency = getRecurringText(interval, amount);
     }
@@ -103,9 +103,9 @@ function ThankYou() {
   return (
     <SafeAreaView className="flex-1">
       <ScrollView className="flex-1">
-        <View className="mx-auto w-full max-w-md space-y-6 p-4">
-          <View className="space-y-2">
-            <H2 className="font-header text-center text-5xl text-primary-800">
+        <View className="mx-auto w-full max-w-md gap-y-6 p-4">
+          <View className="gap-y-2">
+            <H2 className="font-header-bold text-center text-5xl text-primary-800">
               Thank you!
             </H2>
             <View className="items-center justify-center">

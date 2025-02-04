@@ -99,7 +99,7 @@ export const UserSkill = ({ skill, isScrolling = false }: UserSkillProps) => {
         <View
           key={skill.id}
           className={cn(
-            "flex-1 flex-row flex-wrap items-center space-x-2 rounded-md border px-3 py-2 text-sm hover:cursor-pointer",
+            "flex-1 flex-row flex-wrap items-center gap-x-2 rounded-md border px-3 py-2 text-sm hover:cursor-pointer",
             hasSkill
               ? "border-primary bg-primary hover:bg-primary-700"
               : "border-gray-200 hover:bg-gray-100",
@@ -159,19 +159,19 @@ export const UserSkill = ({ skill, isScrolling = false }: UserSkillProps) => {
       <DropdownMenuContent className="native:w-72 w-64">
         <DropdownMenuGroup>
           <DropdownMenuItem onPress={() => handlePressLevel("beginner")}>
-            <View className="flex-row items-center space-x-2">
+            <View className="flex-row items-center gap-x-2">
               <Chevron1 size={16} className="text-primary" />
               <Text>Beginner</Text>
             </View>
           </DropdownMenuItem>
           <DropdownMenuItem onPress={() => handlePressLevel("intermediate")}>
-            <View className="flex-row items-center space-x-2">
+            <View className="flex-row items-center gap-x-2">
               <Chevron2 size={16} className="text-primary" />
               <Text>Intermediate</Text>
             </View>
           </DropdownMenuItem>
           <DropdownMenuItem onPress={() => handlePressLevel("expert")}>
-            <View className="flex-row items-center space-x-2">
+            <View className="flex-row items-center gap-x-2">
               <Chevron3 size={16} className="text-primary" />
               <Text>Expert</Text>
             </View>
@@ -180,13 +180,13 @@ export const UserSkill = ({ skill, isScrolling = false }: UserSkillProps) => {
         <DropdownMenuSeparator />
         <DropdownMenuGroup>
           <DropdownMenuItem onPress={() => handlePressLevel("want_to_learn")}>
-            <View className="flex-row items-center space-x-2">
+            <View className="flex-row items-center gap-x-2">
               <Lightbulb size={16} className="text-primary" />
               <Text>Want to learn</Text>
             </View>
           </DropdownMenuItem>
           <DropdownMenuItem onPress={() => handlePressLevel("learning")}>
-            <View className="flex-row items-center space-x-2">
+            <View className="flex-row items-center gap-x-2">
               <Book size={16} className="text-primary" />
               <Text>Learning</Text>
             </View>
@@ -200,7 +200,7 @@ export const UserSkill = ({ skill, isScrolling = false }: UserSkillProps) => {
                 variant="destructive"
                 onPress={handlePressDelete}
               >
-                <View className="flex-row items-center space-x-2">
+                <View className="flex-row items-center gap-x-2">
                   <Trash size={16} className="text-destructive" />
                   <Text>Remove</Text>
                 </View>

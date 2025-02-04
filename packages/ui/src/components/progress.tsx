@@ -11,7 +11,7 @@ import Animated, {
 } from "react-native-reanimated";
 import * as ProgressPrimitive from "@rn-primitives/progress";
 
-import { cn } from "@homefront/ui";
+import { cn } from "../lib/utils";
 
 const Progress = React.forwardRef<
   ProgressPrimitive.RootRef,

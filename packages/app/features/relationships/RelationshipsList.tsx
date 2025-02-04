@@ -36,7 +36,7 @@ export function RelationshipsList() {
         );
       }}
       ListEmptyComponent={() => (
-        <View className="space-y-2 py-4">
+        <View className="gap-y-2 py-4">
           <Text className="text-left text-gray-500">
             You don't have any connections yet.
           </Text>

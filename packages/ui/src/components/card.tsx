@@ -3,8 +3,7 @@ import type { TextProps, ViewProps } from "react-native";
 import * as React from "react";
 import { Text, View } from "react-native";
 
-import { cn } from "@homefront/ui";
-
+import { cn } from "../lib/utils";
 import { TextClassContext } from "./text";
 
 const Card = React.forwardRef<ViewRef, ViewProps>(
@@ -25,7 +24,7 @@ const CardHeader = React.forwardRef<ViewRef, ViewProps>(
   ({ className, ...props }, ref) => (
     <View
       ref={ref}
-      className={cn("flex flex-col space-y-1.5 p-6", className)}
+      className={cn("flex flex-col gap-y-1.5 p-6", className)}
       {...props}
     />
   ),

@@ -90,8 +90,8 @@ export function UserActionItem({ action, userAction }: UserActionItemProps) {
             </Text>
           </View>
         </Pressable>
-        <View className="flex-row items-center space-x-4 pt-1">
-          <View className="flex-row items-center space-x-2">
+        <View className="flex-row items-center gap-x-4 pt-1">
+          <View className="flex-row items-center gap-x-2">
             <ActionTypeIcon type={action.type} className="text-gray-500" />
             <Text className="text-sm text-gray-500">
               {getLabelForActionType(action.type)}
@@ -100,7 +100,7 @@ export function UserActionItem({ action, userAction }: UserActionItemProps) {
           <ActionDomainAreasList domainAreas={action.domainAreas} />
           {action.body && (
             <Link href={`/actions/${action.id}`}>
-              <View className="flex-row items-center space-x-1 text-primary">
+              <View className="flex-row items-center gap-x-1 text-primary">
                 <Text className="text-sm text-primary">Read more</Text>
                 <ArrowRight size={16} />
               </View>

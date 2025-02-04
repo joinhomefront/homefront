@@ -7,7 +7,9 @@ import { MotiView } from "moti";
 import { MotiPressable, useMotiPressable } from "moti/interactions";
 
 import type { Vote } from "@homefront/db";
-import { cn, Text } from "@homefront/ui";
+
+import { cn } from "../lib/utils";
+import { Text } from "./text";
 
 interface ArrowProps {
   vote: number | undefined;

@@ -15,6 +15,6 @@
     "noEmit": true,
     "isolatedModules": true
   },
-  "include": [".", ".next/types/**/*.ts"],
-  "exclude": ["node_modules", "sst.config.ts","sst.config.ts"]
+  "include": [".", ".next/types/**/*.ts", "../../packages/ui/src/fontConfig.ts"],
+  "exclude": ["node_modules", "sst.config.ts"]
 }

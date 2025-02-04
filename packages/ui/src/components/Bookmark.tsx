@@ -6,7 +6,7 @@ import { Bookmark as BookmarkIcon, Check, Plus } from "lucide-react-native";
 import { MotiView } from "moti";
 import { MotiPressable, useMotiPressable } from "moti/interactions";
 
-import { cn } from "@homefront/ui";
+import { cn } from "../lib/utils";
 
 interface BookmarkAnimatedIconProps {
   bookmarked: boolean;

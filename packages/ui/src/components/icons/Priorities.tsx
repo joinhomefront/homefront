@@ -1,6 +1,6 @@
 import { createLucideIcon } from "lucide-react-native";
 
-import colors from "@homefront/ui/colors";
+import colors from "../../colors";
 
 const svgBase = {
   xmlns: "http://www.w3.org/2000/svg",

@@ -6,7 +6,7 @@ import { cn } from "../lib/utils";
 interface LinkProps {
   href: string;
   children: React.ReactNode;
-  style?: any;
+  style?: React.CSSProperties;
   className?: string;
 }
 

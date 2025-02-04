@@ -1,6 +1,6 @@
 import { getBaseUrl } from "@homefront/app/utils/base-url";
 
-import {
+import type {
   FullSessionResponse,
   NeedOtpError,
   SessionCredentials,
@@ -24,7 +24,7 @@ export class LocalStorageUtility implements StorageUtility {
     }
   }
 
-  async set(key: string, value: string): Promise<boolean> {
+  set(key: string, value: string): boolean {
     try {
       localStorage.setItem(key, value);
       return true;
@@ -44,7 +44,7 @@ export class LocalStorageUtility implements StorageUtility {
 
   async refresh(): Promise<void> {
     // No refresh needed for localStorage. This method is included for compatibility.
-    return;
+    return Promise.resolve();
   }
 }
 
@@ -106,8 +106,7 @@ export class RequestSignUtil {
 
   static getPublicKey(): ArrayBuffer | null {
     if (
-      RequestSignUtil.keyPair &&
-      RequestSignUtil.keyPair.publicKey &&
+      RequestSignUtil.keyPair?.publicKey &&
       RequestSignUtil.keyPair.rawPrivateJwkString ===
         RequestSignUtil.storage.get(RequestSignUtil.REQUEST_SIGN_KEY)
     ) {
@@ -116,9 +115,7 @@ export class RequestSignUtil {
     return null;
   }
 
-  static async createECKeyPair(
-    reuseFlag: boolean = false,
-  ): Promise<ArrayBuffer | null> {
+  static async createECKeyPair(reuseFlag = false): Promise<ArrayBuffer | null> {
     RequestSignUtil.enableReuseRequestSigningKeyInSessionHandOff = reuseFlag;
     const existingPublicKey = RequestSignUtil.getPublicKey();
     if (existingPublicKey) return existingPublicKey;
@@ -168,8 +165,8 @@ export class RequestSignUtil {
   }
 
   static async generateECKeyPair(
-    reportErrors: boolean = false,
-    wrapKeys: boolean = false,
+    reportErrors = false,
+    wrapKeys = false,
   ): Promise<any> {
     let debugDetails = "details: ";
     try {
@@ -180,11 +177,7 @@ export class RequestSignUtil {
       );
 
       debugDetails += " key generated.";
-      if (
-        !cryptoKeyPair ||
-        !cryptoKeyPair.publicKey ||
-        !cryptoKeyPair.privateKey
-      ) {
+      if (!cryptoKeyPair.publicKey || !cryptoKeyPair.privateKey) {
         throw new Error("Key not present");
       }
       debugDetails += " key exists.";
@@ -233,9 +226,7 @@ export class RequestSignUtil {
     }
   }
 
-  static async saveInLocalStorage(
-    refreshAfterSave: boolean = false,
-  ): Promise<void> {
+  static async saveInLocalStorage(refreshAfterSave = false): Promise<void> {
     const currentKeyPair =
       RequestSignUtil.tempKeyPair || RequestSignUtil.keyPair;
     if (!currentKeyPair) return;
@@ -436,7 +427,7 @@ export class RequestSignUtil {
         ["content-type", headers.get("Content-Type")],
         ["homefront-account", headers.get("Homefront-Account") ?? ""],
         ["homefront-context", headers.get("Homefront-Context") ?? ""],
-      ].filter(([key, value]) => value != null) as [string, string][],
+      ].filter(([_key, value]) => value != null) as [string, string][],
     );
   }
 
@@ -525,7 +516,7 @@ export class RequestSignUtil {
 
   static handleNeedOtp(response: SessionResponse): NeedOtpError | null {
     if ("requiresTwoFactor" in response) {
-      return response as NeedOtpError;
+      return response;
     }
     return null;
   }
@@ -537,7 +528,7 @@ export class RequestSignUtil {
   ): Promise<FullSessionResponse> {
     const url = `${getBaseUrl()}/api/sessions/full`;
     const method = "POST";
-    const publicKey = await RequestSignUtil.getPublicKey();
+    const publicKey = RequestSignUtil.getPublicKey();
     const body = JSON.stringify({ otp, miniSession, publicKey });
 
     const headers = new Map<string, string>();

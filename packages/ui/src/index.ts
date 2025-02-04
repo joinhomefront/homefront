@@ -256,3 +256,4 @@ export { Logotype } from "./Logotype";
 // export { Votes } from "./components/Votes";
 
 export * from "./components";
+export { getFontConfig } from "./getFontConfig";

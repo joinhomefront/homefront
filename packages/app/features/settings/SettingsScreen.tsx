@@ -27,11 +27,11 @@ export function SettingsScreen() {
       <View className="w-full flex-1">
         <ScrollView className="w-full flex-1">
           <View className="mx-auto w-full max-w-screen-xl flex-1 justify-center p-4">
-            <View className="max-w-prose space-y-8">
-              <H3 className="font-header uppercase text-primary">
+            <View className="max-w-prose gap-y-8">
+              <H3 className="font-header-bold uppercase text-primary">
                 Account and password
               </H3>
-              <View className="space-y-4">
+              <View className="gap-y-4">
                 <View className="flex-row items-center">
                   <View className="w-full max-w-60 flex-row">
                     <Text className="text-sm font-bold">Username</Text>
@@ -73,9 +73,9 @@ export function SettingsScreen() {
                   </View>
                 </View>
               </View>
-              <View className="space-y-4">
-                <View className="space-y-2">
-                  <H4 className="font-header uppercase text-primary">
+              <View className="gap-y-4">
+                <View className="gap-y-2">
+                  <H4 className="font-header-bold uppercase text-primary">
                     Two-factor authentication
                   </H4>
                   <Text className="text-sm text-gray-500">
@@ -84,7 +84,7 @@ export function SettingsScreen() {
                   </Text>
                 </View>
 
-                <View className="space-y-4">
+                <View className="gap-y-4">
                   <View className="flex-row items-center">
                     <View className="w-full max-w-60 flex-row">
                       <Text className="text-sm font-bold">

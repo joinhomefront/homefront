@@ -17,7 +17,7 @@ export function QRDisplay({ secret, onNext, onCancel }: QRDisplayProps) {
   const otpAuthUrl = `otpauth://totp/${user?.username}?secret=${secret}&issuer=Homefront`;
 
   return (
-    <View className="space-y-4">
+    <View className="gap-y-4">
       <Text className="text-xl font-bold">
         Set up two-factor authentication
       </Text>
@@ -39,7 +39,7 @@ export function QRDisplay({ secret, onNext, onCancel }: QRDisplayProps) {
             </Button>
             <Text className="text-sm">.</Text>
           </View>
-          <View className="space-y-2">
+          <View className="gap-y-2">
             <Text className="text-sm font-bold">
               Key:{" "}
               <Text className="font-mono text-sm font-normal">{secret}</Text>
@@ -75,7 +75,7 @@ export function QRDisplay({ secret, onNext, onCancel }: QRDisplayProps) {
         </>
       )}
 
-      <View className="flex-row justify-between space-x-4">
+      <View className="flex-row justify-between gap-x-4">
         <Button size="sm" variant="outline" onPress={onCancel}>
           <Text>Cancel</Text>
         </Button>

@@ -8,10 +8,10 @@ import { Text } from "@homefront/ui";
 
 export function AboutScreen() {
   return (
-    <div className="mx-auto max-w-4xl space-y-6 px-4 py-4 md:py-12">
+    <div className="mx-auto max-w-4xl gap-y-6 px-4 py-4 md:py-12">
       {/* Mission Section */}
-      <section className="space-y-2 text-center md:text-left">
-        <h1 className="font-header text-4xl font-bold uppercase text-primary">
+      <section className="gap-y-2 text-center md:text-left">
+        <h1 className="font-header-bold text-4xl font-bold uppercase text-primary">
           About Homefront
         </h1>
         <Text className="text-xl text-gray-500">
@@ -20,11 +20,11 @@ export function AboutScreen() {
       </section>
 
       {/* Company Section */}
-      <section className="max-w-prose space-y-2 text-center md:text-left">
-        <h2 className="font-header text-3xl font-bold uppercase text-primary">
+      <section className="max-w-prose gap-y-2 text-center md:text-left">
+        <h2 className="font-header-bold text-3xl font-bold uppercase text-primary">
           We Are It
         </h2>
-        <View className="space-y-2">
+        <View className="gap-y-2">
           <Text className="text-xl text-gray-500">
             <Text className="text-xl font-bold">Homefront</Text> is a project of
             a public benefit company called{" "}
@@ -57,12 +57,12 @@ export function AboutScreen() {
 
       {/* Founder Section */}
       <section className="max-w-prose">
-        <div className="space-y-6 text-center md:text-left">
-          <h2 className="font-header text-3xl font-bold uppercase text-primary">
+        <div className="gap-y-6 text-center md:text-left">
+          <h2 className="font-header-bold text-3xl font-bold uppercase text-primary">
             Team
           </h2>
 
-          <View className="space-y-2">
+          <View className="gap-y-2">
             <div className="flex flex-col items-center gap-4 md:flex-row md:items-start md:gap-6">
               <div className="relative h-48 w-48 shrink-0 overflow-hidden rounded-full">
                 <SolitoImage
@@ -73,7 +73,7 @@ export function AboutScreen() {
                   unoptimized
                 />
               </div>
-              <View className="w-full max-w-prose flex-col space-y-2">
+              <View className="w-full max-w-prose flex-col gap-y-2">
                 <h2 className="text-center text-2xl font-bold md:text-left">
                   Josh Smith
                 </h2>

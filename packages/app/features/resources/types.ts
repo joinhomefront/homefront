@@ -1,4 +1,4 @@
-import { RESOURCE_SORTS, TABS } from "./data";
+import type { RESOURCE_SORTS, TABS } from "./data";
 
 export type Tab = (typeof TABS)[number];
 

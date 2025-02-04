@@ -7,6 +7,7 @@
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "editor.formatOnSave": true,
+  "eslint.nodePath": "node_modules/eslint/bin/eslint.js",
   "eslint.rules.customizations": [{ "rule": "*", "severity": "warn" }],
   "eslint.runtime": "node",
   "eslint.workingDirectories": [
@@ -28,5 +29,6 @@
   "typescript.tsdk": "node_modules/typescript/lib",
   "[typescript]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
-  }
+  },
+  "java.compile.nullAnalysis.mode": "automatic"
 }

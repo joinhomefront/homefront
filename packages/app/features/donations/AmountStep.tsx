@@ -1,10 +1,11 @@
+import type { useForm } from "react-hook-form";
 import { useEffect, useState } from "react";
 import { View } from "react-native";
 import Animated, { FadeInRight } from "react-native-reanimated";
 import { Check, DollarSign } from "lucide-react-native";
-import { useForm } from "react-hook-form";
 
-import { DonationType } from "@homefront/db";
+import type { DonationType } from "@homefront/db";
+import type { DonationFormData } from "@homefront/validators";
 import {
   ActivityIndicator,
   Button,
@@ -15,7 +16,6 @@ import {
   H3,
   Text,
 } from "@homefront/ui";
-import { DonationFormData } from "@homefront/validators";
 
 import { TYPES } from "./data";
 import { DonationSummary } from "./DonationSummary";
@@ -57,7 +57,7 @@ export function AmountStep({
   const handleTypePress = (value: DonationType) => {
     setIsCustomAmount(false);
     form.setValue("type", value);
-    form.setValue("amount", getAmounts(value)[0]!.value);
+    form.setValue("amount", getAmounts(value)[0]?.value ?? 0);
   };
 
   const handleContinue = () => {
@@ -69,11 +69,6 @@ export function AmountStep({
       setIsCustomAmount(true);
     }
   }, []);
-
-  useEffect(() => {
-    if (isLoading) {
-    }
-  }, [isLoading]);
 
   return (
     <Form {...form}>
@@ -119,7 +114,7 @@ export function AmountStep({
               </View>
               <View className="gap-2">
                 <View className="py-2">
-                  <H3 className="text-left font-sans text-xl font-bold text-primary-950 sm:text-2xl">
+                  <H3 className="font-sans-bold text-left text-xl font-bold text-primary-950 sm:text-2xl">
                     {getSupportUsHeader(type)}
                   </H3>
                   <Text className="text-left text-sm text-gray-500">
@@ -219,7 +214,7 @@ export function AmountStep({
                             field.onChange(sanitizedValue);
                           }
                         }}
-                        value={String(field.value ?? "")}
+                        value={String(field.value)}
                         inputIcon={<DollarSign size={20} />}
                         inputIconClassName="left-0 right-auto"
                         inputClassName="pl-8 font-bold text-base"

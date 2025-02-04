@@ -41,8 +41,8 @@ export function EditResourceScreen() {
     <SafeAreaView className="flex-1">
       <ScrollView className="w-full flex-1">
         <View className="mx-auto w-full max-w-screen-xl flex-1 justify-center p-4">
-          <View className="max-w-prose space-y-8">
-            <H3 className="font-header uppercase text-primary">
+          <View className="max-w-prose gap-y-8">
+            <H3 className="font-header-bold uppercase text-primary">
               Edit resource
             </H3>
             <LinkForm

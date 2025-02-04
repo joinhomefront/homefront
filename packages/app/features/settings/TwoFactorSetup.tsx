@@ -116,7 +116,7 @@ export function TwoFactorSetup({
 
   const stepComponents = {
     start: (
-      <View className="space-y-4">
+      <View className="gap-y-4">
         <DialogHeader>
           <Text className="text-xl font-bold">
             Set up two-factor authentication
@@ -133,7 +133,7 @@ export function TwoFactorSetup({
           by requiring a second form of verification when signing in.
         </Text>
 
-        <View className="flex-row justify-between space-x-4">
+        <View className="flex-row justify-between gap-x-4">
           <Button size="sm" variant="outline" onPress={() => setIsOpen(false)}>
             <Text>Cancel</Text>
           </Button>
@@ -171,7 +171,7 @@ export function TwoFactorSetup({
 
   const disableStepComponents = {
     confirm: (
-      <View className="space-y-4">
+      <View className="gap-y-4">
         <DialogHeader>
           <Text className="text-xl font-bold">
             Disable two-factor authentication
@@ -183,7 +183,7 @@ export function TwoFactorSetup({
           secure. Only proceed if absolutely necessarily.
         </Text>
 
-        <View className="space-y-2">
+        <View className="gap-y-2">
           <Button
             size="sm"
             variant="destructive"

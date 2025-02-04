@@ -3,13 +3,13 @@ import { Text, View } from "react-native";
 
 import { formatAmount } from "./utils";
 
-type ReceiptProps = {
+interface ReceiptProps {
   amount: number;
   triangleWidth?: number; // Controls the width of each triangle in the torn effect
   triangleHeight?: number; // Controls the height of each triangle
   color?: string; // Background color for the torn effect
   borderColor?: string; // Border color for the torn effect
-};
+}
 
 export const Receipt: React.FC<ReceiptProps> = ({
   amount,

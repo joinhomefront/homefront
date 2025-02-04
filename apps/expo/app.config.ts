@@ -1,32 +1,36 @@
 import type { ConfigContext, ExpoConfig } from "expo/config";
 
+const backgroundColor = "#0C72BD";
+
 export default ({ config }: ConfigContext): ExpoConfig => ({
   ...config,
-  name: "expo",
-  slug: "expo",
-  scheme: "expo",
+  name: "Homefront",
+  slug: "homefront",
+  scheme: "homefront",
   version: "0.1.0",
+  platforms: ["ios", "android"],
   orientation: "portrait",
   icon: "./assets/icon.png",
   userInterfaceStyle: "automatic",
   splash: {
-    image: "./assets/icon.png",
+    image: "./assets/splash.png",
     resizeMode: "contain",
-    backgroundColor: "#1F104A",
+    backgroundColor,
   },
   updates: {
     fallbackToCacheTimeout: 0,
   },
   assetBundlePatterns: ["**/*"],
   ios: {
-    bundleIdentifier: "your.bundle.identifier",
+    bundleIdentifier: "org.joinhomefront.ios",
     supportsTablet: true,
+    icon: "./assets/icon.png",
   },
   android: {
-    package: "your.bundle.identifier",
+    package: "org.joinhomefront.android",
     adaptiveIcon: {
-      foregroundImage: "./assets/icon.png",
-      backgroundColor: "#1F104A",
+      foregroundImage: "./assets/adaptive-icon.png",
+      backgroundColor,
     },
   },
   // extra: {
@@ -38,5 +42,5 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
     tsconfigPaths: true,
     typedRoutes: true,
   },
-  plugins: ["expo-router"],
+  plugins: ["expo-router", "expo-secure-store"],
 });

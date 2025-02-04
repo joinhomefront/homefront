@@ -1,9 +1,10 @@
 "use client";
 
-import { View, ViewProps } from "react-native";
+import type { ViewProps } from "react-native";
+import { View } from "react-native";
 
+import type { Resource, Vote } from "@homefront/db";
 import { api } from "@homefront/app/utils/trpc";
-import { Resource, Vote } from "@homefront/db";
 import { Bookmark, cn, Text, Votes } from "@homefront/ui";
 
 interface ResourceActionsProps {
@@ -29,9 +30,9 @@ export const ResourceActions = ({
    * Invalidate the resource and resources query after voting
    */
   const voteForResource = api.resources.voteForResource.useMutation({
-    onSettled: () => {
-      utils.resources.getResource.invalidate(id);
-      utils.resources.getResources.invalidate();
+    onSettled: async () => {
+      await utils.resources.getResource.invalidate(id);
+      await utils.resources.getResources.invalidate();
     },
   });
 
@@ -45,9 +46,9 @@ export const ResourceActions = ({
    * Invalidate the resource and resources query after bookmarking
    */
   const bookmarkResource = api.resources.bookmarkResource.useMutation({
-    onSettled: () => {
-      utils.resources.getResource.invalidate(id);
-      utils.resources.getResources.invalidate();
+    onSettled: async () => {
+      await utils.resources.getResource.invalidate(id);
+      await utils.resources.getResources.invalidate();
     },
   });
 

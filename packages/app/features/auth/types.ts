@@ -1,4 +1,4 @@
-import { AuthError, LoginResponse } from "@homefront/auth";
+import type { LoginResponse } from "@homefront/auth";
 
 export interface SessionCredentials {
   username: string;

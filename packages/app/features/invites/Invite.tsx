@@ -58,7 +58,7 @@ export const Invite = ({ invite }: InviteProps) => {
   return (
     <View className="pb-0 pt-2">
       {!!invite.note && (
-        <View className="flex-row items-center justify-start space-x-2 px-4 pb-0 pt-2">
+        <View className="flex-row items-center justify-start gap-x-2 px-4 pb-0 pt-2">
           <NotepadText size={16} className="text-gray-600" />
           <Text className="text-sm text-gray-700">{invite.note}</Text>
         </View>
@@ -68,7 +68,7 @@ export const Invite = ({ invite }: InviteProps) => {
           {invite.code}
         </Text>
         <View className="flex-1 flex-row justify-between">
-          <View className="flex-1 flex-row items-center space-x-2 pl-4 text-gray-500">
+          <View className="flex-1 flex-row items-center gap-x-2 pl-4 text-gray-500">
             <CalendarClock size={16} />
             <Text className="text-sm text-gray-500">
               {formatExpiresTime(invite.expiresAt)}

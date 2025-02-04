@@ -21,13 +21,13 @@ export function Home() {
             <View className="gap-4 py-4 md:w-7/12 md:px-2">
               <OnboardingChecklist />
               <View>
-                <H3 className="font-header uppercase text-primary">
+                <H3 className="font-header-bold uppercase text-primary">
                   Your actions
                 </H3>
                 <UserActionsList />
               </View>
               <View>
-                <H4 className="font-header uppercase text-primary">
+                <H4 className="font-header-bold uppercase text-primary">
                   Recommended actions
                 </H4>
                 <RecommendedActionsList />
@@ -35,13 +35,15 @@ export function Home() {
             </View>
             <View className="gap-4 py-4 md:w-5/12 md:px-2">
               <View>
-                <H3 className="font-header uppercase text-primary">
+                <H3 className="font-header-bold uppercase text-primary">
                   Your connections
                 </H3>
                 <RelationshipsList />
               </View>
               <View>
-                <H4 className="font-header uppercase text-primary">Invites</H4>
+                <H4 className="font-header-bold uppercase text-primary">
+                  Invites
+                </H4>
                 <Invites />
               </View>
             </View>

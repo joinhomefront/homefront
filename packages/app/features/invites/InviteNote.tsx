@@ -36,7 +36,7 @@ export const InviteNote = ({ note, onChange }: InviteNoteProps) => {
     <View className="py-2">
       <Form {...form}>
         {isEditingNote ? (
-          <View className="flex-row items-center justify-between space-x-2">
+          <View className="flex-row items-center justify-between gap-x-2">
             <FormField
               control={form.control}
               name="note"
@@ -47,7 +47,7 @@ export const InviteNote = ({ note, onChange }: InviteNoteProps) => {
               )}
             />
             <Button
-              className="group flex-row items-center space-x-2"
+              className="group flex-row items-center gap-x-2"
               onPress={form.handleSubmit(handleSave)}
             >
               <CheckSquare size={16} className="text-white" />
@@ -61,7 +61,7 @@ export const InviteNote = ({ note, onChange }: InviteNoteProps) => {
                 <Text className="px-3 text-base text-gray-800">{note}</Text>
                 <Button
                   variant="ghost"
-                  className="group flex-row items-center space-x-2 text-gray-500"
+                  className="group flex-row items-center gap-x-2 text-gray-500"
                   onPress={handleEditNote}
                 >
                   <SquarePen size={16} />
@@ -74,7 +74,7 @@ export const InviteNote = ({ note, onChange }: InviteNoteProps) => {
               <View className="flex-row items-center justify-end">
                 <Button
                   variant="ghost"
-                  className="group flex-row items-center space-x-2 text-gray-500"
+                  className="group flex-row items-center gap-x-2 text-gray-500"
                   onPress={handleEditNote}
                 >
                   <SquarePen size={16} />

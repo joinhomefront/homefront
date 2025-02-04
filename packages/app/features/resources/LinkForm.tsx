@@ -1,10 +1,10 @@
+import type { z } from "zod";
 import { useEffect, useState } from "react";
 import { View } from "react-native";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { useRouter } from "solito/navigation";
 import { useDebounceValue } from "usehooks-ts";
-import { z } from "zod";
 
 import type { Metadata } from "@homefront/scraper";
 import { DomainAreaSelector } from "@homefront/app/features/domainAreas/DomainAreasSelector";
@@ -115,21 +115,17 @@ export function LinkForm({ initialValues, resourceId }: LinkFormProps) {
     setError(null);
     setIsSubmitting(true);
 
-    try {
-      if (resourceId) {
-        await updateResource.mutateAsync({ ...data, id: resourceId });
-      } else {
-        await createResource.mutateAsync(data);
-      }
-    } catch (e) {
-      // Error handling done in mutation callbacks
+    if (resourceId) {
+      await updateResource.mutateAsync({ ...data, id: resourceId });
+    } else {
+      await createResource.mutateAsync(data);
     }
   };
 
   return (
-    <View className="space-y-4">
+    <View className="gap-y-4">
       <Form {...form}>
-        <View className="space-y-6">
+        <View className="gap-y-6">
           <FormField
             control={form.control}
             name="url"

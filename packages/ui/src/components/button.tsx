@@ -4,9 +4,8 @@ import * as React from "react";
 import { Pressable } from "react-native";
 import { cva } from "class-variance-authority";
 
-import { cn } from "@homefront/ui";
-
 import { iconWithClassName } from "../lib/icons/iconWithClassName";
+import { cn } from "../lib/utils";
 import { Text, TextClassContext } from "./text";
 
 const buttonVariants = cva(
@@ -41,7 +40,7 @@ const buttonVariants = cva(
         ghost:
           "web:hover:bg-accent web:hover:text-accent-foreground active:bg-accent",
         link: "web:underline-offset-4 web:hover:underline web:focus:underline decoration-primary",
-        tab: 'rounded-none border-b-4 border-transparent hover:border-primary/50 data-[state="active"]:border-primary',
+        tab: "rounded-none border-b-4 border-transparent hover:border-primary/50 data-[state=active]:border-primary",
       },
       size: {
         default: "native:h-12 native:px-5 native:py-3 h-10 px-4 py-2",
@@ -53,7 +52,7 @@ const buttonVariants = cva(
       },
       hasIcon: {
         false: "",
-        true: "flex flex-row items-center space-x-2",
+        true: "flex flex-row items-center gap-x-2",
       },
       active: {
         false: "",

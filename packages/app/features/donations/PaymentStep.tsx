@@ -9,8 +9,8 @@ import {
 import { Pencil } from "lucide-react-native";
 import { useForm } from "react-hook-form";
 
+import type { DonationType } from "@homefront/db";
 import { getBaseUrl } from "@homefront/app/utils/base-url";
-import { DonationType } from "@homefront/db";
 import { ActivityIndicator, Button, Form, Text } from "@homefront/ui";
 
 import { DonationSummary } from "./DonationSummary";
@@ -50,6 +50,7 @@ export function PaymentStep({ amount, type, onBack }: PaymentStepProps) {
 
     try {
       const { error: submitError } = await elements.submit();
+      // eslint-disable-next-line @typescript-eslint/only-throw-error
       if (submitError) throw submitError;
 
       const { error: paymentError } = await stripe.confirmPayment({
@@ -67,6 +68,7 @@ export function PaymentStep({ amount, type, onBack }: PaymentStepProps) {
         },
       });
 
+      // eslint-disable-next-line @typescript-eslint/only-throw-error, @typescript-eslint/no-unnecessary-condition
       if (paymentError) throw paymentError;
     } catch (err) {
       if (err instanceof Error) {
@@ -81,7 +83,7 @@ export function PaymentStep({ amount, type, onBack }: PaymentStepProps) {
 
   return (
     <Form {...form}>
-      <View className="space-y-6">
+      <View className="gap-y-6">
         <DonationSummary amount={amount} type={type}>
           <Button
             variant="ghost"

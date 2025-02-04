@@ -76,7 +76,7 @@ export function DisableVerificationForm({
   const cancelDisabled = form.formState.isSubmitting;
 
   return (
-    <View className="space-y-4">
+    <View className="gap-y-4">
       <DialogHeader>
         <Text className="text-xl font-bold">
           Disable two-factor authentication
@@ -89,7 +89,7 @@ export function DisableVerificationForm({
       </Text>
 
       <Form {...form}>
-        <View className="space-y-4">
+        <View className="gap-y-4">
           <FormField
             control={form.control}
             name="password"
@@ -122,7 +122,7 @@ export function DisableVerificationForm({
 
           {error && <Text className="text-sm text-destructive">{error}</Text>}
 
-          <View className="flex-row justify-between space-x-4">
+          <View className="flex-row justify-between gap-x-4">
             <Button
               size="sm"
               variant="outline"

@@ -101,7 +101,7 @@ export const ChangeLatLng = ({ lat, lng, onChanged }: ChangeLatLngProps) => {
           <Button
             variant="ghost"
             size="xs"
-            className="flex-row items-center space-x-2 text-sm"
+            className="flex-row items-center gap-x-2 text-sm"
             onPress={() => setIsOpen(true)}
           >
             <Text className="text-primary">
@@ -113,7 +113,7 @@ export const ChangeLatLng = ({ lat, lng, onChanged }: ChangeLatLngProps) => {
         <AlertDialogContent>
           <AlertDialogHeader>
             <AlertDialogTitle>Change Location</AlertDialogTitle>
-            <View className="space-y-2 pb-2">
+            <View className="gap-y-2 pb-2">
               <Text className="text-sm">
                 For security reasons, we cannot use your address to find your
                 location. Doing so could expose your location to third parties.
@@ -134,7 +134,7 @@ export const ChangeLatLng = ({ lat, lng, onChanged }: ChangeLatLngProps) => {
               </Link>
             </View>
           </AlertDialogHeader>
-          <View className="space-y-4">
+          <View className="gap-y-4">
             <FormField
               control={form.control}
               name="latLng"

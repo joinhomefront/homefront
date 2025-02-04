@@ -2,8 +2,7 @@
 
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 
-import { Layout } from "@homefront/app/components/Layout.web";
-import { Session } from "@homefront/auth";
+import { Layout } from "@homefront/app/components/Layout";
 
 import { AuthProvider } from "./auth";
 import { SafeAreaProvider } from "./safe-area";

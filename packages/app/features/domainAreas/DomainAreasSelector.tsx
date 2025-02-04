@@ -1,12 +1,13 @@
 import { Pressable, ScrollView, useWindowDimensions, View } from "react-native";
 
 import { api } from "@homefront/app/utils/trpc";
-import { DomainArea } from "@homefront/db";
+import type { DomainArea } from "@homefront/db";
+import type {
+  DomainAreaProps} from "@homefront/ui";
 import {
   ActivityIndicator,
   cn,
   DomainArea as DomainAreaIcon,
-  DomainAreaProps,
   Text,
 } from "@homefront/ui";
 
@@ -124,7 +125,7 @@ export function DomainAreaSelector({
           <View className="flex-col gap-1 pb-2">
             {getRows(domainAreas ?? []).map((row, i) => (
               <View key={`row-${i}`} className="flex-row gap-1">
-                {row?.map((domainArea) => (
+                {row.map((domainArea) => (
                   <DomainAreaButton
                     key={domainArea.id}
                     domainArea={domainArea}

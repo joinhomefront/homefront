@@ -128,7 +128,7 @@ export const Skills = () => {
                     renderItem={({ item }) => (
                       <Pressable onPress={() => handlePress(item)}>
                         <View className="group px-3 py-2 hover:cursor-pointer hover:bg-primary">
-                          <View className="flex-1 flex-row items-center justify-between space-x-2">
+                          <View className="flex-1 flex-row items-center justify-between gap-x-2">
                             <View className="flex-1">
                               <Text className="text-base font-bold group-hover:text-background">
                                 {item.title}

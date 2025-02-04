@@ -39,7 +39,7 @@ export const CreateInvite = () => {
   return (
     <View className="py-4">
       <Form {...form}>
-        <View className="space-y-2">
+        <View className="gap-y-2">
           <Text className="text-xl">Create an invite</Text>
           <FormField
             control={form.control}

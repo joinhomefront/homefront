@@ -598,7 +598,7 @@ export type StripePriceUpdate = Updateable<StripePrices>;
 export interface StripeProducts {
   id: GeneratedAlways<string>;
   stripeProductId: string;
-  name: DonationProduct | string;
+  name: DonationProduct;
   active: boolean;
   createdAt: Generated<Date>;
   updatedAt: Generated<Date>;

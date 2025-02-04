@@ -83,7 +83,7 @@ export const RecoveryPhraseGenerator = ({
   return (
     <View
       key="recovery-phrase-generator"
-      className="space-y-4 rounded-md border border-border bg-primary-foreground p-4"
+      className="gap-y-4 rounded-md border border-border bg-primary-foreground p-4"
     >
       <Text className="text-sm text-primary sm:text-base">
         <Text className="text-sm font-bold text-primary sm:text-base">
@@ -92,7 +92,7 @@ export const RecoveryPhraseGenerator = ({
         If you forgot to store it, you can generate a new one.
       </Text>
       <Form {...form}>
-        <View className="space-y-2">
+        <View className="gap-y-2">
           <FormField
             control={form.control}
             name="password"
@@ -107,7 +107,7 @@ export const RecoveryPhraseGenerator = ({
             )}
           />
           <Button
-            className="flex-row space-x-2"
+            className="flex-row gap-x-2"
             onPress={form.handleSubmit(generateRecoveryPhrase)}
             disabled={isGenerating || !form.formState.isValid}
           >

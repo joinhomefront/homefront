@@ -181,7 +181,7 @@ export function Roles() {
                 </View>
               </View>
               <View className="gap-4 py-4">
-                <View className="space-y-2">
+                <View className="gap-y-2">
                   <H4>Popular roles</H4>
                   <Text className="text-sm text-gray-500">
                     Some of the most important roles in our community.
@@ -200,7 +200,7 @@ export function Roles() {
               </View>
 
               <View className="gap-4 py-4">
-                <View className="space-y-2">
+                <View className="gap-y-2">
                   <H4>Recommended roles</H4>
                   <Text className="text-sm text-gray-500">
                     We recommended some roles based on your interests,
@@ -224,7 +224,7 @@ export function Roles() {
 
               {otherRoles && otherRoles.length > 0 && (
                 <View className="gap-4 py-4">
-                  <View className="space-y-2">
+                  <View className="gap-y-2">
                     <H4>Other roles</H4>
                     <Text className="text-sm text-gray-500">
                       Other roles you have added.

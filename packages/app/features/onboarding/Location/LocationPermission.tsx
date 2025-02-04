@@ -59,9 +59,9 @@ export const LocationPermission = ({
 
   if (status === PermissionStatus.DENIED) {
     return (
-      <View className="space-y-4 p-4">
+      <View className="gap-y-4 p-4">
         <H3 className="font-bold">Location access denied</H3>
-        <View className="flex-row space-x-2 rounded-md border border-amber-600 bg-amber-50 p-3">
+        <View className="flex-row gap-x-2 rounded-md border border-amber-600 bg-amber-50 p-3">
           <Text className="flex-1 text-amber-800">
             <AlertCircle size={24} />
           </Text>
@@ -73,7 +73,7 @@ export const LocationPermission = ({
         <Text className="text-sm text-gray-700">{explanation}</Text>
         <LocationPermissionInstructions />
         {children}
-        <View className="space-y-2">
+        <View className="gap-y-2">
           <Button onPress={handleRequestPermissions} disabled={isLoading}>
             <Text>Retry</Text>
           </Button>
@@ -96,7 +96,7 @@ export const LocationPermission = ({
           {explanation}
         </Text>
       </Header>
-      <View className="flex-1 items-center justify-center space-y-4">
+      <View className="flex-1 items-center justify-center gap-y-4">
         {errorMessage && (
           <Text className="text-center text-destructive">{errorMessage}</Text>
         )}

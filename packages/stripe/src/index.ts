@@ -1,4 +1,4 @@
-import { type Stripe } from "stripe";
+import type { Stripe } from "stripe";
 
 import type {
   CreateCustomerInput,
@@ -23,6 +23,7 @@ async function importKey(secret: string) {
 }
 
 async function hashUserId(userId: string): Promise<string> {
+  // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
   const secret = process.env.STRIPE_HASH_KEY!;
   const encoder = new TextEncoder();
   const key = await importKey(secret);
@@ -37,6 +38,7 @@ async function hashUserId(userId: string): Promise<string> {
 export async function createBillingPortalSession(customerId: string) {
   return stripe.billingPortal.sessions.create({
     customer: customerId,
+    // eslint-disable-next-line turbo/no-undeclared-env-vars
     return_url: process.env.STRIPE_BILLING_RETURN_URL,
   });
 }
@@ -180,8 +182,8 @@ export async function createPrice(
     limit: 1,
   });
 
-  if (existingPrices.data.length > 0) {
-    return existingPrices.data[0]!;
+  if (existingPrices.data.length > 0 && existingPrices.data[0]) {
+    return existingPrices.data[0];
   }
 
   return stripe.prices.create({

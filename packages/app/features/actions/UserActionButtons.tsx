@@ -30,7 +30,7 @@ function CompleteButton({
       size="sm"
       onPress={handleComplete}
       disabled={completeDisabled}
-      className="web:hover:bg-gray-100 flex-row items-center space-x-2 border-gray-400 hover:border-gray-500"
+      className="web:hover:bg-gray-100 flex-row items-center gap-x-2 border-gray-400 hover:border-gray-500"
     >
       {isLoading ? (
         <ActivityIndicator />
@@ -94,13 +94,13 @@ export function UserActionButtons({ action }: UserActionButtonsProps) {
 
   if (!userAction || "data" in userAction) {
     return (
-      <View className="flex-row items-center space-x-2">
+      <View className="flex-row items-center gap-x-2">
         <Button
           variant="outline"
           size="sm"
           onPress={handleCreateUserAction}
           disabled={addDisabled}
-          className="flex-row items-center space-x-2"
+          className="flex-row items-center gap-x-2"
         >
           {createUserAction.isPending ? (
             <ActivityIndicator />
@@ -139,14 +139,14 @@ export function UserActionButtons({ action }: UserActionButtonsProps) {
   const undoCompleteDisabled = updateUserAction.isPending || !userAction;
 
   return (
-    <View className="flex-row items-center justify-between space-x-2">
+    <View className="flex-row items-center justify-between gap-x-2">
       {userAction.completed ? (
         <Button
           variant="outline"
           size="sm"
           onPress={handleUndoComplete}
           disabled={undoCompleteDisabled}
-          className="flex-row items-center space-x-2 border-border bg-primary"
+          className="flex-row items-center gap-x-2 border-border bg-primary"
         >
           {updateUserAction.isPending ? (
             <ActivityIndicator color="white" />
@@ -185,7 +185,7 @@ export function UserActionButtons({ action }: UserActionButtonsProps) {
             onPress={handleRemoveUserAction}
             disabled={removeDisabled}
           >
-            <View className="flex-row items-center space-x-2">
+            <View className="flex-row items-center gap-x-2">
               <Trash size={16} className="text-destructive" />
               <Text>Remove from list</Text>
             </View>

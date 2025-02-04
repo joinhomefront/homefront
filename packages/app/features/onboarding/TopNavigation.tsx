@@ -26,7 +26,7 @@ export const TopNavigation = ({ currentStep }: TopNavigationProps) => {
       ) : (
         <Pressable
           onPress={navigateBack}
-          className="group max-w-fit flex-row space-x-1 px-1 py-2 text-primary hover:text-primary-background"
+          className="group max-w-fit flex-row gap-x-1 px-1 py-2 text-primary hover:text-primary-background"
         >
           <ChevronLeft size={24} />
           <Text className="text-primary group-hover:text-primary-background">

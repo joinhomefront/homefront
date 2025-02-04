@@ -1,12 +1,11 @@
 "use client";
 
-import { View, ViewProps } from "react-native";
+import type { ViewProps } from "react-native";
+import { View } from "react-native";
 
+import type { SanitizedUser } from "@homefront/db";
 import { Header } from "@homefront/app/components/Header";
 import Sidebar from "@homefront/app/components/Sidebar.web";
-import { SidebarProvider } from "@homefront/app/hooks/useSidebar.web";
-import { auth } from "@homefront/auth";
-import { SanitizedUser } from "@homefront/db";
 
 export const AppLayoutInner: React.FC<{ user?: SanitizedUser } & ViewProps> = ({
   user,

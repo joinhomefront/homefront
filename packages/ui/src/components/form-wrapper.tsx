@@ -1,7 +1,7 @@
 import type { ReactNode } from "react";
 import { Platform, View } from "react-native";
 
-import { cn } from "@homefront/ui/lib/utils";
+import { cn } from "../lib/utils";
 
 export const FormWrapper: React.FC<{
   children: ReactNode;

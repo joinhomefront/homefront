@@ -14,10 +14,9 @@ import { Platform, View } from "react-native";
 import { OtpInput } from "react-native-otp-entry";
 import { Controller, FormProvider, useFormContext } from "react-hook-form";
 
-import { cn } from "@homefront/ui";
-
 import type { Option } from "./select";
 import colors from "../colors";
+import { cn } from "../lib/utils";
 import { Checkbox } from "./checkbox";
 import { Input } from "./input";
 import { Label } from "./label";
@@ -93,7 +92,7 @@ const FormItem = React.forwardRef<
 
   return (
     <FormItemContext.Provider value={{ nativeID }}>
-      <View ref={ref} className={cn("space-y-2", className)} {...props} />
+      <View ref={ref} className={cn("gap-y-2", className)} {...props} />
     </FormItemContext.Provider>
   );
 });
@@ -155,7 +154,7 @@ const FormMessage = React.forwardRef<
       ref={ref}
       nativeID={formMessageNativeID}
       className={cn(
-        "font-sans text-sm font-medium text-destructive animate-in animate-out",
+        "font-sans-medium text-sm font-medium text-destructive animate-in animate-out",
         className,
       )}
       {...props}

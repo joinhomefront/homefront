@@ -15,9 +15,8 @@ import Animated, {
 } from "react-native-reanimated";
 import * as AccordionPrimitive from "@rn-primitives/accordion";
 
-import { cn } from "@homefront/ui";
-
 import { ChevronDown } from "../lib/icons/ChevronDown";
+import { cn } from "../lib/utils";
 import { TextClassContext } from "./text";
 
 const Accordion = React.forwardRef<

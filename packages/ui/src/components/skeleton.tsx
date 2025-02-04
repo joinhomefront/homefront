@@ -9,7 +9,7 @@ import Animated, {
   withTiming,
 } from "react-native-reanimated";
 
-import { cn } from "@homefront/ui";
+import { cn } from "../lib/utils";
 
 const duration = 1000;
 

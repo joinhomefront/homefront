@@ -1,8 +1,8 @@
 import type { CredentialsConfig } from "next-auth/providers/credentials";
 import Credentials from "next-auth/providers/credentials";
 
+import type { LoginResponse } from "../types";
 import { env } from "../../env";
-import { LoginResponse } from "../types";
 
 export default Credentials({
   id: "session-creator",
@@ -11,11 +11,11 @@ export default Credentials({
   credentials: {},
 
   authorize(credentials: { verifiedUser?: string; secret?: string }) {
-    if (credentials?.secret !== env.AUTH_SESSION_CREATOR_SECRET) {
+    if (credentials.secret !== env.AUTH_SESSION_CREATOR_SECRET) {
       throw new Error("Invalid secret");
     }
 
-    const verifiedUser = credentials?.verifiedUser;
+    const verifiedUser = credentials.verifiedUser;
 
     if (!verifiedUser || typeof verifiedUser !== "string") {
       throw new Error("Missing verified user data");

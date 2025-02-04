@@ -1,6 +1,6 @@
 import { z } from "zod";
 
-import { REPORT_REASONS, REPORTED_TYPES, ReportedType } from "@homefront/db";
+import { REPORT_REASONS, REPORTED_TYPES } from "@homefront/db";
 
 import { protectedProcedure } from "../trpc";
 
@@ -26,7 +26,7 @@ export const reportsRouter = {
         .values({
           userId,
           reportedId: input.id,
-          reportedType: input.type as ReportedType,
+          reportedType: input.type,
           reason: input.reason,
           reasonDetails: input.details,
         })
