@@ -52,8 +52,8 @@ export function SkillsSection({
   }, [containerHeight, contentHeight]);
 
   return (
-    <View className="space-y-4">
-      <View className="space-y-2">
+    <View className="gap-y-4">
+      <View className="gap-y-2">
         <H4>{title}</H4>
         {description && (
           <Text className="text-sm text-gray-500">{description}</Text>
@@ -87,7 +87,7 @@ export function SkillsSection({
         {(hasOverflow || isExpanded) && (
           <Pressable
             onPress={() => setIsExpanded(!isExpanded)}
-            className="flex-row items-center justify-start space-x-2"
+            className="flex-row items-center justify-start gap-x-2"
           >
             <Text className="text-sm font-medium text-primary">
               {isExpanded ? "Collapse" : "Expand"}

@@ -66,7 +66,7 @@ export const AvatarInfo = () => {
                 <Text className="text-xs text-gray-600">
                   Get inspired by {pronoun}:
                 </Text>
-                <Text className="font-header text-xl font-bold uppercase text-gray-800">
+                <Text className="font-header-bold text-xl font-bold uppercase text-gray-800">
                   {avatar.displayName}
                 </Text>
               </View>

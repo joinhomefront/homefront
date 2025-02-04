@@ -92,7 +92,7 @@ const FormItem = React.forwardRef<
 
   return (
     <FormItemContext.Provider value={{ nativeID }}>
-      <View ref={ref} className={cn("space-y-2", className)} {...props} />
+      <View ref={ref} className={cn("gap-y-2", className)} {...props} />
     </FormItemContext.Provider>
   );
 });
@@ -154,7 +154,7 @@ const FormMessage = React.forwardRef<
       ref={ref}
       nativeID={formMessageNativeID}
       className={cn(
-        "font-sans text-sm font-medium text-destructive animate-in animate-out",
+        "font-sans-medium text-sm font-medium text-destructive animate-in animate-out",
         className,
       )}
       {...props}

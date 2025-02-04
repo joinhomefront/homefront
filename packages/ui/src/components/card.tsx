@@ -24,7 +24,7 @@ const CardHeader = React.forwardRef<ViewRef, ViewProps>(
   ({ className, ...props }, ref) => (
     <View
       ref={ref}
-      className={cn("flex flex-col space-y-1.5 p-6", className)}
+      className={cn("flex flex-col gap-y-1.5 p-6", className)}
       {...props}
     />
   ),

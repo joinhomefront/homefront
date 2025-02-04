@@ -11,7 +11,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
       {children}
       {isSigningOut && (
         <View
-          className="absolute inset-0 z-50 flex-1 items-center justify-center space-y-4 bg-black/50"
+          className="absolute inset-0 z-50 flex-1 items-center justify-center gap-y-4 bg-black/50"
           style={{ elevation: 999 }}
         >
           <Text className="text-white">Signing out...</Text>

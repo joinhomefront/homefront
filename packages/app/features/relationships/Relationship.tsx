@@ -15,11 +15,11 @@ interface RelationshipProps {
 export function Relationship({ relationship, friend }: RelationshipProps) {
   return (
     <View className="flex-row justify-between border-b border-gray-200 py-4">
-      <View className="flex-row items-center space-x-3">
+      <View className="flex-row items-center gap-x-3">
         <UserAvatar user={friend} />
 
         <Text className="text-base font-medium">@{friend.username}</Text>
-        <View className="space-y-1">
+        <View className="gap-y-1">
           <Trust
             trustLevel={relationship.trustLevel}
             relationshipStatus={relationship.status as RelationshipStatus}

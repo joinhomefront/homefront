@@ -84,7 +84,7 @@ export function RecommendedActionItem({ action }: RecommendedActionItemProps) {
           userVote={action.userVote ? action.userVote.vote : undefined}
         />
 
-        <View className="flex-row items-center space-x-2">
+        <View className="flex-row items-center gap-x-2">
           <ActionTypeIcon type={action.type} className="text-gray-500" />
           <Text className="text-sm text-gray-500">
             {getLabelForActionType(action.type)}
@@ -93,7 +93,7 @@ export function RecommendedActionItem({ action }: RecommendedActionItemProps) {
         <ActionDomainAreasList domainAreas={action.domainAreas} />
         {action.body && (
           <Link href={`/actions/${action.id}`}>
-            <View className="flex-row items-center space-x-1 text-primary">
+            <View className="flex-row items-center gap-x-1 text-primary">
               <Text className="text-sm text-primary">Read more</Text>
               <ArrowRight size={16} />
             </View>

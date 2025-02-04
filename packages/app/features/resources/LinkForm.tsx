@@ -123,9 +123,9 @@ export function LinkForm({ initialValues, resourceId }: LinkFormProps) {
   };
 
   return (
-    <View className="space-y-4">
+    <View className="gap-y-4">
       <Form {...form}>
-        <View className="space-y-6">
+        <View className="gap-y-6">
           <FormField
             control={form.control}
             name="url"

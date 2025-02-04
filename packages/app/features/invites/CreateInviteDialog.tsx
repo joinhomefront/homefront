@@ -146,7 +146,7 @@ export const CreateInviteDialog = () => {
           <Dialog open={isOpen} onOpenChange={setIsOpen}>
             <DialogTrigger asChild>
               <Button
-                className="flex-row items-center space-x-2 text-sm"
+                className="flex-row items-center gap-x-2 text-sm"
                 onPress={() => setIsOpen(true)}
               >
                 <Text>
@@ -167,7 +167,7 @@ export const CreateInviteDialog = () => {
                 </DialogTitle>
               </DialogHeader>
               {step === InviteStep.Create && (
-                <View className="space-y-4">
+                <View className="gap-y-4">
                   <Text className="text-sm">
                     A note is optional to help you remember who you invited. It
                     will only be visible to you and stored locally.
@@ -185,7 +185,7 @@ export const CreateInviteDialog = () => {
                       />
                     )}
                   />
-                  <View className="space-y-2 pb-2">
+                  <View className="gap-y-2 pb-2">
                     <Text className="text-sm">
                       For security purposes, we recommend you add as little
                       personally identifiable information (PII) as possible.
@@ -238,8 +238,8 @@ export const CreateInviteDialog = () => {
                 </View>
               )}
               {step === InviteStep.Send && (
-                <View className="space-y-2 pb-4">
-                  <View className="mb-4 flex-row items-start space-x-2 rounded-md border border-primary bg-primary-foreground p-2 text-primary">
+                <View className="gap-y-2 pb-4">
+                  <View className="mb-4 flex-row items-start gap-x-2 rounded-md border border-primary bg-primary-foreground p-2 text-primary">
                     <Info size={24} />
                     <Text className="text-sm text-primary">
                       This invite can only be used by one person.
@@ -249,7 +249,7 @@ export const CreateInviteDialog = () => {
 
                   <Button
                     variant="outline"
-                    className="group flex-row items-center space-x-2 text-primary"
+                    className="group flex-row items-center gap-x-2 text-primary"
                     onPress={copyToClipboard}
                   >
                     {copied ? (
@@ -264,7 +264,7 @@ export const CreateInviteDialog = () => {
                 </View>
               )}
               {step === InviteStep.Continue && (
-                <View className="space-y-2">
+                <View className="gap-y-2">
                   {invitesCount > 1 ? (
                     <Text className="text-center text-sm">
                       You've invited {invitesCount} people so far!
@@ -280,11 +280,11 @@ export const CreateInviteDialog = () => {
                   </Text>
                 </View>
               )}
-              <View className="space-y-2">
+              <View className="gap-y-2">
                 {step === InviteStep.Create && (
                   <>
                     <Button
-                      className="flex-row items-center space-x-2 text-sm"
+                      className="flex-row items-center gap-x-2 text-sm"
                       onPress={form.handleSubmit(handleCreateInvite)}
                     >
                       <Text>Create invite</Text>
@@ -308,7 +308,7 @@ export const CreateInviteDialog = () => {
                 )}
                 {step === InviteStep.Send && (
                   <Button
-                    className="flex-row items-center space-x-2 text-sm"
+                    className="flex-row items-center gap-x-2 text-sm"
                     onPress={handleMarkAsSent}
                   >
                     <Text>Mark as sent</Text>
@@ -321,7 +321,7 @@ export const CreateInviteDialog = () => {
                 {step === InviteStep.Continue && (
                   <>
                     <Button
-                      className="flex-row items-center space-x-2 text-sm"
+                      className="flex-row items-center gap-x-2 text-sm"
                       onPress={handleSendAnotherInvite}
                     >
                       <Text>Send another invite</Text>
@@ -345,7 +345,7 @@ export const CreateInviteDialog = () => {
             </DialogContent>
           </Dialog>
 
-          {/* <View className="space-y-2">
+          {/* <View className="gap-y-2">
           <Text className="text-xl">Create an invite</Text>
           <FormField
             control={form.control}

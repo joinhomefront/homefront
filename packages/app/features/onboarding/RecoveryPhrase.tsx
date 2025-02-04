@@ -175,7 +175,7 @@ export function RecoveryPhrase() {
               Your recovery phrase is a series of 12 words in a specific order.
             </Text>
           </Header>
-          <View className="flex-row items-start space-x-2 rounded-md border border-amber-600 bg-amber-100 p-4">
+          <View className="flex-row items-start gap-x-2 rounded-md border border-amber-600 bg-amber-100 p-4">
             <AlertCircle className="text-amber-800" size={24} />
             <Text className="flex-1 text-sm text-amber-800 sm:text-base">
               <Text className="text-sm font-bold text-amber-800 sm:text-base">
@@ -185,29 +185,29 @@ export function RecoveryPhrase() {
               password.
             </Text>
           </View>
-          <View className="space-y-2 py-4 pl-2">
+          <View className="gap-y-2 py-4 pl-2">
             <Text className="text-sm font-bold">Tips:</Text>
-            <View className="flex-row items-center space-x-2">
+            <View className="flex-row items-center gap-x-2">
               <Key size={16} />
               <Text className="flex-1 text-sm">
                 Store this phrase in a password manager like 1Password or Proton
                 Pass.
               </Text>
             </View>
-            <View className="flex-row items-center space-x-2">
+            <View className="flex-row items-center gap-x-2">
               <NotepadText size={16} />
               <Text className="flex-1 text-sm">
                 Write this phrase down on a piece of paper and store it in a
                 secure location.
               </Text>
             </View>
-            <View className="flex-row items-center space-x-2">
+            <View className="flex-row items-center gap-x-2">
               <Brain size={16} />
               <Text className="flex-1 text-sm">Memorize this phrase.</Text>
             </View>
-            <View className="flex-row items-center space-x-2">
+            <View className="flex-row items-center gap-x-2">
               <Download size={16} />
-              <View className="inline flex-1 flex-wrap items-center space-x-1">
+              <View className="inline flex-1 flex-wrap items-center gap-x-1">
                 {recoveryPhrase ? (
                   <Button size="inline" variant="link" onPress={handleDownload}>
                     <Text className="text-sm">Download this phrase</Text>
@@ -222,7 +222,7 @@ export function RecoveryPhrase() {
             </View>
           </View>
 
-          <View className="space-y-2 py-4">
+          <View className="gap-y-2 py-4">
             <H4>Recovery phrase</H4>
             {isLoading && (
               <View className="items-center justify-center">

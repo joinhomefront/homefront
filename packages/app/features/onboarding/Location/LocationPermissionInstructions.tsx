@@ -16,7 +16,7 @@ export const LocationPermissionInstructions = () => {
           <Text className="mb-2 text-lg font-bold">
             How to enable location on iOS:
           </Text>
-          <View className="space-y-2">
+          <View className="gap-y-2">
             <Text>1. Open Settings</Text>
             <Text>2. Go to Privacy & Security</Text>
             <Text>3. Tap Location Services</Text>
@@ -39,7 +39,7 @@ export const LocationPermissionInstructions = () => {
           <Text className="mb-2 text-lg font-bold">
             How to enable location on Android:
           </Text>
-          <View className="space-y-2">
+          <View className="gap-y-2">
             <Text>1. Open Settings</Text>
             <Text>2. Tap Location</Text>
             <Text>3. Go to App Permissions</Text>
@@ -56,7 +56,7 @@ export const LocationPermissionInstructions = () => {
           <Text className="mb-2 text-lg font-bold">
             How to enable location in Chrome:
           </Text>
-          <View className="space-y-2">
+          <View className="gap-y-2">
             <Text>1. Click the lock icon in address bar</Text>
             <Text>2. Find "Location"</Text>
             <Text>3. Select "Allow"</Text>
@@ -76,7 +76,7 @@ export const LocationPermissionInstructions = () => {
           <Text className="mb-2 text-lg font-bold">
             How to enable location in Chrome on iOS:
           </Text>
-          <View className="space-y-2">
+          <View className="gap-y-2">
             <Text>1. Open Settings</Text>
             <Text>2. Tap Privacy & Security</Text>
             <Text>3. Tap Location Services (ensure toggle is green)</Text>
@@ -102,10 +102,10 @@ export const LocationPermissionInstructions = () => {
           <Text className="mb-2 text-lg font-bold">
             How to enable location in Firefox on iOS:
           </Text>
-          <View className="space-y-4">
-            <View className="space-y-2">
+          <View className="gap-y-4">
+            <View className="gap-y-2">
               <Text className="font-semibold">Step 1: Settings App</Text>
-              <View className="space-y-2 pl-4">
+              <View className="gap-y-2 pl-4">
                 <Text>1. Open Settings</Text>
                 <Text>2. Tap Privacy & Security</Text>
                 <Text>3. Tap Location Services (ensure toggle is green)</Text>
@@ -119,15 +119,15 @@ export const LocationPermissionInstructions = () => {
               </View>
             </View>
 
-            <View className="space-y-2">
+            <View className="gap-y-2">
               <Text className="font-semibold">Step 2: Firefox Browser</Text>
-              <View className="space-y-2 pl-4">
+              <View className="gap-y-2 pl-4">
                 <Text>1. Tap Allow</Text>
                 <Text>2. Tap Allow again when prompted</Text>
               </View>
             </View>
 
-            <View className="flex-row space-x-2 rounded-md border border-amber-600 bg-amber-50 p-3">
+            <View className="flex-row gap-x-2 rounded-md border border-amber-600 bg-amber-50 p-3">
               <Text className="flex-1 text-amber-800">
                 <AlertCircle size={24} />
               </Text>
@@ -156,10 +156,10 @@ export const LocationPermissionInstructions = () => {
             How to enable location in Safari on iOS:
           </Text>
 
-          <View className="mb-6 space-y-4">
-            <View className="space-y-2">
+          <View className="mb-6 gap-y-4">
+            <View className="gap-y-2">
               <Text className="font-semibold">Step 1: Settings App</Text>
-              <View className="space-y-2 pl-4">
+              <View className="gap-y-2 pl-4">
                 <Text>1. Open Settings</Text>
                 <Text>2. Tap Privacy & Security</Text>
                 <Text>3. Tap Location Services (ensure toggle is green)</Text>
@@ -173,9 +173,9 @@ export const LocationPermissionInstructions = () => {
               </View>
             </View>
 
-            <View className="space-y-2">
+            <View className="gap-y-2">
               <Text className="font-semibold">Step 2: Safari Browser</Text>
-              <View className="space-y-2 pl-4">
+              <View className="gap-y-2 pl-4">
                 <Text>
                   1. Tap{" "}
                   <Text className="font-bold">
@@ -188,7 +188,7 @@ export const LocationPermissionInstructions = () => {
               </View>
             </View>
 
-            <View className="flex-row space-x-2 rounded-md border border-amber-600 bg-amber-50 p-3">
+            <View className="flex-row gap-x-2 rounded-md border border-amber-600 bg-amber-50 p-3">
               <Text className="flex-1 text-amber-800">
                 <AlertCircle size={24} />
               </Text>
@@ -218,7 +218,7 @@ export const LocationPermissionInstructions = () => {
           <Text className="mb-2 text-lg font-bold">
             How to enable location in Safari:
           </Text>
-          <View className="space-y-2">
+          <View className="gap-y-2">
             <Text>1. Choose Safari &gt; Settings in the top menu</Text>
             <Text>2. Click Websites</Text>
             <Text>3. Find Location on the left and select it</Text>
@@ -235,7 +235,7 @@ export const LocationPermissionInstructions = () => {
           <Text className="mb-2 text-lg font-bold">
             How to enable location in Firefox:
           </Text>
-          <View className="space-y-2">
+          <View className="gap-y-2">
             <Text>1. Click the map pin icon in the address bar</Text>
             <Text>
               2. Find and click the X button to clear the permission setting

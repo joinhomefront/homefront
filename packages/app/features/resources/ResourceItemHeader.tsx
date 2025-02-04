@@ -1,13 +1,13 @@
-import { useState } from "react";
 import type { ViewProps } from "react-native";
+import { useState } from "react";
 import { View } from "react-native";
 import { Edit, Flag, MoreHorizontal } from "lucide-react-native";
 import { Link } from "solito/link";
 
+import type { DomainArea, Resource, ResourceVote } from "@homefront/db";
 import { DomainAreaTags } from "@homefront/app/features/domainAreas/DomainAreaTags";
 import { useUser } from "@homefront/app/hooks/useUser";
 import dayjs from "@homefront/dayjs";
-import type { DomainArea, Resource, ResourceVote } from "@homefront/db";
 import {
   Button,
   cn,
@@ -69,7 +69,7 @@ export const ResourceItemHeader = ({
             {canEdit && (
               <Link href={`/resources/${resource.id}/edit`}>
                 <DropdownMenuItem>
-                  <View className="flex-row items-center space-x-2">
+                  <View className="flex-row items-center gap-x-2">
                     <Edit size={16} className="text-primary" />
                     <Text className="text-primary">Edit</Text>
                   </View>
@@ -77,7 +77,7 @@ export const ResourceItemHeader = ({
               </Link>
             )}
             <DropdownMenuItem onPress={() => setReportDialogOpen(true)}>
-              <View className="flex-row items-center space-x-2">
+              <View className="flex-row items-center gap-x-2">
                 <Flag size={16} className="text-primary" />
                 <Text className="text-primary">Report</Text>
               </View>

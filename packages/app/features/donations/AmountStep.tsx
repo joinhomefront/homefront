@@ -114,7 +114,7 @@ export function AmountStep({
               </View>
               <View className="gap-2">
                 <View className="py-2">
-                  <H3 className="text-left font-sans text-xl font-bold text-primary-950 sm:text-2xl">
+                  <H3 className="font-sans-bold text-left text-xl font-bold text-primary-950 sm:text-2xl">
                     {getSupportUsHeader(type)}
                   </H3>
                   <Text className="text-left text-sm text-gray-500">

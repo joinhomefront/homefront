@@ -52,7 +52,7 @@ const buttonVariants = cva(
       },
       hasIcon: {
         false: "",
-        true: "flex flex-row items-center space-x-2",
+        true: "flex flex-row items-center gap-x-2",
       },
       active: {
         false: "",

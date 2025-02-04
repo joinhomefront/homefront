@@ -57,7 +57,7 @@ export function ActionScreen() {
                 <Text className="max-w-prose pt-1 text-sm text-gray-500">
                   {action.description}
                 </Text>
-                <View className="flex-row items-center space-x-4 pt-2">
+                <View className="flex-row items-center gap-x-4 pt-2">
                   <Votes
                     votes={action.votes}
                     onVote={handleVote}
@@ -65,7 +65,7 @@ export function ActionScreen() {
                       action.userVote ? action.userVote.vote : undefined
                     }
                   />
-                  <View className="flex-row items-center space-x-2">
+                  <View className="flex-row items-center gap-x-2">
                     <ActionTypeIcon
                       type={action.type}
                       className="text-gray-500"

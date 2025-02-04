@@ -14,7 +14,7 @@ const LIMIT = 20;
 
 export function ResourcesList({ filter }: { filter?: ResourceFilter }) {
   const searchParams = useSearchParams();
-  const sort = searchParams?.get("sort") as ResourceSort;
+  const sort = (searchParams?.get("sort") as ResourceSort | undefined) ?? "hot";
 
   const {
     data,
@@ -65,7 +65,7 @@ export function ResourcesList({ filter }: { filter?: ResourceFilter }) {
       onEndReachedThreshold={0.5}
       ListFooterComponent={LoadingIndicator}
       ListEmptyComponent={
-        <View className="my-3 flex-1 items-center justify-center space-y-2 rounded-md border-2 border-dashed border-gray-200 px-3 py-8">
+        <View className="my-3 flex-1 items-center justify-center gap-y-2 rounded-md border-2 border-dashed border-gray-200 px-3 py-8">
           <Library size={24} className="text-gray-500" />
           <Text className="text-sm text-gray-500">No resources found</Text>
         </View>

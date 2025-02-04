@@ -18,6 +18,10 @@
     "./colors": {
       "types": "./dist/src/colors.d.ts",
       "default": "./src/colors.ts"
+    },
+    "./getFontConfig": {
+      "types": "./dist/src/getFontConfig.d.ts",
+      "default": "./src/getFontConfig.ts"
     }
   },
   "license": "MIT",

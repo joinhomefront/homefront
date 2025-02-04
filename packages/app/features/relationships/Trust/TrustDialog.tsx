@@ -164,7 +164,7 @@ export const TrustDialog = ({ relationship, friend }: TrustDialogProps) => {
                               "transition-colors duration-200",
                             )}
                           >
-                            <View className="flex-row items-center space-x-5">
+                            <View className="flex-row items-center gap-x-5">
                               <RadioGroupItem
                                 aria-labelledby={`label-for-${option.value}`}
                                 value={String(option.value)}
@@ -177,8 +177,8 @@ export const TrustDialog = ({ relationship, friend }: TrustDialogProps) => {
                                 }
                                 className="hover:cursor-pointer"
                               >
-                                <View className="space-y-1">
-                                  <View className="flex-row items-center space-x-2">
+                                <View className="gap-y-1">
+                                  <View className="flex-row items-center gap-x-2">
                                     <TrustIcon
                                       trustLevel={option.value}
                                       relationshipStatus="trusted"
@@ -217,7 +217,7 @@ export const TrustDialog = ({ relationship, friend }: TrustDialogProps) => {
                 />
               </View>
             </ScrollView>
-            <View className="flex-row justify-between space-x-2">
+            <View className="flex-row justify-between gap-x-2">
               <Button
                 variant="outline"
                 onPress={() => setIsOpen(false)}

@@ -12,7 +12,7 @@ interface CuratedActionItemProps {
 
 export function CuratedActionItem({ item }: CuratedActionItemProps) {
   return (
-    <View className="select-none flex-row items-center space-x-4 py-4">
+    <View className="select-none flex-row items-center gap-x-4 py-4">
       <View>
         <GripHorizontal size={24} />
       </View>
@@ -22,7 +22,7 @@ export function CuratedActionItem({ item }: CuratedActionItemProps) {
         <Text className="max-w-prose pt-1 text-sm text-gray-500">
           {item.description}
         </Text>
-        <View className="flex-row items-center space-x-2 pt-2">
+        <View className="flex-row items-center gap-x-2 pt-2">
           <ActionTypeIcon type={item.type} className="text-gray-500" />
           <Text className="text-sm text-gray-500">
             {getLabelForActionType(item.type)}

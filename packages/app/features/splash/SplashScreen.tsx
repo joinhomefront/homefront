@@ -20,16 +20,16 @@ import image from "./democracy.png";
 
 export function SplashScreen() {
   return (
-    <SafeAreaView>
-      <ScrollView>
-        <View className="flex w-full">
+    <SafeAreaView style={{ flex: 1 }}>
+      <ScrollView style={{ flex: 1 }}>
+        <View className="flex w-full flex-1">
           <View className="w-full">
-            <View className="mx-auto grid max-w-screen-xl grid-cols-12 gap-4 px-0 py-4 md:px-4">
-              <View className="col-span-12 flex justify-center space-y-3 px-4 py-0 md:col-span-5 md:space-y-4 md:px-0 md:py-4">
-                <Text className="font-header text-left text-3xl font-bold uppercase tracking-tight text-primary md:text-5xl">
+            <View className="mx-auto grid w-full max-w-screen-xl grid-cols-12 gap-4 px-0 py-4 md:px-4">
+              <View className="col-span-12 flex justify-center gap-y-3 px-4 py-0 md:col-span-5 md:gap-y-4 md:px-0 md:py-4">
+                <Text className="font-header-bold text-left text-3xl font-bold uppercase tracking-tight text-primary md:text-5xl">
                   Our fight for tomorrow begins today.
                 </Text>
-                <Text className="font-sans text-lg font-bold leading-5 text-primary md:text-xl">
+                <Text className="font-sans-bold text-lg font-bold leading-5 text-primary md:text-xl">
                   You're not alone. Across America, people like you are ready to
                   defend democracy together.
                 </Text>
@@ -37,16 +37,20 @@ export function SplashScreen() {
                   <View className="md:max-w-fit">
                     <Link href={"/signup"}>
                       <Button
+                        hasIcon
                         size="lg"
                         variant="secondary"
-                        className="h-14 flex-row space-x-2 md:max-w-fit"
+                        className="h-14 flex-row gap-2 md:max-w-fit"
                       >
                         <Text className="flex items-center text-lg font-bold md:text-xl">
                           Join now
                         </Text>
-                        <Text>
-                          <ArrowRight size={24} strokeWidth={3} />
-                        </Text>
+                        <ArrowRight
+                          size={24}
+                          strokeWidth={3}
+                          className="text-white"
+                          color="white"
+                        />
                       </Button>
                     </Link>
                   </View>
@@ -73,7 +77,7 @@ export function SplashScreen() {
               <View className="my-4 flex w-fit flex-shrink-0 bg-primary px-4 py-3">
                 <Text className="text-left font-sans text-xl uppercase text-white md:text-2xl">
                   Join{" "}
-                  <Text className="font-sans text-xl font-bold uppercase text-white md:text-2xl">
+                  <Text className="font-sans-bold text-xl font-bold uppercase text-white md:text-2xl">
                     the front line
                   </Text>
                 </Text>
@@ -82,19 +86,19 @@ export function SplashScreen() {
                 </Text>
               </View>
               <View className="gap-x-2: grid grid-cols-12 gap-y-2 sm:gap-x-4 sm:gap-y-4">
-                <View className="col-span-12 flex-row space-x-3 sm:col-span-6 md:col-span-4">
+                <View className="col-span-12 flex-row gap-x-3 sm:col-span-6 md:col-span-4">
                   <Connect width={80} height={80} />
-                  <View className="flex-1 space-y-2 py-2">
-                    <Text className="font-header text-2xl font-bold uppercase text-primary md:text-3xl">
+                  <View className="flex-1 gap-y-2 py-2">
+                    <Text className="font-header-bold text-2xl font-bold uppercase text-primary md:text-3xl">
                       Find Allies
                     </Text>
                     <Text>Organize with trusted people in your community.</Text>
                   </View>
                 </View>
-                <View className="col-span-12 flex-row space-x-3 sm:col-span-6 md:col-span-4">
+                <View className="col-span-12 flex-row gap-x-3 sm:col-span-6 md:col-span-4">
                   <Protect width={80} height={80} />
-                  <View className="flex-1 space-y-2 py-2">
-                    <Text className="font-header text-2xl font-bold uppercase text-primary md:text-3xl">
+                  <View className="flex-1 gap-y-2 py-2">
+                    <Text className="font-header-bold text-2xl font-bold uppercase text-primary md:text-3xl">
                       Get Ready
                     </Text>
                     <Text>
@@ -103,19 +107,19 @@ export function SplashScreen() {
                     </Text>
                   </View>
                 </View>
-                <View className="col-span-12 flex-row space-x-3 sm:col-span-6 md:col-span-4">
+                <View className="col-span-12 flex-row gap-x-3 sm:col-span-6 md:col-span-4">
                   <Share width={80} height={80} />
-                  <View className="flex-1 space-y-2 py-2">
-                    <Text className="font-header text-2xl font-bold uppercase text-primary md:text-3xl">
+                  <View className="flex-1 gap-y-2 py-2">
+                    <Text className="font-header-bold text-2xl font-bold uppercase text-primary md:text-3xl">
                       Work Together
                     </Text>
                     <Text>Share your skills and learn from others.</Text>
                   </View>
                 </View>
-                <View className="col-span-12 flex-row space-x-3 sm:col-span-6 md:col-span-4">
+                <View className="col-span-12 flex-row gap-x-3 sm:col-span-6 md:col-span-4">
                   <Discover width={80} height={80} />
-                  <View className="flex-1 space-y-2 py-2">
-                    <Text className="font-header text-2xl font-bold uppercase text-primary md:text-3xl">
+                  <View className="flex-1 gap-y-2 py-2">
+                    <Text className="font-header-bold text-2xl font-bold uppercase text-primary md:text-3xl">
                       Find Resources
                     </Text>
                     <Text>
@@ -123,10 +127,10 @@ export function SplashScreen() {
                     </Text>
                   </View>
                 </View>
-                <View className="col-span-12 flex-row space-x-3 sm:col-span-6 md:col-span-4">
+                <View className="col-span-12 flex-row gap-x-3 sm:col-span-6 md:col-span-4">
                   <Monitor width={80} height={80} />
-                  <View className="flex-1 space-y-2 py-2">
-                    <Text className="font-header text-2xl font-bold uppercase text-primary md:text-3xl">
+                  <View className="flex-1 gap-y-2 py-2">
+                    <Text className="font-header-bold text-2xl font-bold uppercase text-primary md:text-3xl">
                       Stay Alert
                     </Text>
                     <Text>
@@ -134,10 +138,10 @@ export function SplashScreen() {
                     </Text>
                   </View>
                 </View>
-                <View className="col-span-12 flex-row space-x-3 sm:col-span-6 md:col-span-4">
+                <View className="col-span-12 flex-row gap-x-3 sm:col-span-6 md:col-span-4">
                   <Act width={80} height={80} />
-                  <View className="flex-1 space-y-2 py-2">
-                    <Text className="font-header text-2xl font-bold uppercase text-primary md:text-3xl">
+                  <View className="flex-1 gap-y-2 py-2">
+                    <Text className="font-header-bold text-2xl font-bold uppercase text-primary md:text-3xl">
                       Fight Back
                     </Text>
                     <Text>Take action when the time comes&mdash;together.</Text>

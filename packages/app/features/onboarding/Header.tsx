@@ -20,7 +20,7 @@ export const Header = ({ currentStep, icon, title, children }: HeaderProps) => {
     <View>
       <TopNavigation currentStep={currentStep} />
       <OnboardingProgress currentStep={currentStep} />
-      <View className="flex-col items-center py-2 sm:flex-row sm:space-x-4 md:py-6">
+      <View className="flex-col items-center py-2 sm:flex-row sm:gap-x-4 md:py-6">
         <View className="justify-start text-primary">
           {createElement(icon, {
             size: Platform.select({ web: 92, default: 36 }),
@@ -28,7 +28,7 @@ export const Header = ({ currentStep, icon, title, children }: HeaderProps) => {
             className: "text-sm",
           })}
         </View>
-        <View className="flex-1 items-center justify-center space-y-4 sm:items-start">
+        <View className="flex-1 items-center justify-center gap-y-4 sm:items-start">
           <H3 className="text-xl sm:text-2xl">{title}</H3>
           <View className="gap-2 text-left">{children}</View>
         </View>

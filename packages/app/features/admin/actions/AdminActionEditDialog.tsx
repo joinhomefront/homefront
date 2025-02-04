@@ -140,7 +140,7 @@ export function AdminActionEditDialog({ action }: AdminActionEditDialogProps) {
             <DialogTitle>Edit Action</DialogTitle>
           </DialogHeader>
           <Form {...form}>
-            <View className="space-y-4">
+            <View className="gap-y-4">
               <FormField
                 control={form.control}
                 name="title"
@@ -178,7 +178,7 @@ export function AdminActionEditDialog({ action }: AdminActionEditDialogProps) {
                             key={value}
                             value={value}
                             label={label}
-                            className="flex-row items-center space-x-2"
+                            className="flex-row items-center gap-x-2"
                           >
                             {label}
                           </SelectItem>
@@ -189,7 +189,7 @@ export function AdminActionEditDialog({ action }: AdminActionEditDialogProps) {
                 )}
               />
 
-              <View className="flex-row justify-between space-x-2">
+              <View className="flex-row justify-between gap-x-2">
                 <Button
                   variant="destructive"
                   onPress={() => setShowDeleteDialog(true)}
@@ -197,7 +197,7 @@ export function AdminActionEditDialog({ action }: AdminActionEditDialogProps) {
                   <Trash2 className="mr-2" size={20} />
                   <Text>Delete</Text>
                 </Button>
-                <View className="flex-row space-x-2">
+                <View className="flex-row gap-x-2">
                   <Button variant="outline" onPress={() => setIsOpen(false)}>
                     <Text>Cancel</Text>
                   </Button>
@@ -224,7 +224,7 @@ export function AdminActionEditDialog({ action }: AdminActionEditDialogProps) {
               undone.
             </AlertDialogDescription>
           </AlertDialogHeader>
-          <View className="flex-row justify-end space-x-2">
+          <View className="flex-row justify-end gap-x-2">
             <AlertDialogCancel>Cancel</AlertDialogCancel>
             <AlertDialogAction
               onPress={handleDelete}

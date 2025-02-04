@@ -14,9 +14,9 @@ import {
 import { signOut } from "next-auth/react";
 import { Link } from "solito/link";
 
+import type { SanitizedUser } from "@homefront/db";
 import { UserAvatar } from "@homefront/app/features/avatars/UserAvatar";
 import { useSidebar } from "@homefront/app/hooks/useSidebar.web";
-import type { SanitizedUser } from "@homefront/db";
 import {
   Button,
   cn,
@@ -54,7 +54,7 @@ export const Header: React.FC<{ user?: SanitizedUser } & ViewProps> = ({
             {isOpen ? <X size={24} /> : <Menu size={24} />}
           </Button>
           <Link href="/home">
-            <View className="flex flex-row items-center space-x-3 hover:opacity-80">
+            <View className="flex flex-row items-center gap-x-3 hover:opacity-80">
               <LogoAlt height={32} width={48} className="flex" />
               <Logotype height={24} className={cn("hidden md:flex")} />
               <H1 className="sr-only">Homefront</H1>
@@ -76,7 +76,7 @@ export const Header: React.FC<{ user?: SanitizedUser } & ViewProps> = ({
               <DropdownMenuGroup>
                 <Link href="/submit/resource?type=link">
                   <DropdownMenuItem>
-                    <View className="flex-row items-center space-x-2">
+                    <View className="flex-row items-center gap-x-2">
                       <SquareLibrary size={24} className="text-primary" />
                       <Text>Add a resource</Text>
                     </View>
@@ -96,7 +96,7 @@ export const Header: React.FC<{ user?: SanitizedUser } & ViewProps> = ({
               <DropdownMenuGroup>
                 <Link href="/settings">
                   <DropdownMenuItem>
-                    <View className="flex-row items-center space-x-2">
+                    <View className="flex-row items-center gap-x-2">
                       <Settings size={16} className="text-primary" />
                       <Text>Settings</Text>
                     </View>
@@ -111,7 +111,7 @@ export const Header: React.FC<{ user?: SanitizedUser } & ViewProps> = ({
                     await signOut();
                   }}
                 >
-                  <View className="flex-row items-center space-x-2">
+                  <View className="flex-row items-center gap-x-2">
                     <LogOut size={16} className="text-primary" />
                     <Text>Sign out</Text>
                   </View>

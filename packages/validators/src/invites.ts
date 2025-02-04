@@ -3,6 +3,8 @@ import { z } from "zod";
 export const InviteCodeSchema = z
   .string()
   .nullable()
+  .optional()
+  .transform((val) => (val === undefined ? null : val))
   .refine(
     (code) => {
       if (code === null) return true;

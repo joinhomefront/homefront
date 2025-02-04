@@ -40,11 +40,11 @@ export function ResourceScreen() {
       <View className="w-full flex-1">
         <ScrollView className="w-full flex-1">
           <View className="mx-auto w-full max-w-screen-xl flex-1 justify-center px-0 py-4 sm:px-4">
-            <View className="max-w-prose space-y-2">
+            <View className="max-w-prose gap-y-2">
               <View className="px-3 sm:px-0">
                 <View className="flex-row items-center gap-1">
                   <LibrarySquare size={20} className="mt-[1px] text-primary" />
-                  <H3 className="font-header text-base font-bold uppercase text-primary">
+                  <H3 className="font-header-bold text-base font-bold uppercase text-primary">
                     Resource
                   </H3>
                 </View>
@@ -117,7 +117,7 @@ export function ResourceScreen() {
                 </View>
               </View>
 
-              <View className="space-y-2 px-3 sm:px-0">
+              <View className="gap-y-2 px-3 sm:px-0">
                 <Text className="pt-1 text-xs text-gray-500 sm:text-sm">
                   {resource.description}
                 </Text>

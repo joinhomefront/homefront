@@ -1,10 +1,10 @@
 "use client";
 
+import type Stripe from "stripe";
 import { useState } from "react";
 import { SafeAreaView, ScrollView, View } from "react-native";
 import { ArrowRight, CreditCard } from "lucide-react-native";
 import { Link } from "solito/link";
-import type Stripe from "stripe";
 
 import { api } from "@homefront/app/utils/trpc";
 import { ActivityIndicator, Button, H3, Text } from "@homefront/ui";
@@ -55,28 +55,28 @@ export function DonationsScreen() {
         <View className="w-full flex-1">
           <ScrollView className="w-full flex-1">
             <View className="mx-auto w-full max-w-screen-xl flex-1 justify-center p-4">
-              <View className="space-y-8">
+              <View className="gap-y-8">
                 <View className="flex-row items-center justify-between">
-                  <H3 className="font-header uppercase text-primary">
+                  <H3 className="font-header-bold uppercase text-primary">
                     Your Donations
                   </H3>
                 </View>
 
-                <View className="items-center space-y-4 rounded-lg border-2 border-dashed border-gray-300 p-4 py-8">
-                  <View className="space-y-2">
+                <View className="items-center gap-y-4 rounded-lg border-2 border-dashed border-gray-300 p-4 py-8">
+                  <View className="gap-y-2">
                     <Text className="text-gray-600">
                       You haven't made any donations yet.
                     </Text>
                   </View>
 
                   <View className="gap-y-2">
-                    <Text className="font-header text-lg font-bold uppercase text-primary">
+                    <Text className="font-header-bold text-lg font-bold uppercase text-primary">
                       Fund our fight for democracy
                     </Text>
 
                     <Link href="/donate">
                       <Button hasIcon className="h-8 rounded-full bg-amber-400">
-                        <Text className="font-sans text-sm font-bold text-primary-900">
+                        <Text className="font-sans-bold text-sm font-bold text-primary-900">
                           Support us
                         </Text>
                         <ArrowRight size={16} className="text-primary-900" />
@@ -97,9 +97,9 @@ export function DonationsScreen() {
       <View className="w-full flex-1">
         <ScrollView className="w-full flex-1">
           <View className="mx-auto w-full max-w-screen-xl flex-1 justify-center p-4">
-            <View className="max-w-prose space-y-8">
+            <View className="max-w-prose gap-y-8">
               <View className="flex-row items-center justify-between">
-                <H3 className="font-header uppercase text-primary">
+                <H3 className="font-header-bold uppercase text-primary">
                   Your Donations
                 </H3>
                 <Button
@@ -115,13 +115,13 @@ export function DonationsScreen() {
               </View>
 
               {subscriptions && subscriptions.length > 0 && (
-                <View className="space-y-4">
-                  <View className="space-y-2">
-                    <Text className="font-header text-lg font-bold uppercase text-primary">
+                <View className="gap-y-4">
+                  <View className="gap-y-2">
+                    <Text className="font-header-bold text-lg font-bold uppercase text-primary">
                       Recurring
                     </Text>
                   </View>
-                  <View className="space-y-2">
+                  <View className="gap-y-2">
                     {/* Table Header */}
                     <View className="flex-row justify-between rounded bg-gray-100 p-2">
                       <Text className="flex-1 text-xs font-bold text-gray-700">
@@ -171,13 +171,13 @@ export function DonationsScreen() {
 
               {donationHistory &&
                 donationHistory.oneTimeDonations.length > 0 && (
-                  <View className="space-y-4">
-                    <View className="space-y-2">
-                      <Text className="font-header text-lg font-bold uppercase text-primary">
+                  <View className="gap-y-4">
+                    <View className="gap-y-2">
+                      <Text className="font-header-bold text-lg font-bold uppercase text-primary">
                         One-time Donations
                       </Text>
                     </View>
-                    <View className="space-y-2">
+                    <View className="gap-y-2">
                       {/* Table Header */}
                       <View className="flex-row justify-between rounded bg-gray-100 p-2">
                         <Text className="flex-1 text-xs font-bold text-gray-700">
@@ -203,11 +203,7 @@ export function DonationsScreen() {
 
                           {/* Status */}
                           <View className="flex-1 items-start">
-                            <Status
-                              status={
-                                payment.status
-                              }
-                            />
+                            <Status status={payment.status} />
                           </View>
 
                           {/* Date */}

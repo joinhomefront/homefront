@@ -97,7 +97,7 @@ const Sidebar: React.FC<ViewProps> = () => {
               <Link href={item.path}>
                 <View
                   className={cn(
-                    "flex flex-row items-center space-x-2 rounded-md px-4 py-2 hover:bg-gray-100",
+                    "flex flex-row items-center gap-x-2 rounded-md px-4 py-2 hover:bg-gray-100",
                     isActive && "hover:bg-primary-100",
                   )}
                 >
@@ -127,7 +127,7 @@ const Sidebar: React.FC<ViewProps> = () => {
                       <Link key={subitem.name} href={subitem.path}>
                         <View
                           className={cn(
-                            "flex flex-row items-center space-x-2 rounded-md px-4 py-2 hover:bg-gray-100",
+                            "flex flex-row items-center gap-x-2 rounded-md px-4 py-2 hover:bg-gray-100",
                             isSubActive && "bg-primary-50 hover:bg-primary-100",
                           )}
                         >

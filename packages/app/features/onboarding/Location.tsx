@@ -76,7 +76,7 @@ export function Location() {
                   </Header>
                 </View>
 
-                <View className="space-y-2 py-4">
+                <View className="gap-y-2 py-4">
                   {isLoading && (
                     <>
                       <View className="h-8" />
@@ -89,13 +89,13 @@ export function Location() {
                   )}
                   {canDisplayMap && (
                     <>
-                      <View className="flex flex-row items-center justify-end space-x-1 px-4 sm:px-0">
+                      <View className="flex flex-row items-center justify-end gap-x-1 px-4 sm:px-0">
                         {canResetLocation && (
-                          <View className="flex flex-row items-center justify-end space-x-2">
+                          <View className="flex flex-row items-center justify-end gap-x-2">
                             <Button
                               variant="ghost"
                               size="xs"
-                              className="flex-row items-center space-x-2 text-sm"
+                              className="flex-row items-center gap-x-2 text-sm"
                               onPress={resetLocation}
                             >
                               <Text className="text-primary">
@@ -120,7 +120,7 @@ export function Location() {
                           recommendedHex={selectedHex}
                         />
                       </View>
-                      <View className="space-y-4 px-4 sm:px-0">
+                      <View className="gap-y-4 px-4 sm:px-0">
                         <Text className="text-sm">
                           Your location will be approximated to the hex shown
                           above. There are an estimated{" "}

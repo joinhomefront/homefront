@@ -43,7 +43,7 @@ const rules = {
   unknown: () => null,
 
   body: (node, children) => (
-    <View key={node.key} className="space-y-4">
+    <View key={node.key} className="gap-y-4">
       {children}
     </View>
   ),
@@ -131,13 +131,13 @@ const rules = {
 
   // Lists
   bullet_list: (node, children) => (
-    <View key={node.key} className="ml-6 space-y-2">
+    <View key={node.key} className="ml-6 gap-y-2">
       {children}
     </View>
   ),
 
   ordered_list: (node, children) => (
-    <View key={node.key} className="ml-6 space-y-2">
+    <View key={node.key} className="ml-6 gap-y-2">
       {children}
     </View>
   ),
@@ -145,7 +145,7 @@ const rules = {
   list_item: (node, children, parent) => {
     if (hasParents(parent, "bullet_list")) {
       return (
-        <View key={node.key} className="flex-row items-start space-x-2">
+        <View key={node.key} className="flex-row items-start gap-x-2">
           <Text className="text-foreground">•</Text>
           <View className="flex-1">{children}</View>
         </View>
@@ -164,7 +164,7 @@ const rules = {
         : node.index + 1;
 
       return (
-        <View key={node.key} className="flex-row items-start space-x-2">
+        <View key={node.key} className="flex-row items-start gap-x-2">
           <Text className="text-foreground">{listItemNumber}.</Text>
           <View className="flex-1">{children}</View>
         </View>

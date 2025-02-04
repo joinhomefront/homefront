@@ -103,7 +103,7 @@ export function AdminActionCreateDialog() {
           <DialogTitle>Create New Action</DialogTitle>
         </DialogHeader>
         <Form {...form}>
-          <View className="space-y-4">
+          <View className="gap-y-4">
             <FormField
               control={form.control}
               name="title"
@@ -156,7 +156,7 @@ export function AdminActionCreateDialog() {
               )}
             />
 
-            <View className="flex-row justify-end space-x-2">
+            <View className="flex-row justify-end gap-x-2">
               <Button variant="outline" onPress={() => setIsOpen(false)}>
                 <Text>Cancel</Text>
               </Button>

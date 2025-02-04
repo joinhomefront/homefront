@@ -51,6 +51,7 @@ export function SignUp() {
     const { username, password } = values;
     const inviteCode = redirect ? getInviteCodeFromRedirect(redirect) : null;
 
+    console.log("inviteCode", inviteCode);
     try {
       const res = await fetch("/api/auth/signup", {
         method: "POST",
@@ -150,8 +151,8 @@ export function SignUp() {
             <View className="w-full rounded-md bg-white p-4 shadow-md shadow-gray-300 sm:p-10">
               {redirect && <InviteInfo redirect={redirect} />}
               <Form {...form}>
-                <View className="space-y-6">
-                  <Text className="text-left font-sans text-2xl font-bold">
+                <View className="gap-y-6">
+                  <Text className="font-sans-bold text-left text-2xl font-bold">
                     Sign up for Homefront
                   </Text>
                   <FormField
@@ -166,7 +167,7 @@ export function SignUp() {
                     )}
                   />
                   <View className="rounded-md border border-amber-600 bg-amber-200 p-2">
-                    <View className="flex-row items-start space-x-2">
+                    <View className="flex-row items-start gap-x-2">
                       <View>
                         <ShieldAlert size={24} className="text-amber-800" />
                       </View>

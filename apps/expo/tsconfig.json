@@ -3,14 +3,14 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
+      "~/*": ["./src/*"],
       "@homefront/app/*": ["../../packages/app/*"],
       "@homefront/ui/*": ["../../packages/ui/*"]
     },
     "jsx": "react-native",
-    "jsxImportSource": "nativewind",
     "types": ["nativewind/types"],
-    "checkJs": false
-    // "moduleSuffixes": [".ios", ".android", ".native", ""]
+    "checkJs": false,
+    "moduleSuffixes": [".ios", ".android", ".native", ""]
   },
   "include": [
     "src",

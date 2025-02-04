@@ -198,8 +198,8 @@ export function SignIn() {
                 <Form {...form} handleSubmit={form.handleSubmit}>
                   <FormWrapper className="flex flex-1 flex-col gap-y-6">
                     {isTotpRequired && (
-                      <View className={cn("space-y-6")}>
-                        <Text className="text-left font-sans text-2xl font-bold">
+                      <View className={cn("gap-y-6")}>
+                        <Text className="font-sans-bold text-left text-2xl font-bold">
                           Two-factor authentication
                         </Text>
 
@@ -243,10 +243,8 @@ export function SignIn() {
                         )}
                       </View>
                     )}
-                    <View
-                      className={cn("space-y-6", isTotpRequired && "hidden")}
-                    >
-                      <Text className="text-left font-sans text-2xl font-bold">
+                    <View className={cn("gap-y-6", isTotpRequired && "hidden")}>
+                      <Text className="font-sans-bold text-left text-2xl font-bold">
                         Sign in to your account
                       </Text>
 

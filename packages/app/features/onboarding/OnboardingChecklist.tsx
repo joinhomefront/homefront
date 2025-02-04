@@ -145,7 +145,7 @@ export function OnboardingChecklist() {
 
   return (
     <View>
-      <H3 className="font-header uppercase text-primary">
+      <H3 className="font-header-bold uppercase text-primary">
         Complete your profile
       </H3>
       <View className="pt-4">
@@ -155,7 +155,7 @@ export function OnboardingChecklist() {
           max={totalStepsCount}
         />
       </View>
-      <View className="space-y-1 py-4">
+      <View className="gap-y-1 py-4">
         {STEP_ORDER.map((step) => {
           if (step === OnboardingStep.Completed) return null;
 
@@ -163,7 +163,7 @@ export function OnboardingChecklist() {
 
           if (completed) {
             return (
-              <View key={step} className="flex-row items-center space-x-2">
+              <View key={step} className="flex-row items-center gap-x-2">
                 <CheckCircle2 size={24} className="text-primary" />
                 <Text className="text-gray-500 line-through">
                   {STEP_LABELS[step]}
@@ -177,7 +177,7 @@ export function OnboardingChecklist() {
           return (
             <Link key={step} href={ROUTES[step]}>
               <View className="group py-1">
-                <View className="group flex-row items-center space-x-2">
+                <View className="group flex-row items-center gap-x-2">
                   <LucideIcon
                     size={24}
                     className="text-primary group-hover:text-primary-800"

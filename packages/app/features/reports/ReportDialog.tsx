@@ -154,7 +154,7 @@ export function ReportDialog({
         </DialogHeader>
 
         {step === "reason" ? (
-          <View className="space-y-4">
+          <View className="gap-y-4">
             <View className="flex-row flex-wrap gap-2">
               {reportOptions.map((reason) => (
                 <Button
@@ -195,7 +195,7 @@ export function ReportDialog({
           </View>
         ) : (
           <Form {...form}>
-            <View className="space-y-4">
+            <View className="gap-y-4">
               <View>
                 <Text className="font-medium">
                   {selectedReason ? reportOptionsMap[selectedReason].label : ""}

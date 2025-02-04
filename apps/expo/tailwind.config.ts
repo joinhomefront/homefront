@@ -4,12 +4,12 @@ import nativewind from "nativewind/preset";
 
 import baseConfig from "@homefront/tailwind-config/native";
 import colors from "@homefront/ui/colors";
+import { getFontConfig } from "@homefront/ui/getFontConfig";
 
 export default {
   content: [
     ...baseConfig.content,
-    "./src/**/*.{js,jsx,ts,tsx}",
-    "./src/index.tsx",
+    "./src/**/*.{ts,tsx}",
     "../../packages/ui/src/**/*.{ts,tsx}",
     "../../packages/app/components/**/*.{ts,tsx}",
     "../../packages/app/features/**/*.{ts,tsx}",
@@ -19,6 +19,7 @@ export default {
   theme: {
     extend: {
       ...colors,
+      fontFamily: getFontConfig("native"),
     },
   },
 } satisfies Config;

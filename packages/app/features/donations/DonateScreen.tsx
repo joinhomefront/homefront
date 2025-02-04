@@ -13,7 +13,7 @@ export function DonateScreen() {
           <View className="mx-auto w-full max-w-screen-xl flex-1 px-4 pt-4 md:pt-8">
             <View>
               <View className="flex-1 items-center">
-                <H2 className="font-header text-center text-4xl text-primary-800 md:text-5xl">
+                <H2 className="font-header-bold text-center text-4xl text-primary-800 md:text-5xl">
                   Join the fight for democracy
                 </H2>
                 <Text className="max-w-prose pt-1 text-center text-sm text-gray-500">

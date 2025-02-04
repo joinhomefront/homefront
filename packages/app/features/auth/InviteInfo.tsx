@@ -36,9 +36,9 @@ export function InviteInfo({ redirect }: InviteInfoProps) {
 
   return (
     <View className="mb-6 rounded-md border border-primary bg-primary-foreground p-4">
-      <View className="flex-row items-center justify-center space-x-2">
+      <View className="flex-row items-center justify-center gap-x-2">
         <UserAvatar user={{ username: invite.username, image: invite.image }} />
-        <View className="flex-1 flex-row flex-wrap items-center justify-start space-x-1">
+        <View className="flex-1 flex-row flex-wrap items-center justify-start gap-x-1">
           <Text className="flex-wrap text-left text-sm text-primary">
             <Text className="text-sm font-bold text-primary">@{username}</Text>{" "}
             has invited you to join them on Homefront.

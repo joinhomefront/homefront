@@ -83,7 +83,7 @@ export function PaymentStep({ amount, type, onBack }: PaymentStepProps) {
 
   return (
     <Form {...form}>
-      <View className="space-y-6">
+      <View className="gap-y-6">
         <DonationSummary amount={amount} type={type}>
           <Button
             variant="ghost"

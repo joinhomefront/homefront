@@ -197,7 +197,7 @@ export function ChangePassword({
           </View>
         )}
         {step === ChangePasswordStep.CHALLENGE && !!challenges?.length && (
-          <View className="space-y-4">
+          <View className="gap-y-4">
             <DialogHeader>
               <DialogTitle asChild>
                 <Text className="text-xl font-bold">Verification required</Text>
@@ -205,7 +205,7 @@ export function ChangePassword({
             </DialogHeader>
 
             <Form {...challengeForm}>
-              <View className="space-y-4">
+              <View className="gap-y-4">
                 <Text className="text-sm">
                   Enter the code from your authenticator app.
                 </Text>
@@ -225,7 +225,7 @@ export function ChangePassword({
                     />
                   )}
                 />
-                <View className="flex-row justify-between space-x-4">
+                <View className="flex-row justify-between gap-x-4">
                   <Button size="sm" variant="outline" onPress={handleClose}>
                     <Text>Cancel</Text>
                   </Button>
@@ -248,7 +248,7 @@ export function ChangePassword({
         )}
 
         {step === ChangePasswordStep.CHANGE && (
-          <View className="space-y-4">
+          <View className="gap-y-4">
             <DialogHeader>
               <DialogTitle asChild>
                 <Text className="text-xl font-bold">Change password</Text>
@@ -256,7 +256,7 @@ export function ChangePassword({
             </DialogHeader>
 
             <Form {...passwordForm} key={"${step}-form"}>
-              <View className="space-y-4">
+              <View className="gap-y-4">
                 <FormField
                   control={passwordForm.control}
                   name="currentPassword"
@@ -281,7 +281,7 @@ export function ChangePassword({
                     />
                   )}
                 />
-                <View className="flex-row justify-between space-x-4">
+                <View className="flex-row justify-between gap-x-4">
                   <Button
                     size="sm"
                     variant="outline"

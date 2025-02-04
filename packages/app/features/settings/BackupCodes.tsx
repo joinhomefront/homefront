@@ -49,12 +49,12 @@ export function BackupCodes({ codes, onComplete }: BackupCodesProps) {
   };
 
   return (
-    <View className="space-y-4">
+    <View className="gap-y-4">
       <Text className="text-xl font-bold">
         Set up two-factor authentication
       </Text>
 
-      <View className="flex-row items-start space-x-2 rounded-md border border-amber-600 bg-amber-100 px-3 py-2">
+      <View className="flex-row items-start gap-x-2 rounded-md border border-amber-600 bg-amber-100 px-3 py-2">
         <AlertCircle className="text-amber-800" size={24} />
         <Text className="flex-1 text-sm text-amber-800">
           <Text className="text-sm font-bold text-amber-800">
@@ -75,7 +75,7 @@ export function BackupCodes({ codes, onComplete }: BackupCodesProps) {
         authentication device. Each code can only be used once.
       </Text>
 
-      <View className="space-y-2">
+      <View className="gap-y-2">
         <View className="flex-row flex-wrap justify-between">
           {codes.map((code, index) => (
             <Text
@@ -87,7 +87,7 @@ export function BackupCodes({ codes, onComplete }: BackupCodesProps) {
           ))}
         </View>
 
-        <View className="flex-row justify-center space-x-4">
+        <View className="flex-row justify-center gap-x-4">
           <Button size="sm" onPress={handleDownload}>
             <Text>Download</Text>
           </Button>

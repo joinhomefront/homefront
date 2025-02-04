@@ -5,12 +5,12 @@ import { View } from "react-native";
 import { LogOut, Menu, X } from "lucide-react-native";
 import { signOut } from "next-auth/react";
 
+import type { SanitizedUser } from "@homefront/db";
 import { UserAvatar } from "@homefront/app/features/avatars/UserAvatar";
 import {
   SidebarProvider,
   useSidebar,
 } from "@homefront/app/hooks/useSidebar.web";
-import type { SanitizedUser } from "@homefront/db";
 import {
   Button,
   DropdownMenu,
@@ -58,7 +58,7 @@ const HeaderClientInner: React.FC<{
             <DropdownMenuItem
               onPress={async () => await signOut({ callbackUrl: "/login" })}
             >
-              <View className="flex-row items-center space-x-2">
+              <View className="flex-row items-center gap-x-2">
                 <LogOut size={16} className="text-primary" />
                 <Text>Sign out</Text>
               </View>

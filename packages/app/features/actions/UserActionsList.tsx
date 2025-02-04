@@ -29,7 +29,7 @@ export function UserActionsList() {
         <UserActionItem action={userAction.action} userAction={userAction} />
       )}
       ListEmptyComponent={() => (
-        <View className="space-y-2 py-4">
+        <View className="gap-y-2 py-4">
           <Text className="text-left text-gray-500">
             You haven't added have any actions yet.
           </Text>
