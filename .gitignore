@@ -55,3 +55,8 @@ dist/
 
 # sst
 .sst
+
+# hush
+libhush/
+context/
+hush_proto/

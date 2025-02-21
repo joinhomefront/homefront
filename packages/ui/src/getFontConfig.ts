@@ -10,8 +10,8 @@ export const getFontConfig = (platform: "web" | "native") => {
       mono: [`var(--font-fira-code)`, "monospace"],
       "mono-medium": [`var(--font-fira-code)`, "monospace"],
       "mono-bold": [`var(--font-fira-code)`, "monospace"],
-      serif: [`var(--font-pt-serif)`, "serif"],
-      "serif-bold": [`var(--font-pt-serif)`, "serif"],
+      serif: [`var(--font-source-serif-4)`, "serif"],
+      "serif-bold": [`var(--font-source-serif-4)`, "serif"],
     };
   }
 
@@ -25,7 +25,7 @@ export const getFontConfig = (platform: "web" | "native") => {
     mono: ["FiraCode-Regular"],
     "mono-medium": ["FiraCode-Medium"],
     "mono-bold": ["FiraCode-Bold"],
-    serif: ["PTSerif-Regular"],
-    "serif-bold": ["PTSerif-Bold"],
+    serif: ["SourceSerif4-Regular"],
+    "serif-bold": ["SourceSerif4-Bold"],
   };
 };

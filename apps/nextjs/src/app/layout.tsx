@@ -1,7 +1,7 @@
 import "raf/polyfill";
 
 import type { Metadata, Viewport } from "next";
-import { Fira_Code, Inter, Oswald, PT_Serif } from "next/font/google";
+import { Fira_Code, Inter, Oswald, Source_Serif_4 } from "next/font/google";
 
 import { Provider } from "@homefront/app/provider";
 import { TRPCReactProvider } from "@homefront/app/utils/trpc.web";
@@ -30,10 +30,10 @@ const firaCode = Fira_Code({
   variable: "--font-fira-code",
 });
 
-const ptSerif = PT_Serif({
+const ptSerif = Source_Serif_4({
   subsets: ["latin"],
   weight: ["400", "700"],
-  variable: "--font-pt-serif",
+  variable: "--font-source-serif-4",
 });
 
 export const metadata: Metadata = {

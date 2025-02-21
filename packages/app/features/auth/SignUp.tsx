@@ -12,6 +12,7 @@ import { useSearchParams } from "solito/navigation";
 
 import { InviteInfo } from "@homefront/app/features/auth/InviteInfo";
 import { setRecoveryPhrase } from "@homefront/app/utils/recovery-phrase-store";
+import { setRedirectUrl } from "@homefront/app/utils/redirect-store";
 import {
   ActivityIndicator,
   Button,
@@ -28,6 +29,7 @@ import {
 import { AvatarInfo } from "../avatars/AvatarInfo";
 import { UsernameInput } from "../users/UsernameInput/UsernameInput";
 import { AuthHeader } from "./AuthHeader";
+import { DonationSignUpInfo } from "./DonationSignUpInfo";
 import { getInviteCodeFromRedirect } from "./utils";
 import { VisiblePasswordInput } from "./VisiblePasswordInput";
 
@@ -51,8 +53,12 @@ export function SignUp() {
     const { username, password } = values;
     const inviteCode = redirect ? getInviteCodeFromRedirect(redirect) : null;
 
-    console.log("inviteCode", inviteCode);
     try {
+      // Store the redirect URL
+      if (redirect) {
+        await setRedirectUrl(redirect);
+      }
+
       const res = await fetch("/api/auth/signup", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -149,7 +155,11 @@ export function SignUp() {
           <AuthHeader />
           <View className="mx-auto w-full max-w-md flex-1 p-4 pt-10">
             <View className="w-full rounded-md bg-white p-4 shadow-md shadow-gray-300 sm:p-10">
-              {redirect && <InviteInfo redirect={redirect} />}
+              {redirect === "/donate" ? (
+                <DonationSignUpInfo />
+              ) : (
+                redirect && <InviteInfo redirect={redirect} />
+              )}
               <Form {...form}>
                 <View className="gap-y-6">
                   <Text className="font-sans-bold text-left text-2xl font-bold">

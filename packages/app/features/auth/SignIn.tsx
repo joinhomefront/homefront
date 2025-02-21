@@ -15,6 +15,7 @@ import { useRouter, useSearchParams } from "solito/navigation";
 import { z } from "zod";
 
 import { InviteInfo } from "@homefront/app/features/auth/InviteInfo";
+import { setRedirectUrl } from "@homefront/app/utils/redirect-store";
 import {
   ActivityIndicator,
   Button,
@@ -55,6 +56,11 @@ export function SignIn() {
       setIsLoading(true);
       const { username, password } = values;
       try {
+        // Store the redirect URL
+        if (redirect) {
+          await setRedirectUrl(redirect);
+        }
+
         const response = await RequestSignUtil.initiateSession({
           username,
           password,
